@@ -12,15 +12,12 @@ jobs:
   build_test_maybe_release:
     strategy:
       matrix:
-        include:
-          - variant: 'cli'
-            php_version: '7.4'
-            platform: linux/arm64
-          # - variant: 'apache'
-          #   php_version: '7.4'
-          - variant: 'fpm'
-            php_version: '7.4'
-            platform: linux/arm64
+        php_version: ['7.4']
+        # php_version: ['7.2', '7.3', '7.4', '8.0', '8.1']
+        platform: ['linux/arm64']
+        # platform: ['linux/amd64', 'linux/arm64']
+        variant: ['cli', 'fpm']
+        # variant: ['apache', 'cli', 'fpm']
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
