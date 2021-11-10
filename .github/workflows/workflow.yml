@@ -28,7 +28,6 @@ jobs:
       - name: Build and test
         run: |
           PHP_VERSION="${{ matrix.php_version }}" BRANCH="v4" PLATFORM="${{ matrix.platform }}" VARIANT="${{ matrix.variant }}" ./build-and-test.sh
-          docker images | grep thecodingmachine/php
       - name: Login to DockerHub
         # Merge ~ push.
         if: ${{ github.event_name == 'push' }}
