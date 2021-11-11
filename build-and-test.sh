@@ -16,7 +16,7 @@ export BRANCH_VARIANT=`echo "$VARIANT" | sed 's/\./-/g'`
 export DOCKER_BUILDKIT=1 # Force use of BuildKit
 export BUILDKIT_STEP_LOG_MAX_SIZE=10485760 # outpout log limit fixed to 10MiB
 
-CURRENT_PLATFORM=`uname -m`
+NATIVE_PLATFORM=`linux/amd64`
 
 #################################
 # Let's build the "slim" image.
@@ -24,7 +24,7 @@ CURRENT_PLATFORM=`uname -m`
 docker buildx build --output=type=docker --platform ${PLATFORM} -t qonstrukt/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT} --build-arg PHP_VERSION=${PHP_VERSION} --build-arg GLOBAL_VERSION=${BRANCH} -f Dockerfile.slim.${VARIANT} .
 
 # Post build unit tests
-if [[ $PLATFORM == $CURRENT_PLATFORM ]]; then
+if [[ $PLATFORM == $NATIVE_PLATFORM ]]; then
   # Let's check that the extensions can be built using the "ONBUILD" statement
   docker buildx build --output=type=docker --platform ${PLATFORM} -t test/slim_onbuild --build-arg PHP_VERSION="${PHP_VERSION}" --build-arg BRANCH="$BRANCH" --build-arg BRANCH_VARIANT="$BRANCH_VARIANT" tests/slim_onbuild
   # This should run ok (the sudo disable environment variables but call to composer proxy does not trigger PHP ini file regeneration)
@@ -173,7 +173,7 @@ fi
 docker buildx build --output=type=docker --platform ${PLATFORM} -t qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT} --build-arg PHP_VERSION=${PHP_VERSION} --build-arg GLOBAL_VERSION=${BRANCH} -f Dockerfile.${VARIANT} .
 
 # Post build unit tests
-if [[ $PLATFORM == $CURRENT_PLATFORM ]]; then
+if [[ $PLATFORM == $NATIVE_PLATFORM ]]; then
   # Let's check that the crons are actually sending logs in the right place
   RESULT=`docker run --platform ${PLATFORM} --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="(>&1 echo "foobar")" qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT} sleep 1 2>&1 | grep -oP 'msg=foobar' | head -n1`
   [[ "$RESULT" = "msg=foobar" ]]

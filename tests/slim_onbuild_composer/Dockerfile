@@ -3,7 +3,7 @@ ARG BRANCH_VARIANT
 ARG PHP_VERSION
 
 ARG PHP_EXTENSIONS="gd"
-FROM thecodingmachine/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}
+FROM qonstrukt/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}
 
 COPY composer.json composer.json
 

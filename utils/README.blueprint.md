@@ -21,21 +21,21 @@ This repository contains a set of developer-friendly, general purpose PHP images
 
 | Name                                                                    | PHP version                  | type |variant | NodeJS version  | Size 
 |-------------------------------------------------------------------------|------------------------------|------|--------|-----------------|------
-{{range $phpV := $versions}}| [thecodingmachine/php:{{ $phpV }}-v4-apache](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.apache)                                        | `{{ $phpV }}.x`{{if eq $phpV "7.2"}}(1){{ end }}{{if eq $phpV "7.3"}}(1){{ end }}{{ if eq $phpV "8.1" }}rc{{end}} | fat  | apache   | *N/A*                                                | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:{{ $phpV }}-v4-apache.svg)](https://microbadger.com/images/thecodingmachine/php:{{ $phpV }}-v4-apache)
-{{range $nodeV := $nodeVersions}}| [thecodingmachine/php:{{ $phpV }}-v4-apache-node{{ $nodeV }}](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.apache.node{{ $nodeV }}) | `{{ $phpV }}.x`{{if eq $phpV "7.2"}}(1){{ end }}{{if eq $phpV "7.3"}}(1){{ end }}{{ if eq $phpV "8.1" }}rc{{end}} | fat  | apache   | `{{ $nodeV }}.x`{{ if eq $nodeV "10" }}(2){{ end }}  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:{{ $phpV }}-v4-apache-node{{ $nodeV }}.svg)](https://microbadger.com/images/thecodingmachine/php:{{ $phpV }}-v4-apache-node{{ $nodeV }})
-{{ end }}| [thecodingmachine/php:{{ $phpV }}-v4-fpm](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.fpm)                                                                 | `{{ $phpV }}.x`{{if eq $phpV "7.2"}}(1){{ end }}{{if eq $phpV "7.3"}}(1){{ end }}{{ if eq $phpV "8.1" }}rc{{end}} | fat  | fpm      | *N/A*                                                | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:{{ $phpV }}-v4-fpm.svg)](https://microbadger.com/images/thecodingmachine/php:{{ $phpV }}-v4-fpm)
-{{range $nodeV := $nodeVersions}}| [thecodingmachine/php:{{ $phpV }}-v4-fpm-node{{ $nodeV }}](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.fpm.node{{ $nodeV }})       | `{{ $phpV }}.x`{{if eq $phpV "7.2"}}(1){{ end }}{{if eq $phpV "7.3"}}(1){{ end }}{{ if eq $phpV "8.1" }}rc{{end}} | fat  | fpm      | `{{ $nodeV }}.x`{{ if eq $nodeV "10" }}(2){{ end }}  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:{{ $phpV }}-v4-fpm-node{{ $nodeV }}.svg)](https://microbadger.com/images/thecodingmachine/php:{{ $phpV }}-v4-fpm-node{{ $nodeV }})
-{{ end }}| [thecodingmachine/php:{{ $phpV }}-v4-cli](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.cli)                                                                 | `{{ $phpV }}.x`{{if eq $phpV "7.2"}}(1){{ end }}{{if eq $phpV "7.3"}}(1){{ end }}{{ if eq $phpV "8.1" }}rc{{end}} | fat  | cli      | *N/A*                                                | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:{{ $phpV }}-v4-cli.svg)](https://microbadger.com/images/thecodingmachine/php:{{ $phpV }}-v4-cli)
-{{range $nodeV := $nodeVersions}}| [thecodingmachine/php:{{ $phpV }}-v4-cli-node{{ $nodeV }}](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.cli.node{{ $nodeV }})       | `{{ $phpV }}.x`{{if eq $phpV "7.2"}}(1){{ end }}{{if eq $phpV "7.3"}}(1){{ end }}{{ if eq $phpV "8.1" }}rc{{end}} | fat  | cli      | `{{ $nodeV }}.x`{{ if eq $nodeV "10" }}(2){{ end }}  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:{{ $phpV }}-v4-cli-node{{ $nodeV }}.svg)](https://microbadger.com/images/thecodingmachine/php:{{ $phpV }}-v4-cli-node{{ $nodeV }})
-{{ end }}| [thecodingmachine/php:{{ $phpV }}-v4-slim-apache](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.slim.apache)                                                 | `{{ $phpV }}.x`{{if eq $phpV "7.2"}}(1){{ end }}{{if eq $phpV "7.3"}}(1){{ end }}{{ if eq $phpV "8.1" }}rc{{end}} | slim | apache   | *N/A*                                                | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:{{ $phpV }}-v4-slim-apache.svg)](https://microbadger.com/images/thecodingmachine/php:{{ $phpV }}-v4-slim-apache)
-| [thecodingmachine/php:{{ $phpV }}-v4-slim-fpm](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.slim.fpm)                                                                | `{{ $phpV }}.x`{{if eq $phpV "7.2"}}(1){{ end }}{{if eq $phpV "7.3"}}(1){{ end }}{{ if eq $phpV "8.1" }}rc{{end}} | slim | fpm      | *N/A*                                                | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:{{ $phpV }}-v4-slim-fpm.svg)](https://microbadger.com/images/thecodingmachine/php:{{ $phpV }}-v4-slim-fpm)
-| [thecodingmachine/php:{{ $phpV }}-v4-slim-cli](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.slim.cli)                                                                | `{{ $phpV }}.x`{{if eq $phpV "7.2"}}(1){{ end }}{{if eq $phpV "7.3"}}(1){{ end }}{{ if eq $phpV "8.1" }}rc{{end}} | slim | cli      | *N/A*                                                | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:{{ $phpV }}-v4-slim-cli.svg)](https://microbadger.com/images/thecodingmachine/php:{{ $phpV }}-v4-slim-cli)
+{{range $phpV := $versions}}| [qonstrukt/php:{{ $phpV }}-v4-apache](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.apache)                                        | `{{ $phpV }}.x`{{if eq $phpV "7.2"}}(1){{ end }}{{if eq $phpV "7.3"}}(1){{ end }}{{ if eq $phpV "8.1" }}rc{{end}} | fat  | apache   | *N/A*                                                | [![](https://images.microbadger.com/badges/image/qonstrukt/php:{{ $phpV }}-v4-apache.svg)](https://microbadger.com/images/qonstrukt/php:{{ $phpV }}-v4-apache)
+{{range $nodeV := $nodeVersions}}| [qonstrukt/php:{{ $phpV }}-v4-apache-node{{ $nodeV }}](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.apache.node{{ $nodeV }}) | `{{ $phpV }}.x`{{if eq $phpV "7.2"}}(1){{ end }}{{if eq $phpV "7.3"}}(1){{ end }}{{ if eq $phpV "8.1" }}rc{{end}} | fat  | apache   | `{{ $nodeV }}.x`{{ if eq $nodeV "10" }}(2){{ end }}  | [![](https://images.microbadger.com/badges/image/qonstrukt/php:{{ $phpV }}-v4-apache-node{{ $nodeV }}.svg)](https://microbadger.com/images/qonstrukt/php:{{ $phpV }}-v4-apache-node{{ $nodeV }})
+{{ end }}| [qonstrukt/php:{{ $phpV }}-v4-fpm](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.fpm)                                                                 | `{{ $phpV }}.x`{{if eq $phpV "7.2"}}(1){{ end }}{{if eq $phpV "7.3"}}(1){{ end }}{{ if eq $phpV "8.1" }}rc{{end}} | fat  | fpm      | *N/A*                                                | [![](https://images.microbadger.com/badges/image/qonstrukt/php:{{ $phpV }}-v4-fpm.svg)](https://microbadger.com/images/qonstrukt/php:{{ $phpV }}-v4-fpm)
+{{range $nodeV := $nodeVersions}}| [qonstrukt/php:{{ $phpV }}-v4-fpm-node{{ $nodeV }}](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.fpm.node{{ $nodeV }})       | `{{ $phpV }}.x`{{if eq $phpV "7.2"}}(1){{ end }}{{if eq $phpV "7.3"}}(1){{ end }}{{ if eq $phpV "8.1" }}rc{{end}} | fat  | fpm      | `{{ $nodeV }}.x`{{ if eq $nodeV "10" }}(2){{ end }}  | [![](https://images.microbadger.com/badges/image/qonstrukt/php:{{ $phpV }}-v4-fpm-node{{ $nodeV }}.svg)](https://microbadger.com/images/qonstrukt/php:{{ $phpV }}-v4-fpm-node{{ $nodeV }})
+{{ end }}| [qonstrukt/php:{{ $phpV }}-v4-cli](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.cli)                                                                 | `{{ $phpV }}.x`{{if eq $phpV "7.2"}}(1){{ end }}{{if eq $phpV "7.3"}}(1){{ end }}{{ if eq $phpV "8.1" }}rc{{end}} | fat  | cli      | *N/A*                                                | [![](https://images.microbadger.com/badges/image/qonstrukt/php:{{ $phpV }}-v4-cli.svg)](https://microbadger.com/images/qonstrukt/php:{{ $phpV }}-v4-cli)
+{{range $nodeV := $nodeVersions}}| [qonstrukt/php:{{ $phpV }}-v4-cli-node{{ $nodeV }}](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.cli.node{{ $nodeV }})       | `{{ $phpV }}.x`{{if eq $phpV "7.2"}}(1){{ end }}{{if eq $phpV "7.3"}}(1){{ end }}{{ if eq $phpV "8.1" }}rc{{end}} | fat  | cli      | `{{ $nodeV }}.x`{{ if eq $nodeV "10" }}(2){{ end }}  | [![](https://images.microbadger.com/badges/image/qonstrukt/php:{{ $phpV }}-v4-cli-node{{ $nodeV }}.svg)](https://microbadger.com/images/qonstrukt/php:{{ $phpV }}-v4-cli-node{{ $nodeV }})
+{{ end }}| [qonstrukt/php:{{ $phpV }}-v4-slim-apache](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.slim.apache)                                                 | `{{ $phpV }}.x`{{if eq $phpV "7.2"}}(1){{ end }}{{if eq $phpV "7.3"}}(1){{ end }}{{ if eq $phpV "8.1" }}rc{{end}} | slim | apache   | *N/A*                                                | [![](https://images.microbadger.com/badges/image/qonstrukt/php:{{ $phpV }}-v4-slim-apache.svg)](https://microbadger.com/images/qonstrukt/php:{{ $phpV }}-v4-slim-apache)
+| [qonstrukt/php:{{ $phpV }}-v4-slim-fpm](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.slim.fpm)                                                                | `{{ $phpV }}.x`{{if eq $phpV "7.2"}}(1){{ end }}{{if eq $phpV "7.3"}}(1){{ end }}{{ if eq $phpV "8.1" }}rc{{end}} | slim | fpm      | *N/A*                                                | [![](https://images.microbadger.com/badges/image/qonstrukt/php:{{ $phpV }}-v4-slim-fpm.svg)](https://microbadger.com/images/qonstrukt/php:{{ $phpV }}-v4-slim-fpm)
+| [qonstrukt/php:{{ $phpV }}-v4-slim-cli](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.slim.cli)                                                                | `{{ $phpV }}.x`{{if eq $phpV "7.2"}}(1){{ end }}{{if eq $phpV "7.3"}}(1){{ end }}{{ if eq $phpV "8.1" }}rc{{end}} | slim | cli      | *N/A*                                                | [![](https://images.microbadger.com/badges/image/qonstrukt/php:{{ $phpV }}-v4-slim-cli.svg)](https://microbadger.com/images/qonstrukt/php:{{ $phpV }}-v4-slim-cli)
 {{end}}
 
 * (1) [PHP 7.2 and 7.3 are end of life](https://www.php.net/supported-versions.php)
 * (2) [Node 10 is end of life](https://nodejs.org/en/about/releases/)  
 
-Note: we also tag patch releases of PHP versions. So you can specify a specific patch release using thecodingmachine/php:**8.0.2**-v4-cli for instance.
+Note: we also tag patch releases of PHP versions. So you can specify a specific patch release using qonstrukt/php:**8.0.2**-v4-cli for instance.
 However, unless you have a **very specific need** (for instance if the latest patch release of PHP introduced regressions), believe you have no valid reason to ask explicitly for 8.0.2 for instance.
 When 8.0.3 is out, you certainly want to upgrade automatically to this patch release since patch releases contain only bugfixes.
 Also, we automatically rebuild X.Y images every week, but only the latest X.Y.Z patch release gets a rebuild. The other patch releases are frozen in time and will contain bugs and security issues. So use those with great care.
@@ -50,26 +50,26 @@ These images are based on the [official PHP image](https://hub.docker.com/_/php/
 Example with CLI:
 
 ```bash
-$ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/app thecodingmachine/php:{{ $image.php_version }}-v4-cli php your-script.php
+$ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/app qonstrukt/php:{{ $image.php_version }}-v4-cli php your-script.php
 ```
 
 Example with Apache:
 
 ```bash
-$ docker run -p 80:80 --rm --name my-apache-php-app -v "$PWD":/var/www/html thecodingmachine/php:{{ $image.php_version }}-v4-apache
+$ docker run -p 80:80 --rm --name my-apache-php-app -v "$PWD":/var/www/html qonstrukt/php:{{ $image.php_version }}-v4-apache
 ```
 
 Example with PHP-FPM:
 
 ```bash
-$ docker run -p 9000:9000 --rm --name my-php-fpm -v "$PWD":/var/www/html thecodingmachine/php:{{ $image.php_version }}-v4-fpm
+$ docker run -p 9000:9000 --rm --name my-php-fpm -v "$PWD":/var/www/html qonstrukt/php:{{ $image.php_version }}-v4-fpm
 ```
 
 Example with Apache + Node 14.x in a Dockerfile:
 
 **Dockerfile**
 ```Dockerfile
-FROM thecodingmachine/php:{{ $image.php_version }}-v4-apache-node14
+FROM qonstrukt/php:{{ $image.php_version }}-v4-apache-node14
 
 COPY src/ /var/www/html/
 RUN composer install
@@ -118,7 +118,7 @@ For instance:
 version: '3'
 services:
   my_app:
-    image: thecodingmachine/php:{{ $image.php_version }}-v4-apache-node16
+    image: qonstrukt/php:{{ $image.php_version }}-v4-apache-node16
     environment:
       # Enable the PostgreSQL extension
       PHP_EXTENSION_PGSQL: 1
@@ -138,7 +138,7 @@ If you are using the slim image, you can automatically compile the extensions us
 
 ```Dockerfile
 ARG PHP_EXTENSIONS="apcu mysqli pdo_mysql redis soap"
-FROM thecodingmachine/php:{{ $image.php_version }}-v4-slim-apache
+FROM qonstrukt/php:{{ $image.php_version }}-v4-slim-apache
 # The build will automatically trigger the download and compilation
 # of the extensions (thanks to a ONBUILD hook in the slim image)
 ```
@@ -152,7 +152,7 @@ first FROM):
 # The PHP_EXTENSIONS ARG will apply to the "slim" image
 ARG PHP_EXTENSIONS="apcu mysqli pdo_mysql soap"
 
-FROM thecodingmachine/php:{{ $image.php_version }}-v4-apache-node16 AS builder
+FROM qonstrukt/php:{{ $image.php_version }}-v4-apache-node16 AS builder
 
 COPY --chown=docker:docker sources/web .
 RUN composer install &&\
@@ -160,7 +160,7 @@ RUN composer install &&\
     yarn build
 
 # The slim image will automatically build the extensions from the list provided at the very top of the file.
-FROM thecodingmachine/php:7.2-v4-slim-apache
+FROM qonstrukt/php:7.2-v4-slim-apache
 
 ENV APP_ENV=prod \
     APACHE_DOCUMENT_ROOT=public/
@@ -188,7 +188,7 @@ You can override parameters in `php.ini` using the PHP_INI_XXX environment varia
 version: '3'
 services:
   my_app:
-    image: thecodingmachine/php:{{ $image.php_version }}-v4-apache-node16
+    image: qonstrukt/php:{{ $image.php_version }}-v4-apache-node16
     environment:
       # set the parameter memory_limit=1g
       PHP_INI_MEMORY_LIMIT: 1g
@@ -250,7 +250,7 @@ For instance:
 version: '3'
 services:
   my_app:
-    image: thecodingmachine/php:{{ $image.php_version }}-v4-apache-node16
+    image: qonstrukt/php:{{ $image.php_version }}-v4-apache-node16
     environment:
       # Enable the DAV extension for Apache
       APACHE_EXTENSION_DAV: 1
@@ -287,13 +287,13 @@ Behind the scenes, the image will:
 
 ## NodeJS
 
-The *fat* images come with a Node variant. You can use Node 10, 12, 14 or 16. If you need a Node 8 variant, [use thecodingmachine/php v3 images](https://github.com/thecodingmachine/docker-images-php/tree/v3). If you need a Node 6 variant, [use thecodingmachine/php v1 images](https://github.com/thecodingmachine/docker-images-php/tree/7.2-v1).
+The *fat* images come with a Node variant. You can use Node 10, 12, 14 or 16. If you need a Node 8 variant, [use qonstrukt/php v3 images](https://github.com/thecodingmachine/docker-images-php/tree/v3). If you need a Node 6 variant, [use qonstrukt/php v1 images](https://github.com/thecodingmachine/docker-images-php/tree/7.2-v1).
 
 If you use the *slim* images, you can install a NodeJS version with a simple ARG during the build:
 
 ```Dockerfile
 ARG NODE_VERSION=14
-FROM thecodingmachine/php:{{ $image.php_version }}-v4-slim-apache
+FROM qonstrukt/php:{{ $image.php_version }}-v4-slim-apache
 # The build will automatically trigger the download of Node 14
 # (thanks to a ONBUILD hook in the slim image)
 ```
@@ -316,7 +316,7 @@ be your current host user.
 The problem with Docker is that the container and the host do not share the same list of users. For instance, you might
 be logged in on your host computer as `superdev` (ID: 1000), and the container has no user whose ID is 1000.
 
-The *thecodingmachine/php* images solve this issue with a bit of black magic:
+The *qonstrukt/php* images solve this issue with a bit of black magic:
 
 The image contains a user named `docker`. On container startup, the startup script will look at the owner of the 
 working directory (`/var/www/html` for Apache/PHP-FPM, or `/usr/src/app` for CLI). The script will then assume that
@@ -346,7 +346,7 @@ This can be done easily:
 
 **Dockerfile**
 ```Dockerfile
-FROM thecodingmachine/php:{{ $image.php_version }}-v4-apache
+FROM qonstrukt/php:{{ $image.php_version }}-v4-apache
 
 # ...
 
@@ -390,7 +390,7 @@ a single argument before the "FROM" clause in your Dockerfile:
 
 ```Dockerfile
 ARG INSTALL_CRON=1
-FROM thecodingmachine/php:{{ $image.php_version }}-v4-slim-apache
+FROM qonstrukt/php:{{ $image.php_version }}-v4-slim-apache
 # The build triggers automatically the installation of Cron
 ```
 
@@ -443,12 +443,12 @@ If such a file is mounted in the image, it will be executed on container startup
 
 ```bash
 docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp \ 
-       -v $PWD/my-startup-script.sh:/etc/container/startup.sh thecodingmachine/php:{{ $image.php_version }}-v4-cli php your-script.php 
+       -v $PWD/my-startup-script.sh:/etc/container/startup.sh qonstrukt/php:{{ $image.php_version }}-v4-cli php your-script.php 
 ```
 
 ## Using the CLI variant
 
-The CLI images (thecodingmachine/php:7.x-v4-cli) expect a command to be passed in parameter.
+The CLI images (qonstrukt/php:7.x-v4-cli) expect a command to be passed in parameter.
 You should override the Docker "command".
 
 Important! You should not override the Docker "entrypoint".
@@ -456,7 +456,7 @@ Important! You should not override the Docker "entrypoint".
 **Usage in a Dockerfile:**
 
 ```Dockerfile
-FROM thecodingmachine/php:{{ $image.php_version }}-v4-cli
+FROM qonstrukt/php:{{ $image.php_version }}-v4-cli
 
 CMD ["php", "myprogram.php", "some_param"]
 ```
@@ -468,7 +468,7 @@ CMD ["php", "myprogram.php", "some_param"]
 version: '3'
 services:
   my_app:
-    image: thecodingmachine/php:{{ $image.php_version }}-v4-cli
+    image: qonstrukt/php:{{ $image.php_version }}-v4-cli
     command: php myprogram.php some_param
 ```
 
@@ -488,7 +488,7 @@ This option is the easiest way to go if you are using the image on a development
 version: '3'
 services:
   my_app:
-    image: thecodingmachine/php:{{ $image.php_version }}-v4-apache-node16
+    image: qonstrukt/php:{{ $image.php_version }}-v4-apache-node16
     volumes:
       - ~/.ssh:/home/docker/.ssh
 ```
@@ -509,7 +509,7 @@ Now, let's write a Dockerfile.
 
 **Dockerfile**
 ```yml
-FROM thecodingmachine/php:{{ $image.php_version }}-v4-apache
+FROM qonstrukt/php:{{ $image.php_version }}-v4-apache
 
 ARG SSH_PRIVATE_KEY
 ARG SSH_KNOWN_HOSTS
@@ -547,7 +547,7 @@ kind: Pod
 spec:
   containers:
   - name: foobar
-    image: thecodingmachine/php:{{ $image.php_version }}-v4-apache
+    image: qonstrukt/php:{{ $image.php_version }}-v4-apache
     securityContext:
       allowPrivilegeEscalation: true # never use "false" here.
 ```
@@ -569,7 +569,7 @@ Your `docker-compose.yml` file will typically look like this:
 version: '3.3'
 services:
   php:
-    image: thecodingmachine/php:{{ $image.php_version }}-v4-apache
+    image: qonstrukt/php:{{ $image.php_version }}-v4-apache
     ports:
       - "80:80"
     environment:
@@ -595,7 +595,7 @@ If for some reason, the container name is not "blackfire", you can customize the
 version: '3.3'
 services:
   php:
-    image: thecodingmachine/php:{{ $image.php_version }}-v4-apache
+    image: qonstrukt/php:{{ $image.php_version }}-v4-apache
     environment:
       PHP_EXTENSION_BLACKFIRE: 1
       BLACKFIRE_AGENT: myblackfire
