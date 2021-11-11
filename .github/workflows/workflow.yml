@@ -14,9 +14,9 @@ jobs:
       matrix:
         php_version: ['7.4']
         # php_version: ['7.2', '7.3', '7.4', '8.0', '8.1']
-        platform: ['linux/amd64', 'linux/arm64']
+        platform: ['linux/amd64']
         # platform: ['linux/amd64', 'linux/arm64']
-        variant: ['cli', 'fpm']
+        variant: ['cli']
         # variant: ['apache', 'cli', 'fpm']
     runs-on: ubuntu-latest
     steps:
