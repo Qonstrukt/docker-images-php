@@ -32,18 +32,16 @@ jobs:
       - name: Expose GitHub Runtime
         uses: crazy-max/ghaction-github-runtime@v1
 
-      - name: Build and test
-        run: |
-          PHP_VERSION="${{ matrix.php_version }}" BRANCH="v4" PLATFORM="${{ matrix.platform }}" VARIANT="${{ matrix.variant }}" ./build-and-test.sh
-          docker images | grep qonstrukt/php
-
       - name: Login to DockerHub
-        # Merge ~ push.
-        if: ${{ github.event_name == 'push' }}
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and test
+        run: |
+          PHP_VERSION="${{ matrix.php_version }}" BRANCH="v4" PLATFORM="${{ matrix.platform }}" VARIANT="${{ matrix.variant }}" ./build-and-test.sh
+          docker images | grep qonstrukt/php
 
       - name: Release
         # Merge ~ push.
