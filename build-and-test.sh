@@ -24,8 +24,7 @@ NATIVE_PLATFORM="linux/amd64"
 docker build \
   --platform ${PLATFORM} \
   -t qonstrukt/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT} \
-  --build-ARG PHP_VERSION
-ARG TARGETARCH=${PHP_VERSION} \
+  --build-arg PHP_VERSION=${PHP_VERSION} \
   --build-arg GLOBAL_VERSION=${BRANCH} \
   -f Dockerfile.slim.${VARIANT} \
   .
@@ -36,8 +35,7 @@ if [[ $PLATFORM == $NATIVE_PLATFORM ]]; then
   docker build \
     --platform ${PLATFORM} \
     -t test/slim_onbuild \
-    --build-ARG PHP_VERSION
-ARG TARGETARCH="${PHP_VERSION}" \
+    --build-arg PHP_VERSION="${PHP_VERSION}" \
     --build-arg BRANCH="$BRANCH" \
     --build-arg BRANCH_VARIANT="$BRANCH_VARIANT" \
     tests/slim_onbuild
@@ -52,8 +50,7 @@ ARG TARGETARCH="${PHP_VERSION}" \
   docker build \
     --platform ${PLATFORM} \
     -t test/slim_onbuild_composer \
-    --build-ARG PHP_VERSION
-ARG TARGETARCH="${PHP_VERSION}" \
+    --build-arg PHP_VERSION="${PHP_VERSION}" \
     --build-arg BRANCH="$BRANCH" \
     --build-arg BRANCH_VARIANT="$BRANCH_VARIANT" \
     tests/slim_onbuild_composer
@@ -196,8 +193,7 @@ fi
 docker build \
   --platform ${PLATFORM} \
   -t qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT} \
-  --build-ARG PHP_VERSION
-ARG TARGETARCH=${PHP_VERSION} \
+  --build-arg PHP_VERSION=${PHP_VERSION} \
   --build-arg GLOBAL_VERSION=${BRANCH} \
   -f Dockerfile.${VARIANT} \
   .
@@ -245,8 +241,7 @@ if [[ $PLATFORM == $NATIVE_PLATFORM ]]; then
     docker run --platform ${PLATFORM} --rm -e PHP_EXTENSION_BLACKFIRE=1 qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT} php -m | grep blackfire
   fi
   # Let's check that the extensions are enabled when composer is run
-  docker buildx build --output=type=docker --platform ${PLATFORM} -t test/composer_with_gd --build-ARG PHP_VERSION
-ARG TARGETARCH="${PHP_VERSION}" --build-arg BRANCH="$BRANCH" --build-arg BRANCH_VARIANT="$BRANCH_VARIANT" tests/composer
+  docker buildx build --output=type=docker --platform ${PLATFORM} -t test/composer_with_gd --build-arg PHP_VERSION="${PHP_VERSION}" --build-arg BRANCH="$BRANCH" --build-arg BRANCH_VARIANT="$BRANCH_VARIANT" tests/composer
 
   # This should run ok (the sudo disables environment variables but call to composer proxy does not trigger PHP ini file regeneration)
   docker run --platform ${PLATFORM} --rm test/composer_with_gd sudo composer update
@@ -259,8 +254,7 @@ fi
 docker build \
   --platform ${PLATFORM} \
   -t qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node14 \
-  --build-ARG PHP_VERSION
-ARG TARGETARCH=${PHP_VERSION} \
+  --build-arg PHP_VERSION=${PHP_VERSION} \
   --build-arg GLOBAL_VERSION=${BRANCH} \
   -f Dockerfile.${VARIANT}.node14 \
   .
