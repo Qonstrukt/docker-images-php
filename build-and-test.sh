@@ -23,7 +23,7 @@ NATIVE_PLATFORM="linux/amd64"
 #################################
 docker buildx build \
   --output type=docker \
-  --cache-from type=local,dest=/tmp/cache \
+  --cache-from type=local,src=/tmp/cache \
   --cache-to type=local,dest=/tmp/cache \
   --platform ${PLATFORM} \
   -t qonstrukt/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT} \
@@ -37,7 +37,7 @@ if [[ $PLATFORM == $NATIVE_PLATFORM ]]; then
   # Let's check that the extensions can be built using the "ONBUILD" statement
   docker buildx build \
     --output=type=docker \
-    --cache-from type=local,dest=/tmp/cache \
+    --cache-from type=local,src=/tmp/cache \
     --cache-to type=local,dest=/tmp/cache \
     --platform ${PLATFORM} \
     -t test/slim_onbuild \
@@ -55,7 +55,7 @@ if [[ $PLATFORM == $NATIVE_PLATFORM ]]; then
   # Let's check that the extensions are available for composer using "ARG PHP_EXTENSIONS" statement:
   docker buildx build \
     --output=type=docker \
-    --cache-from type=local,dest=/tmp/cache \
+    --cache-from type=local,src=/tmp/cache \
     --cache-to type=local,dest=/tmp/cache \
     --platform ${PLATFORM} \
     -t test/slim_onbuild_composer \
@@ -201,7 +201,7 @@ fi
 #################################
 docker buildx build \
   --output=type=docker \
-  --cache-from type=local,dest=/tmp/cache \
+  --cache-from type=local,src=/tmp/cache \
   --cache-to type=local,dest=/tmp/cache \
   --platform ${PLATFORM} \
   -t qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT} \
@@ -265,7 +265,7 @@ fi
 #################################
 docker buildx build \
   --output=type=docker \
-  --cache-from type=local,dest=/tmp/cache \
+  --cache-from type=local,src=/tmp/cache \
   --cache-to type=local,dest=/tmp/cache \
   --platform ${PLATFORM} \
   -t qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node14 \
