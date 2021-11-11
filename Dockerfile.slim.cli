@@ -216,7 +216,7 @@ ENV IMAGE_VARIANT=cli
 # See: https://github.com/krallin/tini
 ENV TINI_VERSION=v0.19.0
 
-ONBUILD RUN TINI_URL=https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-${TARGETARCH} \
+RUN TINI_URL=https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-${TARGETARCH} \
  && TINI=tini-${TARGETARCH} \
  && curl -fsSLO "$TINI_URL" \
  && chmod +x "$TINI" \
