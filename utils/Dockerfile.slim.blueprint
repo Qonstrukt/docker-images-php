@@ -13,6 +13,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG PHP_VERSION
 ENV PHP_VERSION=$PHP_VERSION
 
+ARG TARGETARCH
+
 # |--------------------------------------------------------------------------
 # | Main PHP extensions
 # |--------------------------------------------------------------------------
