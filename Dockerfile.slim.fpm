@@ -15,6 +15,7 @@ ARG PHP_VERSION
 ENV PHP_VERSION=$PHP_VERSION
 
 ARG TARGETARCH
+ENV TARGETARCH=$TARGETARCH
 
 # |--------------------------------------------------------------------------
 # | Main PHP extensions
