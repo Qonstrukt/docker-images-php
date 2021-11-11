@@ -4,6 +4,8 @@ FROM ubuntu:20.04
 
 LABEL authors="Julien Neuhart <j.neuhart@thecodingmachine.com>, David Négrier <d.negrier@thecodingmachine.com>"
 
+SHELL ["/bin/bash", "-c"]
+
 # Fixes some weird terminal issues such as broken clear / CTRL+L
 #ENV TERM=linux
 
