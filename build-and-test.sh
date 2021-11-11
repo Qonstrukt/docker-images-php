@@ -21,12 +21,31 @@ NATIVE_PLATFORM="linux/amd64"
 #################################
 # Let's build the "slim" image.
 #################################
-docker buildx build --output=type=docker --platform ${PLATFORM} -t qonstrukt/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT} --build-arg PHP_VERSION=${PHP_VERSION} --build-arg GLOBAL_VERSION=${BRANCH} -f Dockerfile.slim.${VARIANT} .
+docker buildx build \
+  --output=type=docker \
+  --export-cache type=gha \
+  --import-cache type=gha \
+  --platform ${PLATFORM} \
+  -t qonstrukt/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT} \
+  --build-arg PHP_VERSION=${PHP_VERSION} \
+  --build-arg GLOBAL_VERSION=${BRANCH} \
+  -f Dockerfile.slim.${VARIANT} \
+  .
 
 # Post build unit tests
 if [[ $PLATFORM == $NATIVE_PLATFORM ]]; then
   # Let's check that the extensions can be built using the "ONBUILD" statement
-  docker buildx build --output=type=docker --platform ${PLATFORM} -t test/slim_onbuild --build-arg PHP_VERSION="${PHP_VERSION}" --build-arg BRANCH="$BRANCH" --build-arg BRANCH_VARIANT="$BRANCH_VARIANT" tests/slim_onbuild
+  docker buildx build \
+    --output=type=docker \
+    --export-cache type=gha \
+    --import-cache type=gha \
+    --platform ${PLATFORM} \
+    -t test/slim_onbuild \
+    --build-arg PHP_VERSION="${PHP_VERSION}" \
+    --build-arg BRANCH="$BRANCH" \
+    --build-arg BRANCH_VARIANT="$BRANCH_VARIANT" \
+    tests/slim_onbuild
+  
   # This should run ok (the sudo disable environment variables but call to composer proxy does not trigger PHP ini file regeneration)
   docker run --platform ${PLATFORM} --rm test/slim_onbuild php -m | grep sockets
   docker run --platform ${PLATFORM} --rm test/slim_onbuild php -m | grep pdo_pgsql
@@ -34,7 +53,17 @@ if [[ $PLATFORM == $NATIVE_PLATFORM ]]; then
   docker rmi test/slim_onbuild
 
   # Let's check that the extensions are available for composer using "ARG PHP_EXTENSIONS" statement:
-  docker buildx build --output=type=docker --platform ${PLATFORM} -t test/slim_onbuild_composer --build-arg PHP_VERSION="${PHP_VERSION}" --build-arg BRANCH="$BRANCH" --build-arg BRANCH_VARIANT="$BRANCH_VARIANT" tests/slim_onbuild_composer
+  docker buildx build \
+    --output=type=docker \
+    --export-cache type=gha \
+    --import-cache type=gha \
+    --platform ${PLATFORM} \
+    -t test/slim_onbuild_composer \
+    --build-arg PHP_VERSION="${PHP_VERSION}" \
+    --build-arg BRANCH="$BRANCH" \
+    --build-arg BRANCH_VARIANT="$BRANCH_VARIANT" \
+    tests/slim_onbuild_composer
+
   docker rmi test/slim_onbuild_composer
 
   if [[ $VARIANT == cli* ]]; then CONTAINER_CWD=/usr/src/app; else CONTAINER_CWD=/var/www/html; fi
@@ -170,7 +199,16 @@ fi
 #################################
 # Let's build the "fat" image
 #################################
-docker buildx build --output=type=docker --platform ${PLATFORM} -t qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT} --build-arg PHP_VERSION=${PHP_VERSION} --build-arg GLOBAL_VERSION=${BRANCH} -f Dockerfile.${VARIANT} .
+docker buildx build \
+  --output=type=docker \
+  --export-cache type=gha \
+  --import-cache type=gha \
+  --platform ${PLATFORM} \
+  -t qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT} \
+  --build-arg PHP_VERSION=${PHP_VERSION} \
+  --build-arg GLOBAL_VERSION=${BRANCH} \
+  -f Dockerfile.${VARIANT} \
+  .
 
 # Post build unit tests
 if [[ $PLATFORM == $NATIVE_PLATFORM ]]; then
@@ -225,6 +263,15 @@ fi
 #################################
 # Let's build the "node" images
 #################################
-docker buildx build --output=type=docker --platform ${PLATFORM} -t qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node14 --build-arg PHP_VERSION=${PHP_VERSION} --build-arg GLOBAL_VERSION=${BRANCH} -f Dockerfile.${VARIANT}.node14 .
+docker buildx build \
+  --output=type=docker \
+  --export-cache type=gha \
+  --import-cache type=gha \
+  --platform ${PLATFORM} \
+  -t qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node14 \
+  --build-arg PHP_VERSION=${PHP_VERSION} \
+  --build-arg GLOBAL_VERSION=${BRANCH} \
+  -f Dockerfile.${VARIANT}.node14 \
+  .
 
 echo "Tests passed with success"
