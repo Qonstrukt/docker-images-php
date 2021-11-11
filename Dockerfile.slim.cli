@@ -47,8 +47,6 @@ RUN apt-get update \
         php${PHP_VERSION}-readline \
         php${PHP_VERSION}-xml \
         php${PHP_VERSION}-zip \
-    && if [[ "${PHP_VERSION}" =~ ^7 ]]; then apt-get install -y --no-install-recommends php${PHP_VERSION}-json; fi \
-    && if [[ "${PHP_VERSION}" =~ ^8 ]]; then apt-get install -y --no-install-recommends php${PHP_VERSION}-json; fi \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
@@ -217,8 +215,14 @@ ENV IMAGE_VARIANT=cli
 # Add Tini (to be able to stop the container with ctrl-c).
 # See: https://github.com/krallin/tini
 ENV TINI_VERSION=v0.19.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-${TARGETARCH} /tini
-RUN chmod +x /tini
+
+ONBUILD RUN TINI_URL=https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-${TARGETARCH} \
+ && TINI=tini-${TARGETARCH} \
+ && curl -fsSLO "$TINI_URL" \
+ && chmod +x "$TINI" \
+ && sudo mv "$TINI" "/usr/local/bin/${TINI}" \
+ && sudo ln -s "/usr/local/bin/${TINI}" /usr/local/bin/tini;
+
 
 COPY utils/generate_cron.php /usr/local/bin/generate_cron.php
 COPY utils/startup_commands.php /usr/local/bin/startup_commands.php
