@@ -16,7 +16,7 @@ export BRANCH_VARIANT=`echo "$VARIANT" | sed 's/\./-/g'`
 export DOCKER_BUILDKIT=1 # Force use of BuildKit
 export BUILDKIT_STEP_LOG_MAX_SIZE=10485760 # outpout log limit fixed to 10MiB
 
-NATIVE_PLATFORM=`linux/amd64`
+NATIVE_PLATFORM="linux/amd64"
 
 #################################
 # Let's build the "slim" image.
