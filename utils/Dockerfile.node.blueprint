@@ -2,7 +2,6 @@
 {{- $node_version := .Orbit.node_version -}}
 
 ARG PHP_VERSION
-ARG TARGETARCH
 ARG GLOBAL_VERSION
 FROM qonstrukt/php:${PHP_VERSION}-${GLOBAL_VERSION}-{{ $variant }}
 

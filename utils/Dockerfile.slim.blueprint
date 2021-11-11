@@ -13,7 +13,6 @@ SHELL ["/bin/bash", "-c"]
 ENV DEBIAN_FRONTEND=noninteractive
 
 ARG PHP_VERSION
-ARG TARGETARCH
 ENV PHP_VERSION=$PHP_VERSION
 
 # |--------------------------------------------------------------------------
