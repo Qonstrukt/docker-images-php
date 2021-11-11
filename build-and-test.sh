@@ -21,7 +21,7 @@ NATIVE_PLATFORM="linux/amd64"
 #################################
 # Let's build the "slim" image.
 #################################
-docker build
+docker build \
   --output type=docker \
   --platform ${PLATFORM} \
   -t qonstrukt/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT} \
@@ -33,7 +33,7 @@ docker build
 # Post build unit tests
 if [[ $PLATFORM == $NATIVE_PLATFORM ]]; then
   # Let's check that the extensions can be built using the "ONBUILD" statement
-  docker build
+  docker build \
     --output type=docker \
     --platform ${PLATFORM} \
     -t test/slim_onbuild \
@@ -49,7 +49,7 @@ if [[ $PLATFORM == $NATIVE_PLATFORM ]]; then
   docker rmi test/slim_onbuild
 
   # Let's check that the extensions are available for composer using "ARG PHP_EXTENSIONS" statement:
-  docker build
+  docker build \
     --output type=docker \
     --platform ${PLATFORM} \
     -t test/slim_onbuild_composer \
@@ -193,7 +193,7 @@ fi
 #################################
 # Let's build the "fat" image
 #################################
-docker build
+docker build \
   --output type=docker \
   --platform ${PLATFORM} \
   -t qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT} \
@@ -255,7 +255,7 @@ fi
 #################################
 # Let's build the "node" images
 #################################
-docker build
+docker build \
   --output type=docker \
   --platform ${PLATFORM} \
   -t qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node14 \
