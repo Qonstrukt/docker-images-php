@@ -12,7 +12,7 @@ trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
 BRANCH_VARIANT=`echo "$VARIANT" | sed 's/\./-/g'`
 
 # Let's also tag PHP patch releases
-PHP_PATCH_VERSION=`docker run --rm qonstrukt/php:${PHP_VERSION}-v4-slim-${BRANCH_VARIANT} php -v | head -n1 | grep '[[:digit:]+]\.[[:digit:]+]\.[[:digit:]+]' -o | head -n1`
+PHP_PATCH_VERSION=`docker run --rm qonstrukt/php:${PHP_VERSION}-v4-slim-${BRANCH_VARIANT} php -v | head -n1 | grep '[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]' -Eo | head -n1`
 echo "Tagging patch release $PHP_PATCH_VERSION"
 
 docker tag qonstrukt/php:${PHP_VERSION}-v4-slim-${BRANCH_VARIANT} qonstrukt/php:${PHP_PATCH_VERSION}-v4-slim-${BRANCH_VARIANT}
