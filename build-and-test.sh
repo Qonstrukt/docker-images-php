@@ -261,14 +261,6 @@ fi
 #################################
 docker build \
   --platform ${PLATFORM} \
-  -t qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node10 \
-  --build-arg PHP_VERSION=${PHP_VERSION} \
-  --build-arg GLOBAL_VERSION=${BRANCH} \
-  -f Dockerfile.${VARIANT}.node10 \
-  .
-
-docker build \
-  --platform ${PLATFORM} \
   -t qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node12 \
   --build-arg PHP_VERSION=${PHP_VERSION} \
   --build-arg GLOBAL_VERSION=${BRANCH} \
