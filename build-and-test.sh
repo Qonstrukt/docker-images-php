@@ -16,7 +16,8 @@ export BRANCH_VARIANT=`echo "$VARIANT" | sed 's/\./-/g'`
 export DOCKER_BUILDKIT=1 # Force use of BuildKit
 export BUILDKIT_STEP_LOG_MAX_SIZE=10485760 # outpout log limit fixed to 10MiB
 
-NATIVE_PLATFORM="linux/amd64"
+NATIVE_ARCH=`uname -m`
+NATIVE_PLATFORM="linux/$NATIVE_ARCH"
 
 #################################
 # Let's build the "slim" image.
@@ -201,18 +202,18 @@ docker build \
 # Post build unit tests
 if [[ $PLATFORM == $NATIVE_PLATFORM ]]; then
   # Let's check that the crons are actually sending logs in the right place
-  RESULT=`docker run --platform ${PLATFORM} --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="(>&1 echo "foobar")" qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT} sleep 1 2>&1 | grep -oP 'msg=foobar' | head -n1`
+  RESULT=`docker run --platform ${PLATFORM} --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="(>&1 echo "foobar")" qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT} sleep 1 2>&1 | grep -o 'msg=foobar' | head -n1`
   [[ "$RESULT" = "msg=foobar" ]]
 
-  RESULT=`docker run --platform ${PLATFORM} --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="(>&2 echo "error")" qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT} sleep 1 2>&1 | grep -oP 'msg=error' | head -n1`
+  RESULT=`docker run --platform ${PLATFORM} --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="(>&2 echo "error")" qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT} sleep 1 2>&1 | grep -o 'msg=error' | head -n1`
   [[ "$RESULT" = "msg=error" ]]
 
   # Let's check that the cron with a user different from root is actually run.
-  RESULT=`docker run --platform ${PLATFORM} --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="whoami" -e CRON_USER_1="docker" qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT} sleep 1 2>&1 | grep -oP 'msg=docker' | head -n1`
+  RESULT=`docker run --platform ${PLATFORM} --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="whoami" -e CRON_USER_1="docker" qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT} sleep 1 2>&1 | grep -o 'msg=docker' | head -n1`
   [[ "$RESULT" = "msg=docker" ]]
 
   # Let's check that 2 commands split with a ; are run by the same user.
-  RESULT=`docker run --platform ${PLATFORM} --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="whoami;whoami" -e CRON_USER_1="docker" qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT} sleep 1 2>&1 | grep -oP 'msg=docker' | wc -l`
+  RESULT=`docker run --platform ${PLATFORM} --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="whoami;whoami" -e CRON_USER_1="docker" qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT} sleep 1 2>&1 | grep -o 'msg=docker' | wc -l`
   [[ "$RESULT" -gt "1" ]]
 
 
@@ -240,6 +241,7 @@ if [[ $PLATFORM == $NATIVE_PLATFORM ]]; then
     # Check that blackfire can be enabled
     docker run --platform ${PLATFORM} --rm -e PHP_EXTENSION_BLACKFIRE=1 qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT} php -m | grep blackfire
   fi
+
   # Let's check that the extensions are enabled when composer is run
   docker build \
     --platform ${PLATFORM} \
