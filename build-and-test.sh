@@ -261,10 +261,34 @@ fi
 #################################
 docker build \
   --platform ${PLATFORM} \
+  -t qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node10 \
+  --build-arg PHP_VERSION=${PHP_VERSION} \
+  --build-arg GLOBAL_VERSION=${BRANCH} \
+  -f Dockerfile.${VARIANT}.node10 \
+  .
+
+docker build \
+  --platform ${PLATFORM} \
+  -t qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node12 \
+  --build-arg PHP_VERSION=${PHP_VERSION} \
+  --build-arg GLOBAL_VERSION=${BRANCH} \
+  -f Dockerfile.${VARIANT}.node12 \
+  .
+
+docker build \
+  --platform ${PLATFORM} \
   -t qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node14 \
   --build-arg PHP_VERSION=${PHP_VERSION} \
   --build-arg GLOBAL_VERSION=${BRANCH} \
   -f Dockerfile.${VARIANT}.node14 \
+  .
+
+docker build \
+  --platform ${PLATFORM} \
+  -t qonstrukt/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node16 \
+  --build-arg PHP_VERSION=${PHP_VERSION} \
+  --build-arg GLOBAL_VERSION=${BRANCH} \
+  -f Dockerfile.${VARIANT}.node16 \
   .
 
 echo "Tests passed with success"
