@@ -12,13 +12,13 @@ trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
 BRANCH_VARIANT=`echo "$VARIANT" | sed 's/\./-/g'`
 
 # Let's also tag PHP patch releases
-PHP_PATCH_VERSION=`docker run --rm qonstrukt/php:${PHP_VERSION}-v4-slim-${BRANCH_VARIANT} php -v | head -n1 | grep '[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]' -Eo | head -n1`
+PHP_PATCH_VERSION=`docker run --rm ${OWNER}/php:${PHP_VERSION}-v4-slim-${BRANCH_VARIANT} php -v | head -n1 | grep '[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]' -Eo | head -n1`
 echo "Tagging patch release $PHP_PATCH_VERSION"
 
-docker tag qonstrukt/php:${PHP_VERSION}-v4-slim-${BRANCH_VARIANT} qonstrukt/php:${PHP_PATCH_VERSION}-v4-slim-${BRANCH_VARIANT}
-docker tag qonstrukt/php:${PHP_VERSION}-v4-${BRANCH_VARIANT} qonstrukt/php:${PHP_PATCH_VERSION}-v4-${BRANCH_VARIANT}
-docker tag qonstrukt/php:${PHP_VERSION}-v4-${BRANCH_VARIANT}-node14 qonstrukt/php:${PHP_PATCH_VERSION}-v4-${BRANCH_VARIANT}-node12
-docker tag qonstrukt/php:${PHP_VERSION}-v4-${BRANCH_VARIANT}-node14 qonstrukt/php:${PHP_PATCH_VERSION}-v4-${BRANCH_VARIANT}-node14
-docker tag qonstrukt/php:${PHP_VERSION}-v4-${BRANCH_VARIANT}-node14 qonstrukt/php:${PHP_PATCH_VERSION}-v4-${BRANCH_VARIANT}-node16
+docker tag ${OWNER}/php:${PHP_VERSION}-v4-slim-${BRANCH_VARIANT} ${OWNER}/php:${PHP_PATCH_VERSION}-v4-slim-${BRANCH_VARIANT}
+docker tag ${OWNER}/php:${PHP_VERSION}-v4-${BRANCH_VARIANT} ${OWNER}/php:${PHP_PATCH_VERSION}-v4-${BRANCH_VARIANT}
+docker tag ${OWNER}/php:${PHP_VERSION}-v4-${BRANCH_VARIANT}-node14 ${OWNER}/php:${PHP_PATCH_VERSION}-v4-${BRANCH_VARIANT}-node12
+docker tag ${OWNER}/php:${PHP_VERSION}-v4-${BRANCH_VARIANT}-node14 ${OWNER}/php:${PHP_PATCH_VERSION}-v4-${BRANCH_VARIANT}-node14
+docker tag ${OWNER}/php:${PHP_VERSION}-v4-${BRANCH_VARIANT}-node14 ${OWNER}/php:${PHP_PATCH_VERSION}-v4-${BRANCH_VARIANT}-node16
 
-docker push --all-tags qonstrukt/php
+docker push --all-tags ${OWNER}/php
