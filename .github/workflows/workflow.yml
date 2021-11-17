@@ -28,8 +28,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Build and test
         run: |
-          PHP_VERSION="${{ matrix.php_version }}" BRANCH="v4" VARIANT="${{ matrix.variant }}" OWNER="${{ github.repository_owner }}" PLATFORM="${{ matrix.platform }}" ./build-and-test.sh
-          docker images | grep ${{ github.repository_owner }}/php
+          PHP_VERSION="${{ matrix.php_version }}" BRANCH="v4" VARIANT="${{ matrix.variant }}" OWNER="${{ secrets.DOCKERHUB_USERNAME }}" PLATFORM="${{ matrix.platform }}" ./build-and-test.sh
+          docker images | grep ${OWNER}/php
       - name: Login to DockerHub
         # Merge ~ push.
         if: ${{ github.event_name == 'push' || github.event_name == 'schedule' }}
@@ -41,4 +41,4 @@ jobs:
         # Merge ~ push.
         if: ${{ github.event_name == 'push' || github.event_name == 'schedule' }}
         run: |
-          PHP_VERSION="${{ matrix.php_version }}" BRANCH="v4" VARIANT="${{ matrix.variant }}" OWNER="${{ github.repository_owner }}" ./push.sh
+          PHP_VERSION="${{ matrix.php_version }}" BRANCH="v4" VARIANT="${{ matrix.variant }}" OWNER="${{ secrets.DOCKERHUB_USERNAME }}" ./push.sh
