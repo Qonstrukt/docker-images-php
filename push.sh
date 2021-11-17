@@ -9,7 +9,9 @@ failure() {
 }
 trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
 
+# Let's replace the "." by a "-" with some bash magic
 BRANCH_VARIANT=`echo "$VARIANT" | sed 's/\./-/g'`
+OWNER=${OWNER,,}
 
 # Let's also tag PHP patch releases
 PHP_PATCH_VERSION=`docker run --rm ${OWNER}/php:${PHP_VERSION}-v4-slim-${BRANCH_VARIANT} php -v | head -n1 | grep '[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]' -Eo | head -n1`
