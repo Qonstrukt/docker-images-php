@@ -11,6 +11,8 @@ trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
 
 # Let's replace the "." by a "-" with some bash magic
 BRANCH_VARIANT=`echo "$VARIANT" | sed 's/\./-/g'`
+NATIVE_ARCH=`dpkg --print-architecture`
+NATIVE_PLATFORM="linux/${CURRENT_ARCH}"
 
 # Build with BuildKit https://docs.docker.com/develop/develop-images/build_enhancements/
 export DOCKER_BUILDKIT=1 # Force use of BuildKit
@@ -88,11 +90,12 @@ docker run --platform ${PLATFORM} --rm ${OWNER}/php:${PHP_VERSION}-${BRANCH}-sli
 docker run --platform ${PLATFORM} --rm ${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT} php -m | grep PDO
 #docker run --platform ${PLATFORM} --rm ${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT} php -m | grep pdo_sqlite
 
-if [[ $VARIANT == apache* ]]; then
+# Run Apache tests only on the native platform due to slowness
+if [[ $PLATFORM == $NATIVE_PLATFORM && $VARIANT == apache* ]]; then
     # Test if environment variables are passed to PHP
     DOCKER_CID=`docker run --platform ${PLATFORM} --rm -e MYVAR=foo -p "81:80" -d -v "$(pwd)":/var/www/html ${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}`
     # Let's wait for Apache to start
-    sleep 20
+    sleep 5
     RESULT=`curl http://localhost:81/tests/test.php`
     [[ "$RESULT" = "foo" ]]
     docker stop $DOCKER_CID
@@ -100,7 +103,7 @@ if [[ $VARIANT == apache* ]]; then
     # Test Apache document root (relative)
     DOCKER_CID=`docker run --platform ${PLATFORM} --rm -e MYVAR=foo -p "81:80" -d -v "$(pwd)":/var/www/html -e APACHE_DOCUMENT_ROOT=tests ${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}`
     # Let's wait for Apache to start
-    sleep 20
+    sleep 5
     RESULT=`curl http://localhost:81/test.php`
     [[ "$RESULT" = "foo" ]]
     docker stop $DOCKER_CID
@@ -108,7 +111,7 @@ if [[ $VARIANT == apache* ]]; then
     # Test Apache document root (absolute)
     DOCKER_CID=`docker run --platform ${PLATFORM} --rm -e MYVAR=foo -p "81:80" -d -v "$(pwd)":/var/www/foo -e APACHE_DOCUMENT_ROOT=/var/www/foo/tests ${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}`
     # Let's wait for Apache to start
-    sleep 20
+    sleep 5
     RESULT=`curl http://localhost:81/test.php`
     [[ "$RESULT" = "foo" ]]
     docker stop $DOCKER_CID
@@ -116,7 +119,7 @@ if [[ $VARIANT == apache* ]]; then
     # Test Apache HtAccess
     DOCKER_CID=`docker run --platform ${PLATFORM} --rm -p "81:80" -d -v "$(pwd)"/tests/testHtAccess:/foo -e APACHE_DOCUMENT_ROOT=/foo ${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}`
     # Let's wait for Apache to start
-    sleep 20
+    sleep 5
     RESULT=`curl http://localhost:81/`
     [[ "$RESULT" = "foo" ]]
     docker stop $DOCKER_CID
@@ -124,7 +127,7 @@ if [[ $VARIANT == apache* ]]; then
     # Test PHP_INI_... variables are correctly handled by apache
     DOCKER_CID=`docker run --platform ${PLATFORM} --rm -e MYVAR=foo -p "81:80" -d -v "$(pwd)":/var/www/html -e PHP_INI_MEMORY_LIMIT=2G ${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}`
     # Let's wait for Apache to start
-    sleep 20
+    sleep 5
     RESULT=`curl http://localhost:81/tests/apache/echo_memory_limit.php`
     [[ "$RESULT" = "2G" ]]
     docker stop $DOCKER_CID
@@ -135,7 +138,7 @@ if [[ $VARIANT == fpm* ]]; then
     DOCKER_CID=`docker run --platform ${PLATFORM} --rm -p "9000:9000" -d -v "$(pwd)":/var/www/html ${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}`
 
     # Let's wait for FPM to start
-    sleep 20
+    sleep 5
 
     # If the container is still up, it will not fail when stopping.
     docker stop $DOCKER_CID
