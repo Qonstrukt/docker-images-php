@@ -13,8 +13,10 @@ trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
 BRANCH_VARIANT=`echo "$VARIANT" | sed 's/\./-/g'`
 
 # Let's also tag PHP patch releases
-PHP_PATCH_VERSION=`docker run --rm ${OWNER}/php:${PHP_VERSION}-v4-slim-${BRANCH_VARIANT} php -v | head -n1 | grep '[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]' -Eo | head -n1`
+PHP_PATCH_VERSION=`docker run --rm ${OWNER}/php:${PHP_VERSION}-v4-slim-${BRANCH_VARIANT} php -v | head -n1 | grep '[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+' -Eo | head -n1`
 echo "Tagging patch release $PHP_PATCH_VERSION"
+
+export DOCKER_BUILDKIT=1 # Force use of BuildKit
 
 docker tag ${OWNER}/php:${PHP_VERSION}-v4-slim-${BRANCH_VARIANT} ${OWNER}/php:${PHP_PATCH_VERSION}-v4-slim-${BRANCH_VARIANT}
 docker tag ${OWNER}/php:${PHP_VERSION}-v4-${BRANCH_VARIANT} ${OWNER}/php:${PHP_PATCH_VERSION}-v4-${BRANCH_VARIANT}
