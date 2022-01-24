@@ -22,24 +22,24 @@ This repository contains a set of developer-friendly, general purpose PHP images
 
 | Name                                                                    | PHP version                  | type |variant | NodeJS version  | Size 
 |-------------------------------------------------------------------------|------------------------------|------|--------|-----------------|------
-| [thecodingmachine/php:8.1-v4-apache](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.apache)                                        | `8.1.x`rc | fat  | apache   | *N/A*                                                | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-apache.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-apache)
-| [thecodingmachine/php:8.1-v4-apache-node10](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.apache.node10) | `8.1.x`rc | fat  | apache   | `10.x`(2)  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-apache-node10.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-apache-node10)
-| [thecodingmachine/php:8.1-v4-apache-node12](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.apache.node12) | `8.1.x`rc | fat  | apache   | `12.x`  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-apache-node12.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-apache-node12)
-| [thecodingmachine/php:8.1-v4-apache-node14](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.apache.node14) | `8.1.x`rc | fat  | apache   | `14.x`  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-apache-node14.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-apache-node14)
-| [thecodingmachine/php:8.1-v4-apache-node16](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.apache.node16) | `8.1.x`rc | fat  | apache   | `16.x`  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-apache-node16.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-apache-node16)
-| [thecodingmachine/php:8.1-v4-fpm](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.fpm)                                                                 | `8.1.x`rc | fat  | fpm      | *N/A*                                                | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-fpm.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-fpm)
-| [thecodingmachine/php:8.1-v4-fpm-node10](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.fpm.node10)       | `8.1.x`rc | fat  | fpm      | `10.x`(2)  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-fpm-node10.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-fpm-node10)
-| [thecodingmachine/php:8.1-v4-fpm-node12](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.fpm.node12)       | `8.1.x`rc | fat  | fpm      | `12.x`  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-fpm-node12.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-fpm-node12)
-| [thecodingmachine/php:8.1-v4-fpm-node14](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.fpm.node14)       | `8.1.x`rc | fat  | fpm      | `14.x`  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-fpm-node14.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-fpm-node14)
-| [thecodingmachine/php:8.1-v4-fpm-node16](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.fpm.node16)       | `8.1.x`rc | fat  | fpm      | `16.x`  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-fpm-node16.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-fpm-node16)
-| [thecodingmachine/php:8.1-v4-cli](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.cli)                                                                 | `8.1.x`rc | fat  | cli      | *N/A*                                                | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-cli.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-cli)
-| [thecodingmachine/php:8.1-v4-cli-node10](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.cli.node10)       | `8.1.x`rc | fat  | cli      | `10.x`(2)  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-cli-node10.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-cli-node10)
-| [thecodingmachine/php:8.1-v4-cli-node12](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.cli.node12)       | `8.1.x`rc | fat  | cli      | `12.x`  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-cli-node12.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-cli-node12)
-| [thecodingmachine/php:8.1-v4-cli-node14](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.cli.node14)       | `8.1.x`rc | fat  | cli      | `14.x`  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-cli-node14.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-cli-node14)
-| [thecodingmachine/php:8.1-v4-cli-node16](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.cli.node16)       | `8.1.x`rc | fat  | cli      | `16.x`  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-cli-node16.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-cli-node16)
-| [thecodingmachine/php:8.1-v4-slim-apache](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.slim.apache)                                                 | `8.1.x`rc | slim | apache   | *N/A*                                                | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-slim-apache.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-slim-apache)
-| [thecodingmachine/php:8.1-v4-slim-fpm](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.slim.fpm)                                                                | `8.1.x`rc | slim | fpm      | *N/A*                                                | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-slim-fpm.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-slim-fpm)
-| [thecodingmachine/php:8.1-v4-slim-cli](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.slim.cli)                                                                | `8.1.x`rc | slim | cli      | *N/A*                                                | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-slim-cli.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-slim-cli)
+| [thecodingmachine/php:8.1-v4-apache](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.apache)                                        | `8.1.x` | fat  | apache   | *N/A*                                                | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-apache.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-apache)
+| [thecodingmachine/php:8.1-v4-apache-node10](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.apache.node10) | `8.1.x` | fat  | apache   | `10.x`(2)  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-apache-node10.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-apache-node10)
+| [thecodingmachine/php:8.1-v4-apache-node12](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.apache.node12) | `8.1.x` | fat  | apache   | `12.x`  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-apache-node12.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-apache-node12)
+| [thecodingmachine/php:8.1-v4-apache-node14](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.apache.node14) | `8.1.x` | fat  | apache   | `14.x`  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-apache-node14.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-apache-node14)
+| [thecodingmachine/php:8.1-v4-apache-node16](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.apache.node16) | `8.1.x` | fat  | apache   | `16.x`  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-apache-node16.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-apache-node16)
+| [thecodingmachine/php:8.1-v4-fpm](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.fpm)                                                                 | `8.1.x` | fat  | fpm      | *N/A*                                                | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-fpm.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-fpm)
+| [thecodingmachine/php:8.1-v4-fpm-node10](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.fpm.node10)       | `8.1.x` | fat  | fpm      | `10.x`(2)  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-fpm-node10.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-fpm-node10)
+| [thecodingmachine/php:8.1-v4-fpm-node12](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.fpm.node12)       | `8.1.x` | fat  | fpm      | `12.x`  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-fpm-node12.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-fpm-node12)
+| [thecodingmachine/php:8.1-v4-fpm-node14](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.fpm.node14)       | `8.1.x` | fat  | fpm      | `14.x`  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-fpm-node14.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-fpm-node14)
+| [thecodingmachine/php:8.1-v4-fpm-node16](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.fpm.node16)       | `8.1.x` | fat  | fpm      | `16.x`  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-fpm-node16.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-fpm-node16)
+| [thecodingmachine/php:8.1-v4-cli](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.cli)                                                                 | `8.1.x` | fat  | cli      | *N/A*                                                | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-cli.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-cli)
+| [thecodingmachine/php:8.1-v4-cli-node10](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.cli.node10)       | `8.1.x` | fat  | cli      | `10.x`(2)  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-cli-node10.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-cli-node10)
+| [thecodingmachine/php:8.1-v4-cli-node12](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.cli.node12)       | `8.1.x` | fat  | cli      | `12.x`  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-cli-node12.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-cli-node12)
+| [thecodingmachine/php:8.1-v4-cli-node14](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.cli.node14)       | `8.1.x` | fat  | cli      | `14.x`  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-cli-node14.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-cli-node14)
+| [thecodingmachine/php:8.1-v4-cli-node16](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.cli.node16)       | `8.1.x` | fat  | cli      | `16.x`  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-cli-node16.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-cli-node16)
+| [thecodingmachine/php:8.1-v4-slim-apache](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.slim.apache)                                                 | `8.1.x` | slim | apache   | *N/A*                                                | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-slim-apache.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-slim-apache)
+| [thecodingmachine/php:8.1-v4-slim-fpm](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.slim.fpm)                                                                | `8.1.x` | slim | fpm      | *N/A*                                                | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-slim-fpm.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-slim-fpm)
+| [thecodingmachine/php:8.1-v4-slim-cli](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.slim.cli)                                                                | `8.1.x` | slim | cli      | *N/A*                                                | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.1-v4-slim-cli.svg)](https://microbadger.com/images/thecodingmachine/php:8.1-v4-slim-cli)
 | [thecodingmachine/php:8.0-v4-apache](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.apache)                                        | `8.0.x` | fat  | apache   | *N/A*                                                | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.0-v4-apache.svg)](https://microbadger.com/images/thecodingmachine/php:8.0-v4-apache)
 | [thecodingmachine/php:8.0-v4-apache-node10](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.apache.node10) | `8.0.x` | fat  | apache   | `10.x`(2)  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.0-v4-apache-node10.svg)](https://microbadger.com/images/thecodingmachine/php:8.0-v4-apache-node10)
 | [thecodingmachine/php:8.0-v4-apache-node12](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.apache.node12) | `8.0.x` | fat  | apache   | `12.x`  | [![](https://images.microbadger.com/badges/image/thecodingmachine/php:8.0-v4-apache-node12.svg)](https://microbadger.com/images/thecodingmachine/php:8.0-v4-apache-node12)
@@ -163,32 +163,31 @@ RUN npm run build
 
 This image comes with 2 "types": the *slim* and the **fat** image.
 
-The slim image contains only a set a base PHP extensions.
+These extensions are enabled by default in slim image: `calendar` `ctype` `curl` `date` `dom` `exif` `fileinfo` `filter` `ftp` `gettext` `iconv` `json` `mbstring` `opcache` `openssl` `pcntl` `pcre` `PDO` `Phar` `posix` `readline` `shmop` `Reflection` `session` `shmop` `SimpleXML` `sockets` `sodium` `SPL` `sysvmsg` `sysvsem` `sysvshm` `tokenizer` `xml` `xmlreader` `xmlwriter` `xsl` `zip`
 
-Only these extensions are available in the slim image: `calendar` `ctype` `curl` `dom` `exif` `fileinfo` `ftp` `gettext` `iconv` `json` `mbstring` `opcache` `pcntl` `pdo` `phar` `posix` `readline` `shmop` `simplexml` `sockets` `sysvmsg` `sysvsem` `sysvshm` `tokenizer` `wddx` `xml` `xmlreader` `xmlwriter` `xsl` `zip`
+This list can be outdated, you can verify by executing : `docker run --rm -it thecodingmachine/php:8.0-v4-slim-cli php -m`
 
-These extensions are enabled by default.
+The slim image provides a simple way to install the other extensions. You would typically use the "slim" image in a `Dockerfile` when building your own custom image.
 
-The slim image provides a simple way to install the other extensions. You would typically use the "slim"
-image in a `Dockerfile` when building your own custom image.
-
-The fat image contains the most commonly used extensions. You would typically use it in a local or CI environment.
+The fat image contains the most commonly used extensions. You would typically use it in a local or CI environment. 
 
 ### Fat image
 
 Below is a list of extensions available in this image:
 
-**Enabled by default (in addition to extensions enabled in Slim image):** apcu mysqli pdo_mysql igbinary redis soap
+**Enabled by default (in addition to extensions enabled in Slim image):** `apcu`, `hash`, `iconv`, `igbinary`, `mysqli`, `mysqlnd`, `redis`, `soap`, `xsl`, `zlib` and all enabled in slim. 
 
 **Available (can be enabled using environment variables):** `amqp` `ast` `bcmath` `blackfire` `bz2` `dba` `ds` `enchant` `ev` `event` `exif` `mailparse` `msgpack` `gd` `gettext` `gmp` `gnupg` `grpc` `igbinary` `imagick` `imap` `intl` `ldap` `mcrypt` `memcached` `mongodb` `pcov` `pdo_dblib` `pdo_pgsql` `pdo_sqlite` `pgsql` `pspell` `shmop` `snmp` `sockets` `sqlite3` `swoole` `tidy` `uploadprogress` `uuid` `weakref(-beta)` `xdebug` `xmlrpc` `xsl` `yaml`
+
+This list can be outdated, you can verify by executing : `docker run --rm -it thecodingmachine/php:8.0-v4-cli php -m`
 
 **Note**:
 
 - *mcrypt* is not available anymore in PHP 7.3+
 - *weakref* is not compatible with PHP 7.3+ (but weak references were added to the PHP core in PHP 7.4)
 - *sybase* extension is not available in v4 (use v3)
-- *event*, *gnupg*, *uploadprogress*, *xmlrpc* are not available in PHP 8.0+
-- *amqp*, *apcu*, *ast*, *blackfire*, *ds*, *gettext*, *grpc*, *ev*, *igbinary*, *imagick*, *mailparse*, *memcached*, *mongodb*, *msgpack*, *mysqli*, *pcov*, *rdkafka*, *redis*, *swoole*, *uploadprogress*, *uuid*, *yaml* are not available in PHP 8.1+ (RC)
+- *event*, *gnupg* are not available in PHP 8.0+
+- *blackfire*, *gettext*, *ev*, *rdkafka*, *swoole* are not available in PHP 8.1+
 
 ### Enabling/disabling extensions in the fat image
 
@@ -225,9 +224,11 @@ FROM thecodingmachine/php:8.0-v4-slim-apache
 # of the extensions (thanks to a ONBUILD hook in the slim image)
 ```
 
-Beware! The `ARG PHP_EXTENSIONS` command must be written before the `FROM`. This is not a typo.
-
-**Heads up**: if you are using multistage builds, the "ARG" variable must be put at the very top of the file (before the 
+Beware :
+* The `ARG PHP_EXTENSIONS` command must be written before the `FROM`. This is not a typo.
+* `ARG PHP_EXTENSIONS=""` it's not the same as `ENV PHP_EXTENSIONS=""`
+* You can't use `ARG PHP_EXTENSION_MYEXT=""` like the fat image. 
+* **Heads up**: if you are using multistage builds, the "ARG" variable must be put at the very top of the file (before the 
 first FROM):
 
 ```Dockerfile
@@ -346,9 +347,11 @@ As an alternative, you can use the `APACHE_EXTENSIONS` global variable:
 APACHE_EXTENSIONS="dav ssl"
 ```
 
-**Apache modules enabled by default:** `access_compat` `alias` `auth_basic` `authn_core` `authn_file` `authz_core` `authz_host` `authz_user` `autoindex` `deflate` `dir` `env` `expires` `filter` `mime` `mpm_prefork` `negotiation` `php7` `reqtimeout` `rewrite` `setenvif` `status`
+**Apache modules enabled by default:** `access_compat` `alias` `auth_basic` `authn_core` `authn_file` `authz_core` `authz_host` `authz_user` `autoindex` `deflate` `dir` `env` `expires` `filter` `mime` `mpm_prefork` `negotiation` `php8.0 (depend of your active version)` `reqtimeout` `rewrite` `setenvif` `status`
 
-**Apache modules available:** `access_compat` `actions` `alias` `allowmethods` `asis` `auth_basic` `auth_digest` `auth_form` `authn_anon` `authn_core` `authn_dbd` `authn_dbm` `authn_file` `authn_socache` `authnz_fcgi` `authnz_ldap` `authz_core` `authz_dbd` `authz_dbm` `authz_groupfile` `authz_host` `authz_owner` `authz_user` `autoindex` `buffer` `cache` `cache_disk` `cache_socache` `cgi` `cgid` `charset_lite` `data` `dav` `dav_fs` `dav_lock` `dbd` `deflate` `dialup` `dir` `dump_io` `echo` `env` `ext_filter` `expires` `file_cache` `filter` `headers` `heartbeat` `heartmonitor` `ident` `include` `info` `lbmethod_bybusyness` `lbmethod_byrequests` `lbmethod_bytraffic` `lbmethod_heartbeat` `ldap` `log_debug` `log_forensic` `lua` `macro` `mime` `mime_magic` `mpm_event` `mpm_prefork` `mpm_worker` `negotiation` `php7` `proxy` `proxy_ajp` `proxy_balancer` `proxy_connect` `proxy_express` `proxy_fcgi` `proxy_fdpass` `proxy_ftp` `proxy_html` `proxy_http` `proxy_scgi` `proxy_wstunnel` `ratelimit` `reflector` `remoteip` `reqtimeout` `request` `rewrite` `sed` `session` `session_cookie` `session_crypto` `session_dbd` `setenvif` `slotmem_plain` `slotmem_shm` `socache_dbm` `socache_memcache` `socache_shmcb` `speling` `ssl` `status` `substitute` `suexec` `unique_id` `userdir` `usertrack` `vhost_alias` `xml2enc`
+**Apache modules available:** `access_compat` `actions` `alias` `allowmethods` `asis` `auth_basic` `auth_digest` `auth_form` `authn_anon` `authn_core` `authn_dbd` `authn_dbm` `authn_file` `authn_socache` `authnz_fcgi` `authnz_ldap` `authz_core` `authz_dbd` `authz_dbm` `authz_groupfile` `authz_host` `authz_owner` `authz_user` `autoindex` `brotli` `buffer` `cache` `cache_disk` `cache_socache` `cern_meta` `cgi` `cgid` `charset_lite` `data` `dav` `dav_fs` `dav_lock` `dbd` `deflate` `dialup` `dir` `dump_io` `echo` `env` `ext_filter` `expires` `file_cache` `filter` `headers` `heartbeat` `heartmonitor` `http2` `ident` `imagemap` `include` `info` `lbmethod_bybusyness` `lbmethod_byrequests` `lbmethod_bytraffic` `lbmethod_heartbeat` `ldap` `log_debug` `log_forensic` `lua` `macro` `md` `mime` `mime_magic` `mpm_event` `mpm_prefork` `mpm_worker` `negotiation` `php8.0 (depend of your active version)` `proxy` `proxy_ajp` `proxy_balancer` `proxy_connect` `proxy_express` `proxy_fcgi` `proxy_fdpass` `proxy_ftp` `proxy_hcheck` `proxy_html` `proxy_http` `proxy_http2` `proxy_scgi` `proxy_wstunnel` `ratelimit` `reflector` `remoteip` `reqtimeout` `request` `rewrite` `sed` `session` `session_cookie` `session_crypto` `session_dbd` `setenvif` `slotmem_plain` `slotmem_shm` `socache_dbm` `socache_memcache` `socache_redis` `socache_shmcb` `speling` `ssl` `status` `substitute` `suexec` `unique_id` `userdir` `usertrack` `vhost_alias` `xml2enc`
+
+This list can be outdated, you can verify by executing : `docker run --rm -it thecodingmachine/php:8.0-v4-slim-apache a2enmod`
 
  
 ## Debugging
@@ -366,6 +369,14 @@ Behind the scenes, the image will:
 - set the parameter `xdebug.mode=debug`
 - if you are using a Linux machine, the `xdebug.client_host` IP will point to your Docker gateway
 - if you are using a Windows or MaxOS machine, the `xdebug.client_host` IP will point to [`host.docker.internal`](https://docs.docker.com/docker-for-mac/networking/#use-cases-and-workarounds) or [`docker.for.mac.localhost`](https://docs.docker.com/docker-for-mac/networking/#use-cases-and-workarounds)
+
+If you want to debug directly inside your container (for example if you're using [VSCode devcontainers](https://code.visualstudio.com/docs/remote/containers)) you can overwrite the [`xdebug.client_host`](https://xdebug.org/docs/all_settings#client_host) value by setting the following environment variable:
+
+```bash
+XDEBUG_CLIENT_HOST=127.0.0.1
+```
+
+In that case the manually set value takes precedence over the mentioned ones above.
 
 ## NodeJS
 
@@ -530,7 +541,7 @@ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/sr
 
 ## Using the CLI variant
 
-The CLI images (thecodingmachine/php:7.x-v4-cli) expect a command to be passed in parameter.
+The CLI images (thecodingmachine/php:8.0-v4-cli) expect a command to be passed in parameter.
 You should override the Docker "command".
 
 Important! You should not override the Docker "entrypoint".
