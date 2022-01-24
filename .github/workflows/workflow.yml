@@ -43,6 +43,8 @@ jobs:
           PHP_VERSION="${{ matrix.php_version }}" BRANCH="v4" VARIANT="${{ matrix.variant }}" OWNER="${{ secrets.DOCKERHUB_USERNAME }}" PLATFORM="${{ matrix.platform }}" ./push.sh
 
   combine_archs:
+    # Merge ~ push.
+    if: ${{ github.event_name == 'push' || github.event_name == 'schedule' }}
     needs: [ build_test_maybe_release ]
     strategy:
       matrix:
