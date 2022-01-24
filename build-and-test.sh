@@ -12,7 +12,11 @@ trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
 # Let's replace the "." by a "-" with some bash magic
 BRANCH_VARIANT="${VARIANT//./-}"
 CURRENT_ARCH="${PLATFORM//*\/}"
-NATIVE_ARCH=`dpkg --print-architecture`
+
+if [ -z "$NATIVE_ARCH" ]
+then
+  NATIVE_ARCH=`dpkg --print-architecture`
+fi
 
 # Build with BuildKit https://docs.docker.com/develop/develop-images/build_enhancements/
 export DOCKER_BUILDKIT=1                   # Force use of BuildKit

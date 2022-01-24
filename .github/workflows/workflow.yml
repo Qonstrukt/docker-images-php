@@ -41,4 +41,15 @@ jobs:
         # Merge ~ push.
         if: ${{ github.event_name == 'push' || github.event_name == 'schedule' }}
         run: |
-          PHP_VERSION="${{ matrix.php_version }}" BRANCH="v4" VARIANT="${{ matrix.variant }}" OWNER="${{ secrets.DOCKERHUB_USERNAME }}" ./push.sh
+          PHP_VERSION="${{ matrix.php_version }}" BRANCH="v4" VARIANT="${{ matrix.variant }}" OWNER="${{ secrets.DOCKERHUB_USERNAME }}" PLATFORM="${{ matrix.platform }}" ./push.sh
+
+  combine_archs:
+    strategy:
+      matrix:
+        php_version: ['7.4']
+        # php_version: ['7.2', '7.3', '7.4', '8.0', '8.1']
+        variant: ['apache', 'cli', 'fpm']
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create combined Manifest
+        run: PHP_VERSION="${{ matrix.php_version }}" BRANCH="v4" VARIANT="${{ matrix.variant }}" OWNER="${{ secrets.DOCKERHUB_USERNAME }}" ./combine_archs.sh
