@@ -73,13 +73,13 @@ docker rmi test/slim_onbuild_composer
 if [[ $VARIANT == cli* ]]; then CONTAINER_CWD=/usr/src/app; else CONTAINER_CWD=/var/www/html; fi
 # Default user is 1000
 RESULT=`docker run --platform "${PLATFORM}" --rm "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" id -ur`
-[[ "$RESULT" = "1000" ]]
+[[ "$RESULT" == "1000" ]]
 
 # If mounted, default user has the id of the mount directory
 mkdir user1999 && docker run --platform "${PLATFORM}" --rm -v "$(pwd)":/mnt busybox chown 1999:1999 /mnt/user1999
 ls -al user1999
 RESULT=`docker run --platform "${PLATFORM}" --rm -v "$(pwd)"/user1999:$CONTAINER_CWD "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" id -ur`
-[[ "$RESULT" = "1999" ]]
+[[ "$RESULT" == "1999" ]]
 
 # Also, the default user can write on stdout and stderr
 docker run --platform "${PLATFORM}" --rm -v "$(pwd)"/user1999:$CONTAINER_CWD "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" bash -c "echo TEST > /proc/self/fd/2"
@@ -92,7 +92,7 @@ cp tests/apache/composer.json user33/
 docker run --platform "${PLATFORM}" --rm -v "$(pwd)":/mnt busybox chown -R 33:33 /mnt/user33
 ls -al user33
 RESULT=`docker run --platform "${PLATFORM}" --rm -v "$(pwd)"/user33:$CONTAINER_CWD "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" id -ur`
-[[ "$RESULT" = "33" ]]
+[[ "$RESULT" == "33" ]]
 RESULT=`docker run --platform "${PLATFORM}" --rm -v "$(pwd)"/user33:$CONTAINER_CWD "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" composer update -vvv`
 docker run --platform "${PLATFORM}" --rm -v "$(pwd)":/mnt busybox rm -rf /mnt/user33
 
@@ -108,7 +108,7 @@ if [[ $CURRENT_ARCH == $NATIVE_ARCH && $VARIANT == apache* ]]; then
   # Let's wait for Apache to start
   sleep 5
   RESULT=`curl http://localhost:81/tests/test.php`
-  [[ "$RESULT" = "foo" ]]
+  [[ "$RESULT" == "foo" ]]
   docker stop $DOCKER_CID
 
   # Test Apache document root (relative)
@@ -116,7 +116,7 @@ if [[ $CURRENT_ARCH == $NATIVE_ARCH && $VARIANT == apache* ]]; then
   # Let's wait for Apache to start
   sleep 5
   RESULT=`curl http://localhost:81/test.php`
-  [[ "$RESULT" = "foo" ]]
+  [[ "$RESULT" == "foo" ]]
   docker stop $DOCKER_CID
 
   # Test Apache document root (absolute)
@@ -124,7 +124,7 @@ if [[ $CURRENT_ARCH == $NATIVE_ARCH && $VARIANT == apache* ]]; then
   # Let's wait for Apache to start
   sleep 5
   RESULT=`curl http://localhost:81/test.php`
-  [[ "$RESULT" = "foo" ]]
+  [[ "$RESULT" == "foo" ]]
   docker stop $DOCKER_CID
 
   # Test Apache HtAccess
@@ -132,7 +132,7 @@ if [[ $CURRENT_ARCH == $NATIVE_ARCH && $VARIANT == apache* ]]; then
   # Let's wait for Apache to start
   sleep 5
   RESULT=`curl http://localhost:81/`
-  [[ "$RESULT" = "foo" ]]
+  [[ "$RESULT" == "foo" ]]
   docker stop $DOCKER_CID
 
   # Test PHP_INI_... variables are correctly handled by apache
@@ -140,7 +140,7 @@ if [[ $CURRENT_ARCH == $NATIVE_ARCH && $VARIANT == apache* ]]; then
   # Let's wait for Apache to start
   sleep 5
   RESULT=`curl http://localhost:81/tests/apache/echo_memory_limit.php`
-  [[ "$RESULT" = "2G" ]]
+  [[ "$RESULT" == "2G" ]]
   docker stop $DOCKER_CID
 fi
 
@@ -163,39 +163,39 @@ set -e
 
 # Let's check that the configuration is loaded from the correct php.ini (development, production or imported in the image)
 RESULT=`docker run --platform "${PLATFORM}" --rm "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -i | grep error_reporting`
-[[ "$RESULT" = "error_reporting => 32767 => 32767" ]]
+[[ "$RESULT" == "error_reporting => 32767 => 32767" ]]
 
 RESULT=`docker run --platform "${PLATFORM}" --rm -e TEMPLATE_PHP_INI=production "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -i | grep error_reporting`
-[[ "$RESULT" = "error_reporting => 22527 => 22527" ]]
+[[ "$RESULT" == "error_reporting => 22527 => 22527" ]]
 
 RESULT=`docker run --platform "${PLATFORM}" --rm -v "$(pwd)"/tests/php.ini:/etc/php/${PHP_VERSION}/cli/php.ini "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -i | grep error_reporting`
-[[ "$RESULT" = "error_reporting => 24575 => 24575" ]]
+[[ "$RESULT" == "error_reporting => 24575 => 24575" ]]
 
 RESULT=`docker run --platform "${PLATFORM}" --rm -e PHP_INI_ERROR_REPORTING="E_ERROR | E_WARNING" "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -i | grep error_reporting`
-[[ "$RESULT" = "error_reporting => 3 => 3" ]]
+[[ "$RESULT" == "error_reporting => 3 => 3" ]]
 
 # Tests that environment variables with an equal sign are correctly handled
 RESULT=`docker run --platform "${PLATFORM}" --rm -e PHP_INI_SESSION__SAVE_PATH="tcp://localhost?auth=yourverycomplex\"passwordhere" "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -i | grep "session.save_path"`
-[[ "$RESULT" = "session.save_path => tcp://localhost?auth=yourverycomplex\"passwordhere => tcp://localhost?auth=yourverycomplex\"passwordhere" ]]
+[[ "$RESULT" == "session.save_path => tcp://localhost?auth=yourverycomplex\"passwordhere => tcp://localhost?auth=yourverycomplex\"passwordhere" ]]
 
 # Tests that the SMTP parameter is set in uppercase
 RESULT=`docker run --platform "${PLATFORM}" --rm -e PHP_INI_SMTP="192.168.0.1" "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -i | grep "^SMTP"`
-[[ "$RESULT" = "SMTP => 192.168.0.1 => 192.168.0.1" ]]
+[[ "$RESULT" == "SMTP => 192.168.0.1 => 192.168.0.1" ]]
 
 # Tests that environment variables are passed to startup scripts when UID is set
 RESULT=`docker run --platform "${PLATFORM}" --rm -e FOO="bar" -e STARTUP_COMMAND_1="env" -e UID=0 "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" sleep 1 | grep "FOO"`
-[[ "$RESULT" = "FOO=bar" ]]
+[[ "$RESULT" == "FOO=bar" ]]
 
 # Tests that multi-commands are correctly executed  when UID is set
 RESULT=`docker run --platform "${PLATFORM}" --rm -e STARTUP_COMMAND_1="cd / && whoami" -e UID=0 "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" sleep 1`
-[[ "$RESULT" = "root" ]]
+[[ "$RESULT" == "root" ]]
 
 # Tests that startup.sh is correctly executed
 docker run --platform "${PLATFORM}" --rm -v "$(pwd)"/tests/startup.sh:/etc/container/startup.sh "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -m | grep "startup.sh executed"
 
 # Tests that disable_functions is commented in php.ini cli
 RESULT=`docker run --platform "${PLATFORM}" --rm "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -i | grep "disable_functions"`
-[[ "$RESULT" = "disable_functions => no value => no value" ]]
+[[ "$RESULT" == "disable_functions => no value => no value" ]]
 
 #################################
 # Let's build the "fat" image
@@ -210,18 +210,18 @@ docker build \
   .
 
 # Let's check that the crons are actually sending logs in the right place
-RESULT=`docker run --platform "${PLATFORM}" --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="(>&1 echo "foobar")" "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-${CURRENT_ARCH}" sleep 1 2>&1 | grep -o 'msg=foobar' | head -n1`
-[[ "$RESULT" = "msg=foobar" ]]
+RESULT=`docker run --platform "${PLATFORM}" --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="(>&1 echo "foobar")" "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-${CURRENT_ARCH}" sleep 1 2>&1 | grep -oP 'msg=foobar' | head -n1`
+[[ "$RESULT" == "msg=foobar" ]]
 
-RESULT=`docker run --platform "${PLATFORM}" --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="(>&2 echo "error")" "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-${CURRENT_ARCH}" sleep 1 2>&1 | grep -o 'msg=error' | head -n1`
-[[ "$RESULT" = "msg=error" ]]
+RESULT=`docker run --platform "${PLATFORM}" --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="(>&2 echo "error")" "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-${CURRENT_ARCH}" sleep 1 2>&1 | grep -oP 'msg=error' | head -n1`
+[[ "$RESULT" == "msg=error" ]]
 
 # Let's check that the cron with a user different from root is actually run.
-RESULT=`docker run --platform "${PLATFORM}" --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="whoami" -e CRON_USER_1="docker" "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-${CURRENT_ARCH}" sleep 1 2>&1 | grep -o 'msg=docker' | head -n1`
-[[ "$RESULT" = "msg=docker" ]]
+RESULT=`docker run --platform "${PLATFORM}" --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="whoami" -e CRON_USER_1="docker" "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-${CURRENT_ARCH}" sleep 1 2>&1 | grep -oP 'msg=docker' | head -n1`
+[[ "$RESULT" == "msg=docker" ]]
 
 # Let's check that 2 commands split with a ; are run by the same user.
-RESULT=`docker run --platform "${PLATFORM}" --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="whoami;whoami" -e CRON_USER_1="docker" "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-${CURRENT_ARCH}" sleep 1 2>&1 | grep -o 'msg=docker' | wc -l`
+RESULT=`docker run --platform "${PLATFORM}" --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="whoami;whoami" -e CRON_USER_1="docker" "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-${CURRENT_ARCH}" sleep 1 2>&1 | grep -oP 'msg=docker' | wc -l`
 [[ "$RESULT" -gt "1" ]]
 
 # Let's check that mbstring cannot extension cannot be disabled
@@ -243,7 +243,7 @@ docker run --platform "${PLATFORM}" --rm -e PHP_EXTENSION_XDEBUG=1 -e PHP_INI_XD
 if [[ "${PHP_VERSION}" != "8.1" ]]; then
   # Tests that blackfire + xdebug will output an error
   RESULT=`docker run --platform "${PLATFORM}" --rm -e PHP_EXTENSION_XDEBUG=1 -e PHP_EXTENSION_BLACKFIRE=1 "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -v 2>&1 | grep 'WARNING: Both Blackfire and Xdebug are enabled. This is not recommended as the PHP engine may not behave as expected. You should strongly consider disabling Xdebug or Blackfire.'`
-  [[ "$RESULT" = "WARNING: Both Blackfire and Xdebug are enabled. This is not recommended as the PHP engine may not behave as expected. You should strongly consider disabling Xdebug or Blackfire." ]]
+  [[ "$RESULT" == "WARNING: Both Blackfire and Xdebug are enabled. This is not recommended as the PHP engine may not behave as expected. You should strongly consider disabling Xdebug or Blackfire." ]]
 
   # Check that blackfire can be enabled
   docker run --platform "${PLATFORM}" --rm -e PHP_EXTENSION_BLACKFIRE=1 "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -m | grep blackfire
