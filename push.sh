@@ -9,6 +9,9 @@ failure() {
 }
 trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
 
+OWNER="${OWNER:-thecodingmachine}"
+PLATFORM="${PLATFORM:-linux/amd64}"
+
 # Let's replace the "." by a "-" with some bash magic
 BRANCH_VARIANT="${VARIANT//./-}"
 CURRENT_ARCH="${PLATFORM//*\/}"

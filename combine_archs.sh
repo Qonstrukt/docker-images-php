@@ -9,12 +9,18 @@ failure() {
 }
 trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
 
+OWNER="${OWNER:-thecodingmachine}"
+
 # Let's replace the "." by a "-" with some bash magic
 BRANCH_VARIANT="${VARIANT//./-}"
-CURRENT_ARCH="${PLATFORM//*\/}"
+
+if [ -z "$NATIVE_ARCH" ]
+then
+  NATIVE_ARCH=`dpkg --print-architecture`
+fi
 
 # Let's also tag PHP patch releases
-PHP_PATCH_VERSION=`docker run --rm ${OWNER}/php:${PHP_VERSION}-v4-slim-${BRANCH_VARIANT}-${CURRENT_ARCH} php -v | head -n1 | grep '[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+' -Eo | head -n1`
+PHP_PATCH_VERSION=`docker run --rm ${OWNER}/php:${PHP_VERSION}-v4-slim-${BRANCH_VARIANT}-${NATIVE_ARCH} php -v | head -n1 | grep '[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+' -Eo | head -n1`
 echo "Combining patch release $PHP_PATCH_VERSION"
 
 export DOCKER_BUILDKIT=1 # Force use of BuildKit
