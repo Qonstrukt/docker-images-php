@@ -2,7 +2,7 @@
 ARG PHP_VERSION
 ARG GLOBAL_VERSION
 ARG OWNER
-FROM ${OWNER}/php:${PHP_VERSION}-${GLOBAL_VERSION}-apache-${TARGETARCH}
+FROM ${OWNER}/php:${PHP_VERSION}-${GLOBAL_VERSION}-fpm-${TARGETARCH}
 
 LABEL authors="Julien Neuhart <j.neuhart@thecodingmachine.com>, David Négrier <d.negrier@thecodingmachine.com>"
 
@@ -10,7 +10,7 @@ USER root
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends gnupg && \
-    curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
+    curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
     apt-get update && \
     apt-get install -y --no-install-recommends nodejs && \
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
