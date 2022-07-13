@@ -268,15 +268,6 @@ docker rmi test/composer_with_gd
 #################################
 docker build \
   --platform "${PLATFORM}" \
-  -t "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node12-${CURRENT_ARCH}" \
-  --build-arg PHP_VERSION="${PHP_VERSION}" \
-  --build-arg GLOBAL_VERSION="${BRANCH}" \
-  --build-arg OWNER="${OWNER}" \
-  -f "Dockerfile.${VARIANT}.node12" \
-  .
-
-docker build \
-  --platform "${PLATFORM}" \
   -t "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node14-${CURRENT_ARCH}" \
   --build-arg PHP_VERSION="${PHP_VERSION}" \
   --build-arg GLOBAL_VERSION="${BRANCH}" \
@@ -291,6 +282,15 @@ docker build \
   --build-arg GLOBAL_VERSION="${BRANCH}" \
   --build-arg OWNER="${OWNER}" \
   -f "Dockerfile.${VARIANT}.node16" \
+  .
+
+docker build \
+  --platform "${PLATFORM}" \
+  -t "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node12-${CURRENT_ARCH}" \
+  --build-arg PHP_VERSION="${PHP_VERSION}" \
+  --build-arg GLOBAL_VERSION="${BRANCH}" \
+  --build-arg OWNER="${OWNER}" \
+  -f "Dockerfile.${VARIANT}.node18" \
   .
 
 echo "Tests passed with success"
