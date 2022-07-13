@@ -7,23 +7,23 @@ blueprint: ## Generate all blueprints file
 test-latest: test-8.0 ## Test the latest build only
 
 _test-prerequisites: blueprint
-	docker pull ubuntu:21.10
+	docker pull ubuntu:jammy
 
 test-quick: _test-prerequisites ## Test 8.0 and 8.1 quickly
-	PHP_VERSION=8.0 BRANCH=v4 VARIANT=cli ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
-	PHP_VERSION=8.1 BRANCH=v4 VARIANT=cli ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
+	PHP_VERSION=8.0 BRANCH=v5 VARIANT=cli ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
+	PHP_VERSION=8.1 BRANCH=v5 VARIANT=cli ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
 	notify-send -u critical "Tests passed with success"
 
 test-8.1: _test-prerequisites ## Test php8.1 build only
-	docker pull ubuntu:21.10
-	PHP_VERSION=8.1 BRANCH=v4 VARIANT=cli ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
-	PHP_VERSION=8.1 BRANCH=v4 VARIANT=apache ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
+	docker pull ubuntu:jammy
+	PHP_VERSION=8.1 BRANCH=v5 VARIANT=cli ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
+	PHP_VERSION=8.1 BRANCH=v5 VARIANT=apache ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
 	notify-send -u critical "Tests passed with success"
 
 test-8.0: _test-prerequisites ## Test php8.0 build only
-	docker pull ubuntu:21.10
-	PHP_VERSION=8.0 BRANCH=v4 VARIANT=cli ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
-	PHP_VERSION=8.0 BRANCH=v4 VARIANT=apache ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
+	docker pull ubuntu:jammy
+	PHP_VERSION=8.0 BRANCH=v5 VARIANT=cli ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
+	PHP_VERSION=8.0 BRANCH=v5 VARIANT=apache ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
 	notify-send -u critical "Tests passed with success"
 
 clean: ## Clean dangles image after build

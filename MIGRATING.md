@@ -1,3 +1,11 @@
+# Migrating from v4 to v5 images
+
+Important changes:
+
+- v4 images are based on **Ubuntu 20.04**. v5 images are based on **Ubuntu 22.04**.
+- Node 12 has been removed in favor of Node 18.
+- Images are now also built for ARM64.
+
 # Migrating from v3 to v4 images
 
 Important changes:

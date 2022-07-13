@@ -4,9 +4,11 @@ on:
   pull_request:
     branches:
       - 'v4'
+      - 'v5'
   push:
     branches:
       - 'v4'
+      - 'v5'
   schedule:
     - cron: '42 3 * * 0'
 
@@ -27,7 +29,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Build and test
         run: |
-          PHP_VERSION="${{ matrix.php_version }}" BRANCH="v4" VARIANT="${{ matrix.variant }}" OWNER="${{ secrets.DOCKERHUB_USERNAME }}" PLATFORM="${{ matrix.platform }}" ./build-and-test.sh
+          PHP_VERSION="${{ matrix.php_version }}" BRANCH="v5" VARIANT="${{ matrix.variant }}" OWNER="${{ secrets.DOCKERHUB_USERNAME }}" PLATFORM="${{ matrix.platform }}" ./build-and-test.sh
           docker images | grep ${OWNER}/php
       - name: Login to DockerHub
         # Merge ~ push.
@@ -40,7 +42,7 @@ jobs:
         # Merge ~ push.
         if: ${{ github.event_name == 'push' || github.event_name == 'schedule' }}
         run: |
-          PHP_VERSION="${{ matrix.php_version }}" BRANCH="v4" VARIANT="${{ matrix.variant }}" OWNER="${{ secrets.DOCKERHUB_USERNAME }}" PLATFORM="${{ matrix.platform }}" ./push.sh
+          PHP_VERSION="${{ matrix.php_version }}" BRANCH="v5" VARIANT="${{ matrix.variant }}" OWNER="${{ secrets.DOCKERHUB_USERNAME }}" PLATFORM="${{ matrix.platform }}" ./push.sh
 
   combine_archs:
     # Merge ~ push.
@@ -64,4 +66,4 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Create combined Manifest
-        run: PHP_VERSION="${{ matrix.php_version }}" BRANCH="v4" VARIANT="${{ matrix.variant }}" OWNER="${{ secrets.DOCKERHUB_USERNAME }}" ./combine_archs.sh
+        run: PHP_VERSION="${{ matrix.php_version }}" BRANCH="v5" VARIANT="${{ matrix.variant }}" OWNER="${{ secrets.DOCKERHUB_USERNAME }}" ./combine_archs.sh
