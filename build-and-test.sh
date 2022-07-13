@@ -286,7 +286,7 @@ docker build \
 
 docker build \
   --platform "${PLATFORM}" \
-  -t "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node12-${CURRENT_ARCH}" \
+  -t "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node18-${CURRENT_ARCH}" \
   --build-arg PHP_VERSION="${PHP_VERSION}" \
   --build-arg GLOBAL_VERSION="${BRANCH}" \
   --build-arg OWNER="${OWNER}" \
