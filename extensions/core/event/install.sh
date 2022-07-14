@@ -6,6 +6,6 @@ set -e
 export USE_PECL=1
 export PECL_EXTENSION="event"
 export DEV_DEPENDENCIES="libevent-dev libssl-dev"
-export DEPENDENCIES="libevent-2.1-7 libevent-core-2.1-7 libevent-extra-2.1-7 libevent-openssl-2.1-7 libevent-pthreads-2.1-7 libssl"
+export DEPENDENCIES="libevent-2.1-7 libevent-core-2.1-7 libevent-extra-2.1-7 libevent-openssl-2.1-7 libevent-pthreads-2.1-7 libssl3"
 
 ../docker-install.sh
