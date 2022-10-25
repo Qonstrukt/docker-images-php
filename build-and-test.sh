@@ -273,7 +273,7 @@ docker build \
   --build-arg PHP_VERSION="${PHP_VERSION}" \
   --build-arg GLOBAL_VERSION="${BRANCH}" \
   --build-arg OWNER="${OWNER}" \
-  -f "Dockerfile.${VARIANT}" \
+  -f "Dockerfile.${VARIANT}.node" \
   .
 
 docker build \
@@ -283,7 +283,7 @@ docker build \
   --build-arg PHP_VERSION="${PHP_VERSION}" \
   --build-arg GLOBAL_VERSION="${BRANCH}" \
   --build-arg OWNER="${OWNER}" \
-  -f "Dockerfile.${VARIANT}" \
+  -f "Dockerfile.${VARIANT}.node" \
   .
 
 docker build \
@@ -293,7 +293,7 @@ docker build \
   --build-arg PHP_VERSION="${PHP_VERSION}" \
   --build-arg GLOBAL_VERSION="${BRANCH}" \
   --build-arg OWNER="${OWNER}" \
-  -f "Dockerfile.${VARIANT}" \
+  -f "Dockerfile.${VARIANT}.node" \
   .
 
 echo "Tests passed with success"
