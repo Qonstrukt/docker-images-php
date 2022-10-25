@@ -122,9 +122,7 @@ sudo chown docker:docker /opt/php_env_var_cache.php
 /usr/bin/real_php /usr/local/bin/generate_conf.php > /etc/php/${PHP_VERSION}/mods-available/generated_conf.ini
 PHP_VERSION="${PHP_VERSION}" /usr/bin/real_php /usr/local/bin/setup_extensions.php | sudo bash
 
-# output on the logs can be done by writing on the "tini" PID. Useful for CRONTAB
-TINI_PID=`ps -e | grep tini | awk '{print $1;}'`
-/usr/bin/real_php /usr/local/bin/generate_cron.php $TINI_PID > /tmp/generated_crontab
+/usr/bin/real_php /usr/local/bin/generate_cron.php > /tmp/generated_crontab
 chmod 0644 /tmp/generated_crontab
 
 # If generated_crontab is not empty, start supercronic
