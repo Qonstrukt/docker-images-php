@@ -1,5 +1,24 @@
 # Change Log
 
+## Version 5
+
+### Initial
+
+#### New features
+
+- Support for ARM64
+- Support for Node 18
+
+#### Dropped features
+
+- PHP 7.2 and 7.3 are dropped
+- Node 10 and 12 are dropped
+
+#### Breaking changes
+
+- Base image is Ubuntu 22.04
+
+
 ## Version 4
 
 ### Minor changes
@@ -23,7 +42,7 @@
 - Dropped Node 8 images
 - Dropped PHP 7.1
 
-### Version 3
+## Version 3
 
 ### Initial
 
@@ -37,7 +56,7 @@ Interally, v3 images are built from the Ondrej PPA. This is a radical change fro
 The following extensions are now enabled by default: calendar exif pcntl shmop sockets sysvmsg sysvsem sysvshm wddx zip
 The sqlite3 extension was previously enabled by default, but must now be enabled manually
 
-### Version 2
+## Version 2
 
 ### Initial
 
