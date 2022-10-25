@@ -269,28 +269,31 @@ docker rmi test/composer_with_gd
 docker build \
   --platform "${PLATFORM}" \
   -t "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node14-${CURRENT_ARCH}" \
+  --build-arg NODE_VERSION="14" \
   --build-arg PHP_VERSION="${PHP_VERSION}" \
   --build-arg GLOBAL_VERSION="${BRANCH}" \
   --build-arg OWNER="${OWNER}" \
-  -f "Dockerfile.${VARIANT}.node14" \
+  -f "Dockerfile.${VARIANT}" \
   .
 
 docker build \
   --platform "${PLATFORM}" \
   -t "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node16-${CURRENT_ARCH}" \
+  --build-arg NODE_VERSION="16" \
   --build-arg PHP_VERSION="${PHP_VERSION}" \
   --build-arg GLOBAL_VERSION="${BRANCH}" \
   --build-arg OWNER="${OWNER}" \
-  -f "Dockerfile.${VARIANT}.node16" \
+  -f "Dockerfile.${VARIANT}" \
   .
 
 docker build \
   --platform "${PLATFORM}" \
   -t "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node18-${CURRENT_ARCH}" \
+  --build-arg NODE_VERSION="18" \
   --build-arg PHP_VERSION="${PHP_VERSION}" \
   --build-arg GLOBAL_VERSION="${BRANCH}" \
   --build-arg OWNER="${OWNER}" \
-  -f "Dockerfile.${VARIANT}.node18" \
+  -f "Dockerfile.${VARIANT}" \
   .
 
 echo "Tests passed with success"
