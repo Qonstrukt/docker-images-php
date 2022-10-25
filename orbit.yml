@@ -25,7 +25,7 @@ tasks:
       - orbit generate -f utils/Dockerfile.blueprint -o Dockerfile.apache -p "variant,apache"
       - orbit generate -f utils/Dockerfile.blueprint -o Dockerfile.cli -p "variant,cli"
       - orbit generate -f utils/Dockerfile.blueprint -o Dockerfile.fpm -p "variant,fpm"
-      - orbit generate -f utils/Dockerfile.node.blueprint -o Dockerfile.apache.node -p "variant,apache"
-      - orbit generate -f utils/Dockerfile.node.blueprint -o Dockerfile.cli.node -p "variant,cli"
-      - orbit generate -f utils/Dockerfile.node.blueprint -o Dockerfile.fpm.node -p "variant,fpm"
+      - orbit generate -f utils/Dockerfile.node.blueprint -o Dockerfile.node.apache -p "variant,apache"
+      - orbit generate -f utils/Dockerfile.node.blueprint -o Dockerfile.node.cli -p "variant,cli"
+      - orbit generate -f utils/Dockerfile.node.blueprint -o Dockerfile.node.fpm -p "variant,fpm"
       - orbit generate -f utils/README.blueprint.md -o README.md

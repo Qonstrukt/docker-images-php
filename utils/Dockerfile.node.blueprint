@@ -1,12 +1,14 @@
 {{- $variant := .Orbit.variant -}}
 
-ARG NODE_VERSION
 ARG PHP_VERSION
 ARG GLOBAL_VERSION
 ARG OWNER
 FROM ${OWNER}/php:${PHP_VERSION}-${GLOBAL_VERSION}-{{ $variant }}-${TARGETARCH}
 
 LABEL authors="Julien Neuhart <j.neuhart@thecodingmachine.com>, David Négrier <d.negrier@thecodingmachine.com>"
+
+ARG NODE_VERSION
+ENV NODE_VERSION=$NODE_VERSION
 
 USER root
 
