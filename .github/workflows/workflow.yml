@@ -14,6 +14,7 @@ on:
 
 jobs:
   build_test_maybe_release:
+    name: 'Build & test'
     strategy:
       matrix:
         php_version: ['7.4', '8.0', '8.1']
@@ -45,6 +46,7 @@ jobs:
           PHP_VERSION="${{ matrix.php_version }}" BRANCH="v5" VARIANT="${{ matrix.variant }}" OWNER="${{ secrets.DOCKERHUB_USERNAME }}" PLATFORM="${{ matrix.platform }}" ./push.sh
 
   combine_archs:
+    name: 'Combine & release'
     # Merge ~ push.
     if: ${{ github.event_name == 'push' || github.event_name == 'schedule' }}
     needs: [ build_test_maybe_release ]
