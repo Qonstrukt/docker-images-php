@@ -1,35 +1,39 @@
-![Docker PHP Images GitHub workflow](https://github.com/thecodingmachine/docker-images-php/workflows/Docker%20PHP%20Images%20GitHub%20workflow/badge.svg)
-
 # General purpose PHP images for Docker
+
+{{ $image := .Orbit.Images }}
+
+![Docker PHP Images GitHub workflow](https://github.com/{{ $image.owner }}/docker-images-php/workflows/Docker%20PHP%20Images%20GitHub%20workflow/badge.svg)
 
 This repository contains a set of developer-friendly, general purpose PHP images for Docker.
 
- - You can enable or disable the extensions using environment variables.
+ - Based on the work of [TheCodingMachine](https://github.com/thecodingmachine) ❤️.
+- You can enable or disable the extensions using environment variables.
  - You can also modify the `php.ini` settings using environment variables.
  - 2 types available: `slim` (no extensions preloaded) or `fat` (most common PHP extensions are built-in)
  - 3 variants available: `CLI`, `apache` and `fpm`
  - Fat images are bundled with [Supercronic](https://github.com/aptible/supercronic) which is a Cron compatible task runner. Cron jobs can be configured using environment variables
- - Fat images come with [Composer](https://getcomposer.org/) and [Prestissimo](https://github.com/hirak/prestissimo) installed
+ - Fat images come with [Composer](https://getcomposer.org/) installed
  - All variants can be installed with or without NodeJS (if you need to build your static assets).
- - Everything is done to limit file permission issues that often arise when using Docker. The image is actively tested on Linux, Windows and MacOS
+ - Everything is done to limit file permission issues that often arise when using Docker. The image is actively tested on Linux, Windows and MacOS.
+ - Built upon Ubuntu 22.04 LTS.
+ - All images are available for the x86_64 and ARM64 architecture.
 
-{{ $image := .Orbit.Images }}
 ## Images
 
 {{ $versions := list "8.1" "8.0" "7.4" }}
 {{ $nodeVersions := list "14" "16" "18" }}
 
-| Name                                                                    | PHP version                  | type |variant | NodeJS version  | Size 
-|-------------------------------------------------------------------------|------------------------------|------|--------|-----------------|------
-{{range $phpV := $versions}}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-apache](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.apache)                                        | `{{ $phpV }}.x` | fat  | apache   | *N/A*                                                | [![](https://images.microbadger.com/badges/image/{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-apache.svg)](https://microbadger.com/images/{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-apache)
-{{range $nodeV := $nodeVersions}}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-apache-node{{ $nodeV }}](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.apache.node{{ $nodeV }}) | `{{ $phpV }}.x` | fat  | apache   | `{{ $nodeV }}.x`  | [![](https://images.microbadger.com/badges/image/{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-apache-node{{ $nodeV }}.svg)](https://microbadger.com/images/{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-apache-node{{ $nodeV }})
-{{ end }}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-fpm](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.fpm)                                                                 | `{{ $phpV }}.x` | fat  | fpm      | *N/A*                                                | [![](https://images.microbadger.com/badges/image/{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-fpm.svg)](https://microbadger.com/images/{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-fpm)
-{{range $nodeV := $nodeVersions}}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-fpm-node{{ $nodeV }}](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.fpm.node{{ $nodeV }})       | `{{ $phpV }}.x` | fat  | fpm      | `{{ $nodeV }}.x`  | [![](https://images.microbadger.com/badges/image/{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-fpm-node{{ $nodeV }}.svg)](https://microbadger.com/images/{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-fpm-node{{ $nodeV }})
-{{ end }}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-cli](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.cli)                                                                 | `{{ $phpV }}.x` | fat  | cli      | *N/A*                                                | [![](https://images.microbadger.com/badges/image/{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-cli.svg)](https://microbadger.com/images/{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-cli)
-{{range $nodeV := $nodeVersions}}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-cli-node{{ $nodeV }}](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.cli.node{{ $nodeV }})       | `{{ $phpV }}.x` | fat  | cli      | `{{ $nodeV }}.x`  | [![](https://images.microbadger.com/badges/image/{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-cli-node{{ $nodeV }}.svg)](https://microbadger.com/images/{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-cli-node{{ $nodeV }})
-{{ end }}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-apache](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.slim.apache)                                                 | `{{ $phpV }}.x` | slim | apache   | *N/A*                                                | [![](https://images.microbadger.com/badges/image/{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-apache.svg)](https://microbadger.com/images/{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-apache)
-| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-fpm](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.slim.fpm)                                                                | `{{ $phpV }}.x` | slim | fpm      | *N/A*                                                | [![](https://images.microbadger.com/badges/image/{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-fpm.svg)](https://microbadger.com/images/{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-fpm)
-| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-cli](https://github.com/thecodingmachine/docker-images-php/blob/v4/Dockerfile.slim.cli)                                                                | `{{ $phpV }}.x` | slim | cli      | *N/A*                                                | [![](https://images.microbadger.com/badges/image/{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-cli.svg)](https://microbadger.com/images/{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-cli)
+| Name | PHP version | type |variant | NodeJS version  |
+|------|-------------|------|--------|-----------------|
+{{range $phpV := $versions}}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-apache](https://github.com/{{ $image.owner }}/docker-images-php/blob/v4/Dockerfile.apache)                                        | `{{ $phpV }}.x` | fat  | apache   | *N/A*             |
+{{range $nodeV := $nodeVersions}}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-apache-node{{ $nodeV }}](https://github.com/{{ $image.owner }}/docker-images-php/blob/v4/Dockerfile.apache.node{{ $nodeV }}) | `{{ $phpV }}.x` | fat  | apache   | `{{ $nodeV }}.x`  |
+{{ end }}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-fpm](https://github.com/{{ $image.owner }}/docker-images-php/blob/v4/Dockerfile.fpm)                                                                 | `{{ $phpV }}.x` | fat  | fpm      | *N/A*             |
+{{range $nodeV := $nodeVersions}}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-fpm-node{{ $nodeV }}](https://github.com/{{ $image.owner }}/docker-images-php/blob/v4/Dockerfile.fpm.node{{ $nodeV }})       | `{{ $phpV }}.x` | fat  | fpm      | `{{ $nodeV }}.x`  |
+{{ end }}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-cli](https://github.com/{{ $image.owner }}/docker-images-php/blob/v4/Dockerfile.cli)                                                                 | `{{ $phpV }}.x` | fat  | cli      | *N/A*             |
+{{range $nodeV := $nodeVersions}}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-cli-node{{ $nodeV }}](https://github.com/{{ $image.owner }}/docker-images-php/blob/v4/Dockerfile.cli.node{{ $nodeV }})       | `{{ $phpV }}.x` | fat  | cli      | `{{ $nodeV }}.x`  |
+{{ end }}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-apache](https://github.com/{{ $image.owner }}/docker-images-php/blob/v4/Dockerfile.slim.apache)                                                 | `{{ $phpV }}.x` | slim | apache   | *N/A*             |
+| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-fpm](https://github.com/{{ $image.owner }}/docker-images-php/blob/v4/Dockerfile.slim.fpm)                                                                | `{{ $phpV }}.x` | slim | fpm      | *N/A*             |
+| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-cli](https://github.com/{{ $image.owner }}/docker-images-php/blob/v4/Dockerfile.slim.cli)                                                                | `{{ $phpV }}.x` | slim | cli      | *N/A*             |
 {{end}}
 
 Note: we also tag patch releases of PHP versions. So you can specify a specific patch release using {{ $image.owner }}/php:**8.0.2**-{{ $image.global_version }}-cli for instance.
@@ -158,7 +162,7 @@ RUN composer install &&\
     yarn build
 
 # The slim image will automatically build the extensions from the list provided at the very top of the file.
-FROM {{ $image.owner }}/php:7.2-{{ $image.global_version }}-slim-apache
+FROM {{ $image.owner }}/php:{{ $image.php_version }}-{{ $image.global_version }}-slim-apache
 
 ENV APP_ENV=prod \
     APACHE_DOCUMENT_ROOT=public/
@@ -295,12 +299,12 @@ In that case the manually set value takes precedence over the mentioned ones abo
 
 ## NodeJS
 
-The *fat* images come with a Node variant. You can use Node 10, 12, 14 or 16. If you need a Node 8 variant, [use {{ $image.owner }}/php v3 images](https://github.com/thecodingmachine/docker-images-php/tree/v3). If you need a Node 6 variant, [use {{ $image.owner }}/php v1 images](https://github.com/thecodingmachine/docker-images-php/tree/7.2-v1).
+The *fat* images come with a Node variant. You can use Node 14, 16 or 18.
 
 If you use the *slim* images, you can install a NodeJS version with a simple ARG during the build:
 
 ```Dockerfile
-ARG NODE_VERSION=14
+ARG NODE_VERSION=18
 FROM {{ $image.owner }}/php:{{ $image.php_version }}-{{ $image.global_version }}-slim-apache
 # The build will automatically trigger the download of Node 14
 # (thanks to a ONBUILD hook in the slim image)
@@ -308,7 +312,7 @@ FROM {{ $image.owner }}/php:{{ $image.php_version }}-{{ $image.global_version }}
 
 Beware! The `ARG NODE_VERSION` command must be written before the `FROM`. This is not a typo.
 
-`NODE_VERSION` can take any valid node versions (from 6 to 11 at the time of writing this README)
+`NODE_VERSION` can take any valid node version.
 
 ## Permissions
 
