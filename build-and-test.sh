@@ -18,7 +18,7 @@ CURRENT_ARCH="${PLATFORM//*\/}"
 
 if [ -z "$NATIVE_ARCH" ]
 then
-  NATIVE_ARCH=`dpkg --print-architecture`
+  NATIVE_ARCH="`uname -p`64"
 fi
 
 echo "Native architecture: ${NATIVE_ARCH}"

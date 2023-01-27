@@ -10,10 +10,11 @@ This repository contains a set of developer-friendly, general purpose PHP images
  - Based on the work of [TheCodingMachine](https://github.com/thecodingmachine) ❤️.
 - You can enable or disable the extensions using environment variables.
  - You can also modify the `php.ini` settings using environment variables.
- - 2 types available: `slim` (no extensions preloaded) or `fat` (most common PHP extensions are built-in)
- - 3 variants available: `CLI`, `apache` and `fpm`
- - Fat images are bundled with [Supercronic](https://github.com/aptible/supercronic) which is a Cron compatible task runner. Cron jobs can be configured using environment variables
- - Fat images come with [Composer](https://getcomposer.org/) installed
+ - 2 types available: `slim` (no extensions preloaded) or `fat` (most common PHP extensions are built-in).
+ - 3 variants available: `CLI`, `apache` and `fpm`.
+ - Fat images are bundled with [Supercronic](https://github.com/aptible/supercronic) which is a Cron compatible task runner. Cron jobs can be configured using environment variables.
+ - Fat images come with [Composer](https://getcomposer.org/) installed.
+ - Fat images also contain wkhtmltopdf and wkhtmltoimage.
  - All variants can be installed with or without NodeJS (if you need to build your static assets).
  - Everything is done to limit file permission issues that often arise when using Docker. The image is actively tested on Linux, Windows and MacOS.
  - Built upon Ubuntu 22.04 LTS.
@@ -26,54 +27,54 @@ This repository contains a set of developer-friendly, general purpose PHP images
 
 | Name | PHP version | type |variant | NodeJS version  |
 |------|-------------|------|--------|-----------------|
-| [qonstrukt/php:8.1-v5-apache](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache)                                        | `8.1.x` | fat  | apache   | *N/A*             |
-| [qonstrukt/php:8.1-v5-apache-node14](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache.node14) | `8.1.x` | fat  | apache   | `14.x`  |
-| [qonstrukt/php:8.1-v5-apache-node16](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache.node16) | `8.1.x` | fat  | apache   | `16.x`  |
-| [qonstrukt/php:8.1-v5-apache-node18](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache.node18) | `8.1.x` | fat  | apache   | `18.x`  |
-| [qonstrukt/php:8.1-v5-fpm](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm)                                                                 | `8.1.x` | fat  | fpm      | *N/A*             |
-| [qonstrukt/php:8.1-v5-fpm-node14](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm.node14)       | `8.1.x` | fat  | fpm      | `14.x`  |
-| [qonstrukt/php:8.1-v5-fpm-node16](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm.node16)       | `8.1.x` | fat  | fpm      | `16.x`  |
-| [qonstrukt/php:8.1-v5-fpm-node18](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm.node18)       | `8.1.x` | fat  | fpm      | `18.x`  |
-| [qonstrukt/php:8.1-v5-cli](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli)                                                                 | `8.1.x` | fat  | cli      | *N/A*             |
-| [qonstrukt/php:8.1-v5-cli-node14](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli.node14)       | `8.1.x` | fat  | cli      | `14.x`  |
-| [qonstrukt/php:8.1-v5-cli-node16](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli.node16)       | `8.1.x` | fat  | cli      | `16.x`  |
-| [qonstrukt/php:8.1-v5-cli-node18](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli.node18)       | `8.1.x` | fat  | cli      | `18.x`  |
-| [qonstrukt/php:8.1-v5-slim-apache](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.slim.apache)                                                 | `8.1.x` | slim | apache   | *N/A*             |
-| [qonstrukt/php:8.1-v5-slim-fpm](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.slim.fpm)                                                                | `8.1.x` | slim | fpm      | *N/A*             |
-| [qonstrukt/php:8.1-v5-slim-cli](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.slim.cli)                                                                | `8.1.x` | slim | cli      | *N/A*             |
-| [qonstrukt/php:8.0-v5-apache](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache)                                        | `8.0.x` | fat  | apache   | *N/A*             |
-| [qonstrukt/php:8.0-v5-apache-node14](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache.node14) | `8.0.x` | fat  | apache   | `14.x`  |
-| [qonstrukt/php:8.0-v5-apache-node16](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache.node16) | `8.0.x` | fat  | apache   | `16.x`  |
-| [qonstrukt/php:8.0-v5-apache-node18](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache.node18) | `8.0.x` | fat  | apache   | `18.x`  |
-| [qonstrukt/php:8.0-v5-fpm](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm)                                                                 | `8.0.x` | fat  | fpm      | *N/A*             |
-| [qonstrukt/php:8.0-v5-fpm-node14](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm.node14)       | `8.0.x` | fat  | fpm      | `14.x`  |
-| [qonstrukt/php:8.0-v5-fpm-node16](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm.node16)       | `8.0.x` | fat  | fpm      | `16.x`  |
-| [qonstrukt/php:8.0-v5-fpm-node18](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm.node18)       | `8.0.x` | fat  | fpm      | `18.x`  |
-| [qonstrukt/php:8.0-v5-cli](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli)                                                                 | `8.0.x` | fat  | cli      | *N/A*             |
-| [qonstrukt/php:8.0-v5-cli-node14](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli.node14)       | `8.0.x` | fat  | cli      | `14.x`  |
-| [qonstrukt/php:8.0-v5-cli-node16](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli.node16)       | `8.0.x` | fat  | cli      | `16.x`  |
-| [qonstrukt/php:8.0-v5-cli-node18](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli.node18)       | `8.0.x` | fat  | cli      | `18.x`  |
-| [qonstrukt/php:8.0-v5-slim-apache](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.slim.apache)                                                 | `8.0.x` | slim | apache   | *N/A*             |
-| [qonstrukt/php:8.0-v5-slim-fpm](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.slim.fpm)                                                                | `8.0.x` | slim | fpm      | *N/A*             |
-| [qonstrukt/php:8.0-v5-slim-cli](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.slim.cli)                                                                | `8.0.x` | slim | cli      | *N/A*             |
-| [qonstrukt/php:7.4-v5-apache](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache)                                        | `7.4.x` | fat  | apache   | *N/A*             |
-| [qonstrukt/php:7.4-v5-apache-node14](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache.node14) | `7.4.x` | fat  | apache   | `14.x`  |
-| [qonstrukt/php:7.4-v5-apache-node16](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache.node16) | `7.4.x` | fat  | apache   | `16.x`  |
-| [qonstrukt/php:7.4-v5-apache-node18](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache.node18) | `7.4.x` | fat  | apache   | `18.x`  |
-| [qonstrukt/php:7.4-v5-fpm](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm)                                                                 | `7.4.x` | fat  | fpm      | *N/A*             |
-| [qonstrukt/php:7.4-v5-fpm-node14](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm.node14)       | `7.4.x` | fat  | fpm      | `14.x`  |
-| [qonstrukt/php:7.4-v5-fpm-node16](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm.node16)       | `7.4.x` | fat  | fpm      | `16.x`  |
-| [qonstrukt/php:7.4-v5-fpm-node18](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm.node18)       | `7.4.x` | fat  | fpm      | `18.x`  |
-| [qonstrukt/php:7.4-v5-cli](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli)                                                                 | `7.4.x` | fat  | cli      | *N/A*             |
-| [qonstrukt/php:7.4-v5-cli-node14](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli.node14)       | `7.4.x` | fat  | cli      | `14.x`  |
-| [qonstrukt/php:7.4-v5-cli-node16](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli.node16)       | `7.4.x` | fat  | cli      | `16.x`  |
-| [qonstrukt/php:7.4-v5-cli-node18](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli.node18)       | `7.4.x` | fat  | cli      | `18.x`  |
-| [qonstrukt/php:7.4-v5-slim-apache](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.slim.apache)                                                 | `7.4.x` | slim | apache   | *N/A*             |
-| [qonstrukt/php:7.4-v5-slim-fpm](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.slim.fpm)                                                                | `7.4.x` | slim | fpm      | *N/A*             |
-| [qonstrukt/php:7.4-v5-slim-cli](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.slim.cli)                                                                | `7.4.x` | slim | cli      | *N/A*             |
+| [qonstrukt/php:8.2-v6-apache](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache)                                        | `8.2.x` | fat  | apache   | *N/A*             |
+| [qonstrukt/php:8.2-v6-apache-node18](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache.node18) | `8.2.x` | fat  | apache   | `18.x`  |
+| [qonstrukt/php:8.2-v6-apache-node16](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache.node16) | `8.2.x` | fat  | apache   | `16.x`  |
+| [qonstrukt/php:8.2-v6-apache-node14](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache.node14) | `8.2.x` | fat  | apache   | `14.x`  |
+| [qonstrukt/php:8.2-v6-fpm](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm)                                                                 | `8.2.x` | fat  | fpm      | *N/A*             |
+| [qonstrukt/php:8.2-v6-fpm-node18](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm.node18)       | `8.2.x` | fat  | fpm      | `18.x`  |
+| [qonstrukt/php:8.2-v6-fpm-node16](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm.node16)       | `8.2.x` | fat  | fpm      | `16.x`  |
+| [qonstrukt/php:8.2-v6-fpm-node14](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm.node14)       | `8.2.x` | fat  | fpm      | `14.x`  |
+| [qonstrukt/php:8.2-v6-cli](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli)                                                                 | `8.2.x` | fat  | cli      | *N/A*             |
+| [qonstrukt/php:8.2-v6-cli-node18](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli.node18)       | `8.2.x` | fat  | cli      | `18.x`  |
+| [qonstrukt/php:8.2-v6-cli-node16](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli.node16)       | `8.2.x` | fat  | cli      | `16.x`  |
+| [qonstrukt/php:8.2-v6-cli-node14](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli.node14)       | `8.2.x` | fat  | cli      | `14.x`  |
+| [qonstrukt/php:8.2-v6-slim-apache](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.slim.apache)                                                 | `8.2.x` | slim | apache   | *N/A*             |
+| [qonstrukt/php:8.2-v6-slim-fpm](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.slim.fpm)                                                                | `8.2.x` | slim | fpm      | *N/A*             |
+| [qonstrukt/php:8.2-v6-slim-cli](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.slim.cli)                                                                | `8.2.x` | slim | cli      | *N/A*             |
+| [qonstrukt/php:8.1-v6-apache](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache)                                        | `8.1.x` | fat  | apache   | *N/A*             |
+| [qonstrukt/php:8.1-v6-apache-node18](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache.node18) | `8.1.x` | fat  | apache   | `18.x`  |
+| [qonstrukt/php:8.1-v6-apache-node16](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache.node16) | `8.1.x` | fat  | apache   | `16.x`  |
+| [qonstrukt/php:8.1-v6-apache-node14](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache.node14) | `8.1.x` | fat  | apache   | `14.x`  |
+| [qonstrukt/php:8.1-v6-fpm](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm)                                                                 | `8.1.x` | fat  | fpm      | *N/A*             |
+| [qonstrukt/php:8.1-v6-fpm-node18](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm.node18)       | `8.1.x` | fat  | fpm      | `18.x`  |
+| [qonstrukt/php:8.1-v6-fpm-node16](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm.node16)       | `8.1.x` | fat  | fpm      | `16.x`  |
+| [qonstrukt/php:8.1-v6-fpm-node14](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm.node14)       | `8.1.x` | fat  | fpm      | `14.x`  |
+| [qonstrukt/php:8.1-v6-cli](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli)                                                                 | `8.1.x` | fat  | cli      | *N/A*             |
+| [qonstrukt/php:8.1-v6-cli-node18](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli.node18)       | `8.1.x` | fat  | cli      | `18.x`  |
+| [qonstrukt/php:8.1-v6-cli-node16](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli.node16)       | `8.1.x` | fat  | cli      | `16.x`  |
+| [qonstrukt/php:8.1-v6-cli-node14](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli.node14)       | `8.1.x` | fat  | cli      | `14.x`  |
+| [qonstrukt/php:8.1-v6-slim-apache](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.slim.apache)                                                 | `8.1.x` | slim | apache   | *N/A*             |
+| [qonstrukt/php:8.1-v6-slim-fpm](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.slim.fpm)                                                                | `8.1.x` | slim | fpm      | *N/A*             |
+| [qonstrukt/php:8.1-v6-slim-cli](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.slim.cli)                                                                | `8.1.x` | slim | cli      | *N/A*             |
+| [qonstrukt/php:8.0-v6-apache](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache)                                        | `8.0.x` | fat  | apache   | *N/A*             |
+| [qonstrukt/php:8.0-v6-apache-node18](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache.node18) | `8.0.x` | fat  | apache   | `18.x`  |
+| [qonstrukt/php:8.0-v6-apache-node16](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache.node16) | `8.0.x` | fat  | apache   | `16.x`  |
+| [qonstrukt/php:8.0-v6-apache-node14](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.apache.node14) | `8.0.x` | fat  | apache   | `14.x`  |
+| [qonstrukt/php:8.0-v6-fpm](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm)                                                                 | `8.0.x` | fat  | fpm      | *N/A*             |
+| [qonstrukt/php:8.0-v6-fpm-node18](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm.node18)       | `8.0.x` | fat  | fpm      | `18.x`  |
+| [qonstrukt/php:8.0-v6-fpm-node16](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm.node16)       | `8.0.x` | fat  | fpm      | `16.x`  |
+| [qonstrukt/php:8.0-v6-fpm-node14](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.fpm.node14)       | `8.0.x` | fat  | fpm      | `14.x`  |
+| [qonstrukt/php:8.0-v6-cli](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli)                                                                 | `8.0.x` | fat  | cli      | *N/A*             |
+| [qonstrukt/php:8.0-v6-cli-node18](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli.node18)       | `8.0.x` | fat  | cli      | `18.x`  |
+| [qonstrukt/php:8.0-v6-cli-node16](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli.node16)       | `8.0.x` | fat  | cli      | `16.x`  |
+| [qonstrukt/php:8.0-v6-cli-node14](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.cli.node14)       | `8.0.x` | fat  | cli      | `14.x`  |
+| [qonstrukt/php:8.0-v6-slim-apache](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.slim.apache)                                                 | `8.0.x` | slim | apache   | *N/A*             |
+| [qonstrukt/php:8.0-v6-slim-fpm](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.slim.fpm)                                                                | `8.0.x` | slim | fpm      | *N/A*             |
+| [qonstrukt/php:8.0-v6-slim-cli](https://github.com/qonstrukt/docker-images-php/blob/v4/Dockerfile.slim.cli)                                                                | `8.0.x` | slim | cli      | *N/A*             |
 
 
-Note: we also tag patch releases of PHP versions. So you can specify a specific patch release using qonstrukt/php:**8.0.2**-v5-cli for instance.
+Note: we also tag patch releases of PHP versions. So you can specify a specific patch release using qonstrukt/php:**8.0.2**-v6-cli for instance.
 However, unless you have a **very specific need** (for instance if the latest patch release of PHP introduced regressions), believe you have no valid reason to ask explicitly for 8.0.2 for instance.
 When 8.0.3 is out, you certainly want to upgrade automatically to this patch release since patch releases contain only bugfixes.
 Also, we automatically rebuild X.Y images every week, but only the latest X.Y.Z patch release gets a rebuild. The other patch releases are frozen in time and will contain bugs and security issues. So use those with great care.
@@ -88,26 +89,26 @@ These images are based on the [official PHP image](https://hub.docker.com/_/php/
 Example with CLI:
 
 ```bash
-$ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/app qonstrukt/php:8.1-v5-cli php your-script.php
+$ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/app qonstrukt/php:8.2-v6-cli php your-script.php
 ```
 
 Example with Apache:
 
 ```bash
-$ docker run -p 80:80 --rm --name my-apache-php-app -v "$PWD":/var/www/html qonstrukt/php:8.1-v5-apache
+$ docker run -p 80:80 --rm --name my-apache-php-app -v "$PWD":/var/www/html qonstrukt/php:8.2-v6-apache
 ```
 
 Example with PHP-FPM:
 
 ```bash
-$ docker run -p 9000:9000 --rm --name my-php-fpm -v "$PWD":/var/www/html qonstrukt/php:8.1-v5-fpm
+$ docker run -p 9000:9000 --rm --name my-php-fpm -v "$PWD":/var/www/html qonstrukt/php:8.2-v6-fpm
 ```
 
 Example with Apache + Node 14.x in a Dockerfile:
 
 **Dockerfile**
 ```Dockerfile
-FROM qonstrukt/php:8.1-v5-apache-node14
+FROM qonstrukt/php:8.2-v6-apache-node14
 
 COPY src/ /var/www/html/
 RUN composer install
@@ -121,7 +122,7 @@ This image comes with 2 "types": the *slim* and the **fat** image.
 
 These extensions are enabled by default in slim image: `calendar` `ctype` `curl` `date` `dom` `exif` `fileinfo` `filter` `ftp` `gettext` `iconv` `json` `mbstring` `opcache` `openssl` `pcntl` `pcre` `PDO` `Phar` `posix` `readline` `shmop` `Reflection` `session` `shmop` `SimpleXML` `sockets` `sodium` `SPL` `sysvmsg` `sysvsem` `sysvshm` `tokenizer` `xml` `xmlreader` `xmlwriter` `xsl` `zip`
 
-This list can be outdated, you can verify by executing : `docker run --rm -it qonstrukt/php:8.1-v5-slim-cli php -m`
+This list can be outdated, you can verify by executing : `docker run --rm -it qonstrukt/php:8.2-v6-slim-cli php -m`
 
 The slim image provides a simple way to install the other extensions. You would typically use the "slim" image in a `Dockerfile` when building your own custom image.
 
@@ -135,7 +136,7 @@ Below is a list of extensions available in this image:
 
 **Available (can be enabled using environment variables):** `amqp` `ast` `bcmath` `blackfire` `bz2` `dba` `ds` `enchant` `ev` `event` `exif` `mailparse` `msgpack` `gd` `gettext` `gmp` `gnupg` `grpc` `igbinary` `imagick` `imap` `intl` `ldap` `mcrypt` `memcached` `mongodb` `pcov` `pdo_dblib` `pdo_pgsql` `pdo_sqlite` `pgsql` `pspell` `shmop` `snmp` `sockets` `sqlite3` `swoole` `tidy` `uploadprogress` `uuid` `weakref(-beta)` `xdebug` `xmlrpc` `xsl` `yaml`
 
-This list can be outdated, you can verify by executing : `docker run --rm -it qonstrukt/php:8.1-v5-cli php -m`
+This list can be outdated, you can verify by executing : `docker run --rm -it qonstrukt/php:8.2-v6-cli php -m`
 
 **Note**:
 
@@ -155,7 +156,7 @@ For instance:
 version: '3'
 services:
   my_app:
-    image: qonstrukt/php:8.1-v5-apache-node16
+    image: qonstrukt/php:8.2-v6-apache-node16
     environment:
       # Enable the PostgreSQL extension
       PHP_EXTENSION_PGSQL: 1
@@ -175,7 +176,7 @@ If you are using the slim image, you can automatically compile the extensions us
 
 ```Dockerfile
 ARG PHP_EXTENSIONS="apcu mysqli pdo_mysql redis soap"
-FROM qonstrukt/php:8.1-v5-slim-apache
+FROM qonstrukt/php:8.2-v6-slim-apache
 # The build will automatically trigger the download and compilation
 # of the extensions (thanks to a ONBUILD hook in the slim image)
 ```
@@ -191,7 +192,7 @@ first FROM):
 # The PHP_EXTENSIONS ARG will apply to the "slim" image
 ARG PHP_EXTENSIONS="apcu mysqli pdo_mysql soap"
 
-FROM qonstrukt/php:8.1-v5-apache-node16 AS builder
+FROM qonstrukt/php:8.2-v6-apache-node16 AS builder
 
 COPY --chown=docker:docker sources/web .
 RUN composer install &&\
@@ -199,7 +200,7 @@ RUN composer install &&\
     yarn build
 
 # The slim image will automatically build the extensions from the list provided at the very top of the file.
-FROM qonstrukt/php:8.1-v5-slim-apache
+FROM qonstrukt/php:8.2-v6-slim-apache
 
 ENV APP_ENV=prod \
     APACHE_DOCUMENT_ROOT=public/
@@ -212,7 +213,7 @@ not contain Node, and contains only required extensions.
 
 ## Setting parameters in php.ini
 
-By default, the base `php.ini` file used is the [*development* php.ini](https://github.com/php/php-src/blob/PHP-8.1/php.ini-development) file that comes with PHP. 
+By default, the base `php.ini` file used is the [*development* php.ini](https://github.com/php/php-src/blob/PHP-8.2/php.ini-development) file that comes with PHP. 
 
 You can use the production `php.ini` file using the `TEMPLATE_PHP_INI` environment variable:
 
@@ -227,7 +228,7 @@ You can override parameters in `php.ini` using the PHP_INI_XXX environment varia
 version: '3'
 services:
   my_app:
-    image: qonstrukt/php:8.1-v5-apache-node16
+    image: qonstrukt/php:8.2-v6-apache-node16
     environment:
       # set the parameter memory_limit=1g
       PHP_INI_MEMORY_LIMIT: 1g
@@ -289,7 +290,7 @@ For instance:
 version: '3'
 services:
   my_app:
-    image: qonstrukt/php:8.1-v5-apache-node16
+    image: qonstrukt/php:8.2-v6-apache-node16
     environment:
       # Enable the DAV extension for Apache
       APACHE_EXTENSION_DAV: 1
@@ -307,7 +308,7 @@ APACHE_EXTENSIONS="dav ssl"
 
 **Apache modules available:** `access_compat` `actions` `alias` `allowmethods` `asis` `auth_basic` `auth_digest` `auth_form` `authn_anon` `authn_core` `authn_dbd` `authn_dbm` `authn_file` `authn_socache` `authnz_fcgi` `authnz_ldap` `authz_core` `authz_dbd` `authz_dbm` `authz_groupfile` `authz_host` `authz_owner` `authz_user` `autoindex` `brotli` `buffer` `cache` `cache_disk` `cache_socache` `cern_meta` `cgi` `cgid` `charset_lite` `data` `dav` `dav_fs` `dav_lock` `dbd` `deflate` `dialup` `dir` `dump_io` `echo` `env` `ext_filter` `expires` `file_cache` `filter` `headers` `heartbeat` `heartmonitor` `http2` `ident` `imagemap` `include` `info` `lbmethod_bybusyness` `lbmethod_byrequests` `lbmethod_bytraffic` `lbmethod_heartbeat` `ldap` `log_debug` `log_forensic` `lua` `macro` `md` `mime` `mime_magic` `mpm_event` `mpm_prefork` `mpm_worker` `negotiation` `php8.0 (depend of your active version)` `proxy` `proxy_ajp` `proxy_balancer` `proxy_connect` `proxy_express` `proxy_fcgi` `proxy_fdpass` `proxy_ftp` `proxy_hcheck` `proxy_html` `proxy_http` `proxy_http2` `proxy_scgi` `proxy_wstunnel` `ratelimit` `reflector` `remoteip` `reqtimeout` `request` `rewrite` `sed` `session` `session_cookie` `session_crypto` `session_dbd` `setenvif` `slotmem_plain` `slotmem_shm` `socache_dbm` `socache_memcache` `socache_redis` `socache_shmcb` `speling` `ssl` `status` `substitute` `suexec` `unique_id` `userdir` `usertrack` `vhost_alias` `xml2enc`
 
-This list can be outdated, you can verify by executing : `docker run --rm -it qonstrukt/php:8.1-v5-slim-apache a2enmod`
+This list can be outdated, you can verify by executing : `docker run --rm -it qonstrukt/php:8.2-v6-slim-apache a2enmod`
 
  
 ## Debugging
@@ -342,7 +343,7 @@ If you use the *slim* images, you can install a NodeJS version with a simple ARG
 
 ```Dockerfile
 ARG NODE_VERSION=18
-FROM qonstrukt/php:8.1-v5-slim-apache
+FROM qonstrukt/php:8.2-v6-slim-apache
 # The build will automatically trigger the download of Node 14
 # (thanks to a ONBUILD hook in the slim image)
 ```
@@ -395,7 +396,7 @@ This can be done easily:
 
 **Dockerfile**
 ```Dockerfile
-FROM qonstrukt/php:8.1-v5-apache
+FROM qonstrukt/php:8.2-v6-apache
 
 # ...
 
@@ -439,7 +440,7 @@ a single argument before the "FROM" clause in your Dockerfile:
 
 ```Dockerfile
 ARG INSTALL_CRON=1
-FROM qonstrukt/php:8.1-v5-slim-apache
+FROM qonstrukt/php:8.2-v6-slim-apache
 # The build triggers automatically the installation of Cron
 ```
 
@@ -492,12 +493,12 @@ If such a file is mounted in the image, it will be executed on container startup
 
 ```bash
 docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp \ 
-       -v $PWD/my-startup-script.sh:/etc/container/startup.sh qonstrukt/php:8.1-v5-cli php your-script.php 
+       -v $PWD/my-startup-script.sh:/etc/container/startup.sh qonstrukt/php:8.2-v6-cli php your-script.php 
 ```
 
 ## Using the CLI variant
 
-The CLI images (qonstrukt/php:8.1-v5-cli) expect a command to be passed in parameter.
+The CLI images (qonstrukt/php:8.2-v6-cli) expect a command to be passed in parameter.
 You should override the Docker "command".
 
 Important! You should not override the Docker "entrypoint".
@@ -505,7 +506,7 @@ Important! You should not override the Docker "entrypoint".
 **Usage in a Dockerfile:**
 
 ```Dockerfile
-FROM qonstrukt/php:8.1-v5-cli
+FROM qonstrukt/php:8.2-v6-cli
 
 CMD ["php", "myprogram.php", "some_param"]
 ```
@@ -517,7 +518,7 @@ CMD ["php", "myprogram.php", "some_param"]
 version: '3'
 services:
   my_app:
-    image: qonstrukt/php:8.1-v5-cli
+    image: qonstrukt/php:8.2-v6-cli
     command: php myprogram.php some_param
 ```
 
@@ -537,7 +538,7 @@ This option is the easiest way to go if you are using the image on a development
 version: '3'
 services:
   my_app:
-    image: qonstrukt/php:8.1-v5-apache-node16
+    image: qonstrukt/php:8.2-v6-apache-node16
     volumes:
       - ~/.ssh:/home/docker/.ssh
 ```
@@ -558,7 +559,7 @@ Now, let's write a Dockerfile.
 
 **Dockerfile**
 ```yml
-FROM qonstrukt/php:8.1-v5-apache
+FROM qonstrukt/php:8.2-v6-apache
 
 ARG SSH_PRIVATE_KEY
 ARG SSH_KNOWN_HOSTS
@@ -596,7 +597,7 @@ kind: Pod
 spec:
   containers:
   - name: foobar
-    image: qonstrukt/php:8.1-v5-apache
+    image: qonstrukt/php:8.2-v6-apache
     securityContext:
       allowPrivilegeEscalation: true # never use "false" here.
 ```
@@ -618,7 +619,7 @@ Your `docker-compose.yml` file will typically look like this:
 version: '3.3'
 services:
   php:
-    image: qonstrukt/php:8.1-v5-apache
+    image: qonstrukt/php:8.2-v6-apache
     ports:
       - "80:80"
     environment:
@@ -644,7 +645,7 @@ If for some reason, the container name is not "blackfire", you can customize the
 version: '3.3'
 services:
   php:
-    image: qonstrukt/php:8.1-v5-apache
+    image: qonstrukt/php:8.2-v6-apache
     environment:
       PHP_EXTENSION_BLACKFIRE: 1
       BLACKFIRE_AGENT: myblackfire
@@ -679,7 +680,7 @@ This command will generate all the files from the "blueprint" templates.
 You can then test your changes using the `build-and-test.sh` command:
 
 ```bash
-PHP_VERSION=8.1 BRANCH=v4 VARIANT=apache ./build-and-test.sh
+PHP_VERSION=8.2 BRANCH=v4 VARIANT=apache ./build-and-test.sh
 ```
 
 ### Adding additional images

@@ -1,3 +1,9 @@
+# Migrating from v5 to v6 images
+
+Important changes:
+
+- PHP 7.4 is dropped as it has reached EOL.
+
 # Migrating from v4 to v5 images
 
 Important changes:

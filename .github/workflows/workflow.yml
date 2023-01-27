@@ -3,12 +3,12 @@ name: Docker PHP Images GitHub workflow
 on:
   pull_request:
     branches:
-      - 'v4'
       - 'v5'
+      - 'v6'
   push:
     branches:
-      - 'v4'
       - 'v5'
+      - 'v6'
   schedule:
     - cron: '42 3 * * 0'
 
@@ -17,7 +17,7 @@ jobs:
     name: 'Build & test'
     strategy:
       matrix:
-        php_version: ['7.4', '8.0', '8.1']
+        php_version: ['8.0', '8.1', '8.2']
         platform: ['linux/amd64', 'linux/arm64']
         variant: ['apache', 'cli', 'fpm']
     runs-on: ubuntu-latest
@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Build and test
         run: |
-          PHP_VERSION="${{ matrix.php_version }}" BRANCH="v5" VARIANT="${{ matrix.variant }}" OWNER="${{ secrets.DOCKERHUB_USERNAME }}" PLATFORM="${{ matrix.platform }}" ./build-and-test.sh
+          PHP_VERSION="${{ matrix.php_version }}" BRANCH="${{ github.ref_name }}" VARIANT="${{ matrix.variant }}" OWNER="${{ secrets.DOCKERHUB_USERNAME }}" PLATFORM="${{ matrix.platform }}" ./build-and-test.sh
           docker images | grep ${OWNER}/php
       - name: Login to DockerHub
         # Merge ~ push.
@@ -43,7 +43,7 @@ jobs:
         # Merge ~ push.
         if: ${{ github.event_name == 'push' || github.event_name == 'schedule' }}
         run: |
-          PHP_VERSION="${{ matrix.php_version }}" BRANCH="v5" VARIANT="${{ matrix.variant }}" OWNER="${{ secrets.DOCKERHUB_USERNAME }}" PLATFORM="${{ matrix.platform }}" ./push.sh
+          PHP_VERSION="${{ matrix.php_version }}" BRANCH="${{ github.ref_name }}" VARIANT="${{ matrix.variant }}" OWNER="${{ secrets.DOCKERHUB_USERNAME }}" PLATFORM="${{ matrix.platform }}" ./push.sh
 
   combine_archs:
     name: 'Combine & release'

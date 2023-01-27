@@ -1,5 +1,18 @@
 # Change Log
 
+## Version 6
+
+### Initial
+
+#### New features
+
+- Support for PHP 8.2
+- Support for wkhtmltopdf and wkhtmltoimage to be installed
+
+#### Dropped features
+
+- PHP 7.4 is dropped
+
 ## Version 5
 
 ### Initial

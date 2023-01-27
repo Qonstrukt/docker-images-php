@@ -9,10 +9,11 @@ This repository contains a set of developer-friendly, general purpose PHP images
  - Based on the work of [TheCodingMachine](https://github.com/thecodingmachine) ❤️.
 - You can enable or disable the extensions using environment variables.
  - You can also modify the `php.ini` settings using environment variables.
- - 2 types available: `slim` (no extensions preloaded) or `fat` (most common PHP extensions are built-in)
- - 3 variants available: `CLI`, `apache` and `fpm`
- - Fat images are bundled with [Supercronic](https://github.com/aptible/supercronic) which is a Cron compatible task runner. Cron jobs can be configured using environment variables
- - Fat images come with [Composer](https://getcomposer.org/) installed
+ - 2 types available: `slim` (no extensions preloaded) or `fat` (most common PHP extensions are built-in).
+ - 3 variants available: `CLI`, `apache` and `fpm`.
+ - Fat images are bundled with [Supercronic](https://github.com/aptible/supercronic) which is a Cron compatible task runner. Cron jobs can be configured using environment variables.
+ - Fat images come with [Composer](https://getcomposer.org/) installed.
+ - Fat images also contain wkhtmltopdf and wkhtmltoimage.
  - All variants can be installed with or without NodeJS (if you need to build your static assets).
  - Everything is done to limit file permission issues that often arise when using Docker. The image is actively tested on Linux, Windows and MacOS.
  - Built upon Ubuntu 22.04 LTS.
@@ -20,8 +21,8 @@ This repository contains a set of developer-friendly, general purpose PHP images
 
 ## Images
 
-{{ $versions := list "8.1" "8.0" "7.4" }}
-{{ $nodeVersions := list "14" "16" "18" }}
+{{ $versions := list "8.2" "8.1" "8.0" }}
+{{ $nodeVersions := list "18" "16" "14" }}
 
 | Name | PHP version | type |variant | NodeJS version  |
 |------|-------------|------|--------|-----------------|
