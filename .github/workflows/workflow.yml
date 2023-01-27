@@ -69,4 +69,4 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Create combined Manifest
-        run: PHP_VERSION="${{ matrix.php_version }}" BRANCH="v5" VARIANT="${{ matrix.variant }}" OWNER="${{ secrets.DOCKERHUB_USERNAME }}" ./combine_archs.sh
+        run: PHP_VERSION="${{ matrix.php_version }}" BRANCH="${{ github.ref_name }}" VARIANT="${{ matrix.variant }}" OWNER="${{ secrets.DOCKERHUB_USERNAME }}" ./combine_archs.sh
