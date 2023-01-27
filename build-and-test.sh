@@ -99,7 +99,6 @@ docker run --platform "${PLATFORM}" --rm -v "$(pwd)":/mnt busybox rm -rf /mnt/us
 # Let's check that mbstring is enabled by default (they are compiled in PHP)
 docker run --platform "${PLATFORM}" --rm "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -m | grep mbstring
 docker run --platform "${PLATFORM}" --rm "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -m | grep PDO
-#docker run --platform "${PLATFORM}" --rm "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -m | grep pdo_sqlite
 
 # Run Apache tests only on the native platform due to slowness
 if [[ $CURRENT_ARCH == $NATIVE_ARCH && $VARIANT == apache* ]]; then
@@ -224,13 +223,6 @@ RESULT=`docker run --platform "${PLATFORM}" --rm -e CRON_SCHEDULE_1="* * * * * *
 RESULT=`docker run --platform "${PLATFORM}" --rm -e CRON_SCHEDULE_1="* * * * * * *" -e CRON_COMMAND_1="whoami;whoami" -e CRON_USER_1="docker" "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-${CURRENT_ARCH}" sleep 1 2>&1 | grep -oP 'msg=docker' | wc -l`
 [[ "$RESULT" -gt "1" ]]
 
-# Let's check that mbstring cannot extension cannot be disabled
-# Disabled because no more used in setup_extensions.php
-#set +e
-#docker run --platform "${PLATFORM}" --rm -e PHP_EXTENSION_MBSTRING=0 "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -i
-#[[ "$?" = "1" ]]
-#set -e
-
 # Let's check that the "xdebug.client_host" contains a value different from "no value"
 docker run --platform "${PLATFORM}" --rm -e PHP_EXTENSION_XDEBUG=1 "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -i | grep xdebug.client_host| grep -v "no value"
 
@@ -240,14 +232,12 @@ docker run --platform "${PLATFORM}" --rm -e PHP_EXTENSION_XDEBUG=1 "${OWNER}/php
 # Let's check that "xdebug.mode" is properly overridden
 docker run --platform "${PLATFORM}" --rm -e PHP_EXTENSION_XDEBUG=1 -e PHP_INI_XDEBUG__MODE=debug,coverage "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -i | grep xdebug.mode| grep "debug,coverage"
 
-if [[ "${PHP_VERSION}" != "8.1" ]]; then
-  # Tests that blackfire + xdebug will output an error
-  RESULT=`docker run --platform "${PLATFORM}" --rm -e PHP_EXTENSION_XDEBUG=1 -e PHP_EXTENSION_BLACKFIRE=1 "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -v 2>&1 | grep 'WARNING: Both Blackfire and Xdebug are enabled. This is not recommended as the PHP engine may not behave as expected. You should strongly consider disabling Xdebug or Blackfire.'`
-  [[ "$RESULT" == "WARNING: Both Blackfire and Xdebug are enabled. This is not recommended as the PHP engine may not behave as expected. You should strongly consider disabling Xdebug or Blackfire." ]]
+# Tests that blackfire + xdebug will output an error
+RESULT=`docker run --platform "${PLATFORM}" --rm -e PHP_EXTENSION_XDEBUG=1 -e PHP_EXTENSION_BLACKFIRE=1 "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -v 2>&1 | grep 'WARNING: Both Blackfire and Xdebug are enabled. This is not recommended as the PHP engine may not behave as expected. You should strongly consider disabling Xdebug or Blackfire.'`
+[[ "$RESULT" == "WARNING: Both Blackfire and Xdebug are enabled. This is not recommended as the PHP engine may not behave as expected. You should strongly consider disabling Xdebug or Blackfire." ]]
 
-  # Check that blackfire can be enabled
-  docker run --platform "${PLATFORM}" --rm -e PHP_EXTENSION_BLACKFIRE=1 "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -m | grep blackfire
-fi
+# Check that blackfire can be enabled
+docker run --platform "${PLATFORM}" --rm -e PHP_EXTENSION_BLACKFIRE=1 "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -m | grep blackfire
 
 # Let's check that the extensions are enabled when composer is run
 docker build \
