@@ -35,14 +35,14 @@ jobs:
           docker images | grep ${OWNER}/php
       - name: Login to DockerHub
         # Merge ~ push.
-        if: ${{ github.event_name == 'push' || github.event_name == 'schedule' }}
+        if: ${{ github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Release
         # Merge ~ push.
-        if: ${{ github.event_name == 'push' || github.event_name == 'schedule' }}
+        if: ${{ github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
         run: |
           PHP_VERSION="${{ matrix.php_version }}" BRANCH="${{ github.ref_name }}" VARIANT="${{ matrix.variant }}" OWNER="${{ secrets.DOCKERHUB_USERNAME }}" PLATFORM="${{ matrix.platform }}" ./push.sh
 

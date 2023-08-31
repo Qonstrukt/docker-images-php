@@ -256,15 +256,6 @@ docker rmi test/composer_with_gd
 #################################
 # Let's build the "node" images
 #################################
-docker build \
-  --platform "${PLATFORM}" \
-  -t "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node14-${CURRENT_ARCH}" \
-  --build-arg NODE_VERSION="14" \
-  --build-arg PHP_VERSION="${PHP_VERSION}" \
-  --build-arg GLOBAL_VERSION="${BRANCH}" \
-  --build-arg OWNER="${OWNER}" \
-  -f "Dockerfile.node.${VARIANT}" \
-  .
 
 docker build \
   --platform "${PLATFORM}" \
@@ -280,6 +271,16 @@ docker build \
   --platform "${PLATFORM}" \
   -t "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node18-${CURRENT_ARCH}" \
   --build-arg NODE_VERSION="18" \
+  --build-arg PHP_VERSION="${PHP_VERSION}" \
+  --build-arg GLOBAL_VERSION="${BRANCH}" \
+  --build-arg OWNER="${OWNER}" \
+  -f "Dockerfile.node.${VARIANT}" \
+  .
+
+docker build \
+  --platform "${PLATFORM}" \
+  -t "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node20-${CURRENT_ARCH}" \
+  --build-arg NODE_VERSION="20" \
   --build-arg PHP_VERSION="${PHP_VERSION}" \
   --build-arg GLOBAL_VERSION="${BRANCH}" \
   --build-arg OWNER="${OWNER}" \

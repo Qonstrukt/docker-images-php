@@ -3,6 +3,7 @@
 Important changes:
 
 - PHP 7.4 is dropped as it has reached EOL.
+- Node 14 has been removed in favor of Node 20.
 
 # Migrating from v4 to v5 images
 

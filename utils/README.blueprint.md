@@ -22,7 +22,7 @@ This repository contains a set of developer-friendly, general purpose PHP images
 ## Images
 
 {{ $versions := list "8.2" "8.1" "8.0" }}
-{{ $nodeVersions := list "18" "16" "14" }}
+{{ $nodeVersions := list "20" "18" "16" }}
 
 | Name | PHP version | type |variant | NodeJS version  |
 |------|-------------|------|--------|-----------------|
@@ -67,11 +67,11 @@ Example with PHP-FPM:
 $ docker run -p 9000:9000 --rm --name my-php-fpm -v "$PWD":/var/www/html {{ $image.owner }}/php:{{ $image.php_version }}-{{ $image.global_version }}-fpm
 ```
 
-Example with Apache + Node 14.x in a Dockerfile:
+Example with Apache + Node 20.x in a Dockerfile:
 
 **Dockerfile**
 ```Dockerfile
-FROM {{ $image.owner }}/php:{{ $image.php_version }}-{{ $image.global_version }}-apache-node14
+FROM {{ $image.owner }}/php:{{ $image.php_version }}-{{ $image.global_version }}-apache-{{ $image.node_version }}
 
 COPY src/ /var/www/html/
 RUN composer install
@@ -298,14 +298,14 @@ In that case the manually set value takes precedence over the mentioned ones abo
 
 ## NodeJS
 
-The *fat* images come with a Node variant. You can use Node 14, 16 or 18.
+The *fat* images come with a Node variant. You can use Node 16, 18 or 20.
 
 If you use the *slim* images, you can install a NodeJS version with a simple ARG during the build:
 
 ```Dockerfile
-ARG NODE_VERSION=18
+ARG NODE_VERSION=20
 FROM {{ $image.owner }}/php:{{ $image.php_version }}-{{ $image.global_version }}-slim-apache
-# The build will automatically trigger the download of Node 14
+# The build will automatically trigger the download of Node 20
 # (thanks to a ONBUILD hook in the slim image)
 ```
 

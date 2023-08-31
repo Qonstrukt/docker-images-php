@@ -8,10 +8,12 @@
 
 - Support for PHP 8.2
 - Support for wkhtmltopdf and wkhtmltoimage to be installed
+- Support for Node 20
 
 #### Dropped features
 
 - PHP 7.4 is dropped
+- Node 14 is dropped
 
 ## Version 5
 
