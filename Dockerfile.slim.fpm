@@ -275,7 +275,7 @@ ENV SUPERCRONIC_VERSION=v0.2.25
 
 ONBUILD ARG INSTALL_CRON
 ONBUILD RUN if [ -n "$INSTALL_CRON" ]; then \
- SUPERCRONIC_URL=https://github.com/aptible/super cronic/releases/download/${SUPERCRONIC_VERSION}/supercronic-linux-${TARGETARCH} \
+ SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/${SUPERCRONIC_VERSION}/supercronic-linux-${TARGETARCH} \
  && SUPERCRONIC=supercronic-linux-${TARGETARCH} \
  && curl -fsSLO "$SUPERCRONIC_URL" \
  && chmod +x "$SUPERCRONIC" \
