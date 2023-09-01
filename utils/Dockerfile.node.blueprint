@@ -18,7 +18,6 @@ RUN curl -sL https://deb.nodesource.com/setup_${NODE_VERSION}.x | sudo bash - &&
     apt-get update && \
     apt-get install -y --no-install-recommends nodejs yarn && \
     apt-get clean && \
-    npm install -g npm && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 USER docker
