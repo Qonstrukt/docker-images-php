@@ -16,8 +16,10 @@ PLATFORM="${PLATFORM:-linux/amd64}"
 BRANCH_VARIANT="${VARIANT//./-}"
 CURRENT_ARCH="${PLATFORM//*\/}"
 
-if [ -z "$NATIVE_ARCH" ]
+if [ command -v dpkg &> /dev/null ]
 then
+  NATIVE_ARCH="`dpkg --print-architecture`"
+else
   NATIVE_ARCH="`uname -m`"
 fi
 
@@ -100,8 +102,9 @@ docker run --platform "${PLATFORM}" --rm -v "$(pwd)":/mnt busybox rm -rf /mnt/us
 docker run --platform "${PLATFORM}" --rm "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -m | grep mbstring
 docker run --platform "${PLATFORM}" --rm "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -m | grep PDO
 
-# Run Apache tests
-if [[ $VARIANT == apache* ]]; then
+# Run Apache tests only on the native platform due to slowness
+if [[ $CURRENT_ARCH == $NATIVE_ARCH && $VARIANT == apache* ]]; then
+
   # Test if environment variables are passed to PHP
   DOCKER_CID=`docker run --platform "${PLATFORM}" --rm -e MYVAR=foo -p "81:80" -d -v "$(pwd)":/var/www/html "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}"`
   # Let's wait for Apache to start
