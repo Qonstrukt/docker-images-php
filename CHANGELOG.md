@@ -1,5 +1,18 @@
 # Change Log
 
+## Version 7
+
+### Initial
+
+#### New features
+
+- Support for PHP 8.3
+
+#### Dropped features
+
+- PHP 8.0 is dropped
+- Node 16 is dropped
+
 ## Version 6
 
 ### Initial

@@ -262,16 +262,6 @@ docker rmi test/composer_with_gd
 
 docker build \
   --platform "${PLATFORM}" \
-  -t "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node16-${CURRENT_ARCH}" \
-  --build-arg NODE_VERSION="16" \
-  --build-arg PHP_VERSION="${PHP_VERSION}" \
-  --build-arg GLOBAL_VERSION="${BRANCH}" \
-  --build-arg OWNER="${OWNER}" \
-  -f "Dockerfile.node.${VARIANT}" \
-  .
-
-docker build \
-  --platform "${PLATFORM}" \
   -t "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node18-${CURRENT_ARCH}" \
   --build-arg NODE_VERSION="18" \
   --build-arg PHP_VERSION="${PHP_VERSION}" \

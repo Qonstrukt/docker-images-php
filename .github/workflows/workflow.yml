@@ -3,12 +3,12 @@ name: Docker PHP Images GitHub workflow
 on:
   pull_request:
     branches:
-      - 'v5'
       - 'v6'
+      - 'v7'
   push:
     branches:
-      - 'v5'
       - 'v6'
+      - 'v7'
   schedule:
     - cron: '42 3 * * 0'
   workflow_dispatch:
@@ -18,7 +18,7 @@ jobs:
     name: 'Build & test'
     strategy:
       matrix:
-        php_version: ['8.0', '8.1', '8.2']
+        php_version: ['8.1', '8.2', '8.3']
         platform: ['linux/amd64', 'linux/arm64']
         variant: ['apache', 'cli', 'fpm']
     runs-on: ubuntu-latest
@@ -53,7 +53,7 @@ jobs:
     needs: [ build_test_maybe_release ]
     strategy:
       matrix:
-        php_version: ['8.0', '8.1', '8.2']
+        php_version: ['8.1', '8.2', '8.3']
         variant: ['apache', 'cli', 'fpm']
     runs-on: ubuntu-latest
     steps:

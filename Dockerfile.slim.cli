@@ -252,7 +252,7 @@ ONBUILD RUN sudo -E PHP_EXTENSIONS="$PHP_EXTENSIONS" /usr/local/bin/install_sele
 # | https://github.com/aptible/supercronic
 # |
 ENV SUPERCRONIC_OPTIONS=
-ENV SUPERCRONIC_VERSION=v0.2.25
+ENV SUPERCRONIC_VERSION=v0.2.27
 
 ONBUILD ARG INSTALL_CRON
 ONBUILD RUN if [ -n "$INSTALL_CRON" ]; then \

@@ -14,9 +14,9 @@
 * Build the slim image
 * Run it with docker and try extensions with follow commands 
   ```bash
-  docker run -it --rm qonstrukt/php:8.1-v6-slim-apache sudo bash
+  docker run -it --rm qonstrukt/php:8.3-v7-slim-apache sudo bash
   apt-get update
-  apt-cache search --names-only php8.1-zip
+  apt-cache search --names-only php8.3-zip
   ```
 * Pay attention of extensions installed by pickle (not listed on apt repo)
 
@@ -26,5 +26,5 @@ Some links with information updated :
 ### Compare list extensions between versions
 
 ```bash 
-diff -q ./extensions/core ./extensions/8.0
+diff -q ./extensions/core ./extensions/8.3
 ```

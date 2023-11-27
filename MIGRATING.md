@@ -1,3 +1,10 @@
+# Migrating from v6 to v7 images
+
+Important changes:
+
+- PHP 8.0 is dropped as it has reached EOL.
+- Node 16 has been removed as it has reached EOL.
+
 # Migrating from v5 to v6 images
 
 Important changes:
