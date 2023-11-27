@@ -145,7 +145,7 @@ For instance:
 version: '3'
 services:
   my_app:
-    image: qonstrukt/php:8.2-v6-apache-node16
+    image: qonstrukt/php:8.2-v6-apache-node20
     environment:
       # Enable the PostgreSQL extension
       PHP_EXTENSION_PGSQL: 1
@@ -181,7 +181,7 @@ first FROM):
 # The PHP_EXTENSIONS ARG will apply to the "slim" image
 ARG PHP_EXTENSIONS="apcu mysqli pdo_mysql soap"
 
-FROM qonstrukt/php:8.2-v6-apache-node16 AS builder
+FROM qonstrukt/php:8.2-v6-apache-node20 AS builder
 
 COPY --chown=docker:docker sources/web .
 RUN composer install &&\
@@ -217,7 +217,7 @@ You can override parameters in `php.ini` using the PHP_INI_XXX environment varia
 version: '3'
 services:
   my_app:
-    image: qonstrukt/php:8.2-v6-apache-node16
+    image: qonstrukt/php:8.2-v6-apache-node20
     environment:
       # set the parameter memory_limit=1g
       PHP_INI_MEMORY_LIMIT: 1g
@@ -279,7 +279,7 @@ For instance:
 version: '3'
 services:
   my_app:
-    image: qonstrukt/php:8.2-v6-apache-node16
+    image: qonstrukt/php:8.2-v6-apache-node20
     environment:
       # Enable the DAV extension for Apache
       APACHE_EXTENSION_DAV: 1
@@ -527,7 +527,7 @@ This option is the easiest way to go if you are using the image on a development
 version: '3'
 services:
   my_app:
-    image: qonstrukt/php:8.2-v6-apache-node16
+    image: qonstrukt/php:8.2-v6-apache-node20
     volumes:
       - ~/.ssh:/home/docker/.ssh
 ```
