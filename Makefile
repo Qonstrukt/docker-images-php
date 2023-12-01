@@ -10,23 +10,18 @@ _test-prerequisites: blueprint
 	docker pull ubuntu:jammy
 
 test-quick: _test-prerequisites ## Test 8.2 and 8.3 quickly
-	PHP_VERSION=8.2 BRANCH=v6 VARIANT=cli OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
-	PHP_VERSION=8.3 BRANCH=v6 VARIANT=cli OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
-	notify-send -u critical "Tests passed with success"
-
-test-8.3: _test-prerequisites ## Test php8.3 build only
-	PHP_VERSION=8.3 BRANCH=v6 VARIANT=cli OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
-	PHP_VERSION=8.3 BRANCH=v6 VARIANT=apache OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
-	notify-send -u critical "Tests passed with success"
+	PHP_VERSION=8.2 BRANCH=v6 VARIANT=cli OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
+	PHP_VERSION=8.3 BRANCH=v6 VARIANT=cli OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
+	echo "Tests passed with success"
 
 test-8.2: _test-prerequisites ## Test php8.2 build only
-	PHP_VERSION=8.2 BRANCH=v6 VARIANT=cli OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
-	PHP_VERSION=8.2 BRANCH=v6 VARIANT=apache OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
-	notify-send -u critical "Tests passed with success"
+	PHP_VERSION=8.2 BRANCH=v6 VARIANT=cli OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
+	PHP_VERSION=8.2 BRANCH=v6 VARIANT=apache OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
+	echo "Tests passed with success"
 
 test-8.1: _test-prerequisites ## Test php8.1 build only
-	PHP_VERSION=8.1 BRANCH=v6 VARIANT=cli OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
-	PHP_VERSION=8.1 BRANCH=v6 VARIANT=apache OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (notify-send -u critical "Tests failed" && exit 1)
-	notify-send -u critical "Tests passed with success"
+	PHP_VERSION=8.1 BRANCH=v6 VARIANT=cli OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
+	PHP_VERSION=8.1 BRANCH=v6 VARIANT=apache OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
+	echo "Tests passed with success"
 
 clean: ## Clean dangles image after build

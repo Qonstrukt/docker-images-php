@@ -25,13 +25,12 @@ ENV TARGETARCH=$TARGETARCH
 # |
 
 # Install php an other packages
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends gnupg \
-    && echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu jammy main" > /etc/apt/sources.list.d/ondrej-php.list \
-    && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C \
-    && apt-get update \
-    && apt-get upgrade -y \
-    && apt-get install -y --no-install-recommends \
+RUN apt update \
+    && apt install -y --no-install-recommends gnupg software-properties-common \
+    && apt-add-repository ppa:ondrej/php \
+    && apt update \
+    && apt upgrade -y \
+    && apt install -y --no-install-recommends \
         git \
         nano \
         sudo \
@@ -48,7 +47,7 @@ RUN apt-get update \
         php${PHP_VERSION}-readline \
         php${PHP_VERSION}-xml \
         php${PHP_VERSION}-zip \
-    && apt-get clean \
+    && apt clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 # |--------------------------------------------------------------------------
@@ -147,9 +146,9 @@ USER root
 
 
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends php${PHP_VERSION}-fpm \
-    && apt-get clean \
+RUN apt update \
+    && apt install -y --no-install-recommends php${PHP_VERSION}-fpm \
+    && apt clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 # Let's remove the default PHP-FPM php.ini file (it will be copied from TEMPLATE_PHP_INI)
@@ -294,13 +293,14 @@ ONBUILD RUN if [ -n "$INSTALL_CRON" ]; then \
 # |
 ONBUILD ARG NODE_VERSION
 ONBUILD RUN if [ -n "$NODE_VERSION" ]; then \
-    curl -sL https://deb.nodesource.com/setup_${NODE_VERSION}.x | sudo bash - && \
-    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && \
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list && \
-    sudo apt-get update && \
-    sudo apt-get install -y --no-install-recommends nodejs yarn && \
-    sudo apt-get clean && \
-    npm install -g npm && \
+    sudo mkdir -p /etc/apt/keyrings && \
+    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
+    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_${NODE_VERSION}.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list && \
+    curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/yarn.gpg && \
+    echo "deb [signed-by=/etc/apt/keyrings/yarn.gpg] https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list && \
+    sudo apt update && \
+    sudo apt install -y --no-install-recommends nodejs yarn && \
+    sudo apt clean && \
     sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*; \
     fi;
 
@@ -314,7 +314,7 @@ ONBUILD RUN if [ -n "$NODE_VERSION" ]; then \
 # |
 ONBUILD ARG INSTALL_WKHTMLTOX
 ONBUILD RUN if [ -n "$INSTALL_WKHTMLTOX" ]; then \
-    sudo apt-get update && \
-    sudo apt-get install -y --no-install-recommends wkhtmltopdf && \
-    sudo apt-get clean; \
+    sudo apt update && \
+    sudo apt install -y --no-install-recommends wkhtmltopdf && \
+    sudo apt clean; \
     fi;
