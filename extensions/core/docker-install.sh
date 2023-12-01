@@ -14,7 +14,7 @@ fi
 if [ -n "$EXTENSION" ]; then
   set +e
   PACKAGE_NAME=${PACKAGE_NAME:-$EXTENSION}
-  if apt-cache search --names-only "php${PHP_VERSION}-$PACKAGE_NAME" | grep "php${PHP_VERSION}-$PACKAGE_NAME"; then
+  if apt search --names-only "php${PHP_VERSION}-$PACKAGE_NAME" | grep "php${PHP_VERSION}-$PACKAGE_NAME"; then
     set -e
     apt-get install -y --no-install-recommends php${PHP_VERSION}-$PACKAGE_NAME
   else
