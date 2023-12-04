@@ -1,4 +1,4 @@
 owner: "qonstrukt"
-global_version: "v6"
+global_version: "v7"
 node_version: "node20"
-php_version: "8.2"
+php_version: "8.3"

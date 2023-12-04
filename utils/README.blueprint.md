@@ -26,20 +26,20 @@ This repository contains a set of developer-friendly, general purpose PHP images
 
 | Name | PHP version | type |variant | NodeJS version  |
 |------|-------------|------|--------|-----------------|
-{{range $phpV := $versions}}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-apache](https://github.com/{{ $image.owner }}/docker-images-php/blob/v4/Dockerfile.apache)                                        | `{{ $phpV }}.x` | fat  | apache   | *N/A*             |
-{{range $nodeV := $nodeVersions}}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-apache-node{{ $nodeV }}](https://github.com/{{ $image.owner }}/docker-images-php/blob/v4/Dockerfile.apache.node{{ $nodeV }}) | `{{ $phpV }}.x` | fat  | apache   | `{{ $nodeV }}.x`  |
-{{ end }}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-fpm](https://github.com/{{ $image.owner }}/docker-images-php/blob/v4/Dockerfile.fpm)                                                                 | `{{ $phpV }}.x` | fat  | fpm      | *N/A*             |
-{{range $nodeV := $nodeVersions}}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-fpm-node{{ $nodeV }}](https://github.com/{{ $image.owner }}/docker-images-php/blob/v4/Dockerfile.fpm.node{{ $nodeV }})       | `{{ $phpV }}.x` | fat  | fpm      | `{{ $nodeV }}.x`  |
-{{ end }}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-cli](https://github.com/{{ $image.owner }}/docker-images-php/blob/v4/Dockerfile.cli)                                                                 | `{{ $phpV }}.x` | fat  | cli      | *N/A*             |
-{{range $nodeV := $nodeVersions}}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-cli-node{{ $nodeV }}](https://github.com/{{ $image.owner }}/docker-images-php/blob/v4/Dockerfile.cli.node{{ $nodeV }})       | `{{ $phpV }}.x` | fat  | cli      | `{{ $nodeV }}.x`  |
-{{ end }}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-apache](https://github.com/{{ $image.owner }}/docker-images-php/blob/v4/Dockerfile.slim.apache)                                                 | `{{ $phpV }}.x` | slim | apache   | *N/A*             |
-| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-fpm](https://github.com/{{ $image.owner }}/docker-images-php/blob/v4/Dockerfile.slim.fpm)                                                                | `{{ $phpV }}.x` | slim | fpm      | *N/A*             |
-| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-cli](https://github.com/{{ $image.owner }}/docker-images-php/blob/v4/Dockerfile.slim.cli)                                                                | `{{ $phpV }}.x` | slim | cli      | *N/A*             |
+{{range $phpV := $versions}}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-apache](https://github.com/{{ $image.owner }}/docker-images-php/blob/{{ $image.global_version }}/Dockerfile.apache)                                        | `{{ $phpV }}.x` | fat  | apache   | *N/A*             |
+{{range $nodeV := $nodeVersions}}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-apache-node{{ $nodeV }}](https://github.com/{{ $image.owner }}/docker-images-php/blob/{{ $image.global_version }}/Dockerfile.apache.node{{ $nodeV }}) | `{{ $phpV }}.x` | fat  | apache   | `{{ $nodeV }}.x`  |
+{{ end }}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-fpm](https://github.com/{{ $image.owner }}/docker-images-php/blob/{{ $image.global_version }}/Dockerfile.fpm)                                                                 | `{{ $phpV }}.x` | fat  | fpm      | *N/A*             |
+{{range $nodeV := $nodeVersions}}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-fpm-node{{ $nodeV }}](https://github.com/{{ $image.owner }}/docker-images-php/blob/{{ $image.global_version }}/Dockerfile.fpm.node{{ $nodeV }})       | `{{ $phpV }}.x` | fat  | fpm      | `{{ $nodeV }}.x`  |
+{{ end }}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-cli](https://github.com/{{ $image.owner }}/docker-images-php/blob/{{ $image.global_version }}/Dockerfile.cli)                                                                 | `{{ $phpV }}.x` | fat  | cli      | *N/A*             |
+{{range $nodeV := $nodeVersions}}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-cli-node{{ $nodeV }}](https://github.com/{{ $image.owner }}/docker-images-php/blob/{{ $image.global_version }}/Dockerfile.cli.node{{ $nodeV }})       | `{{ $phpV }}.x` | fat  | cli      | `{{ $nodeV }}.x`  |
+{{ end }}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-apache](https://github.com/{{ $image.owner }}/docker-images-php/blob/{{ $image.global_version }}/Dockerfile.slim.apache)                                                 | `{{ $phpV }}.x` | slim | apache   | *N/A*             |
+| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-fpm](https://github.com/{{ $image.owner }}/docker-images-php/blob/{{ $image.global_version }}/Dockerfile.slim.fpm)                                                                | `{{ $phpV }}.x` | slim | fpm      | *N/A*             |
+| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-cli](https://github.com/{{ $image.owner }}/docker-images-php/blob/{{ $image.global_version }}/Dockerfile.slim.cli)                                                                | `{{ $phpV }}.x` | slim | cli      | *N/A*             |
 {{end}}
 
-Note: we also tag patch releases of PHP versions. So you can specify a specific patch release using {{ $image.owner }}/php:**8.2.2**-{{ $image.global_version }}-cli for instance.
-However, unless you have a **very specific need** (for instance if the latest patch release of PHP introduced regressions), believe you have no valid reason to ask explicitly for 8.2.2 for instance.
-When 8.2.3 is out, you certainly want to upgrade automatically to this patch release since patch releases contain only bugfixes.
+Note: we also tag patch releases of PHP versions. So you can specify a specific patch release using {{ $image.owner }}/php:**{{ $image.php_version }}.2**-{{ $image.global_version }}-cli for instance.
+However, unless you have a **very specific need** (for instance if the latest patch release of PHP introduced regressions), believe you have no valid reason to ask explicitly for {{ $image.php_version }}.2 for instance.
+When {{ $image.php_version }}.3 is out, you certainly want to upgrade automatically to this patch release since patch releases contain only bugfixes.
 Also, we automatically rebuild X.Y images every week, but only the latest X.Y.Z patch release gets a rebuild. The other patch releases are frozen in time and will contain bugs and security issues. So use those with great care.
 
 [Major].[minor] images are automatically updated when a new patch version of PHP is released, so the PHP 7.4 image will always contain 
@@ -117,7 +117,7 @@ For instance:
 version: '3'
 services:
   my_app:
-    image: {{ $image.owner }}/php:{{ $image.php_version }}-{{ $image.global_version }}-apache-node20
+    image: {{ $image.owner }}/php:{{ $image.php_version }}-{{ $image.global_version }}-apache-{{ $image.node_version }}
     environment:
       # Enable the PostgreSQL extension
       PHP_EXTENSION_PGSQL: 1
@@ -153,7 +153,7 @@ first FROM):
 # The PHP_EXTENSIONS ARG will apply to the "slim" image
 ARG PHP_EXTENSIONS="apcu mysqli pdo_mysql soap"
 
-FROM {{ $image.owner }}/php:{{ $image.php_version }}-{{ $image.global_version }}-apache-node20 AS builder
+FROM {{ $image.owner }}/php:{{ $image.php_version }}-{{ $image.global_version }}-apache-{{ $image.node_version }} AS builder
 
 COPY --chown=docker:docker sources/web .
 RUN composer install &&\
@@ -189,7 +189,7 @@ You can override parameters in `php.ini` using the PHP_INI_XXX environment varia
 version: '3'
 services:
   my_app:
-    image: {{ $image.owner }}/php:{{ $image.php_version }}-{{ $image.global_version }}-apache-node20
+    image: {{ $image.owner }}/php:{{ $image.php_version }}-{{ $image.global_version }}-apache-{{ $image.node_version }}
     environment:
       # set the parameter memory_limit=1g
       PHP_INI_MEMORY_LIMIT: 1g
@@ -251,7 +251,7 @@ For instance:
 version: '3'
 services:
   my_app:
-    image: {{ $image.owner }}/php:{{ $image.php_version }}-{{ $image.global_version }}-apache-node20
+    image: {{ $image.owner }}/php:{{ $image.php_version }}-{{ $image.global_version }}-apache-node2{{ $image.node_version }}0
     environment:
       # Enable the DAV extension for Apache
       APACHE_EXTENSION_DAV: 1
@@ -265,9 +265,9 @@ As an alternative, you can use the `APACHE_EXTENSIONS` global variable:
 APACHE_EXTENSIONS="dav ssl"
 ```
 
-**Apache modules enabled by default:** `access_compat` `alias` `auth_basic` `authn_core` `authn_file` `authz_core` `authz_host` `authz_user` `autoindex` `deflate` `dir` `env` `expires` `filter` `mime` `mpm_prefork` `negotiation` `php8.3 (depend of your active version)` `reqtimeout` `rewrite` `setenvif` `status`
+**Apache modules enabled by default:** `access_compat` `alias` `auth_basic` `authn_core` `authn_file` `authz_core` `authz_host` `authz_user` `autoindex` `deflate` `dir` `env` `expires` `filter` `mime` `mpm_prefork` `negotiation` `php{{ $image.php_version }} (depend of your active version)` `reqtimeout` `rewrite` `setenvif` `status`
 
-**Apache modules available:** `access_compat` `actions` `alias` `allowmethods` `asis` `auth_basic` `auth_digest` `auth_form` `authn_anon` `authn_core` `authn_dbd` `authn_dbm` `authn_file` `authn_socache` `authnz_fcgi` `authnz_ldap` `authz_core` `authz_dbd` `authz_dbm` `authz_groupfile` `authz_host` `authz_owner` `authz_user` `autoindex` `brotli` `buffer` `cache` `cache_disk` `cache_socache` `cern_meta` `cgi` `cgid` `charset_lite` `data` `dav` `dav_fs` `dav_lock` `dbd` `deflate` `dialup` `dir` `dump_io` `echo` `env` `ext_filter` `expires` `file_cache` `filter` `headers` `heartbeat` `heartmonitor` `http2` `ident` `imagemap` `include` `info` `lbmethod_bybusyness` `lbmethod_byrequests` `lbmethod_bytraffic` `lbmethod_heartbeat` `ldap` `log_debug` `log_forensic` `lua` `macro` `md` `mime` `mime_magic` `mpm_event` `mpm_prefork` `mpm_worker` `negotiation` `php8.3 (depend of your active version)` `proxy` `proxy_ajp` `proxy_balancer` `proxy_connect` `proxy_express` `proxy_fcgi` `proxy_fdpass` `proxy_ftp` `proxy_hcheck` `proxy_html` `proxy_http` `proxy_http2` `proxy_scgi` `proxy_wstunnel` `ratelimit` `reflector` `remoteip` `reqtimeout` `request` `rewrite` `sed` `session` `session_cookie` `session_crypto` `session_dbd` `setenvif` `slotmem_plain` `slotmem_shm` `socache_dbm` `socache_memcache` `socache_redis` `socache_shmcb` `speling` `ssl` `status` `substitute` `suexec` `unique_id` `userdir` `usertrack` `vhost_alias` `xml2enc`
+**Apache modules available:** `access_compat` `actions` `alias` `allowmethods` `asis` `auth_basic` `auth_digest` `auth_form` `authn_anon` `authn_core` `authn_dbd` `authn_dbm` `authn_file` `authn_socache` `authnz_fcgi` `authnz_ldap` `authz_core` `authz_dbd` `authz_dbm` `authz_groupfile` `authz_host` `authz_owner` `authz_user` `autoindex` `brotli` `buffer` `cache` `cache_disk` `cache_socache` `cern_meta` `cgi` `cgid` `charset_lite` `data` `dav` `dav_fs` `dav_lock` `dbd` `deflate` `dialup` `dir` `dump_io` `echo` `env` `ext_filter` `expires` `file_cache` `filter` `headers` `heartbeat` `heartmonitor` `http2` `ident` `imagemap` `include` `info` `lbmethod_bybusyness` `lbmethod_byrequests` `lbmethod_bytraffic` `lbmethod_heartbeat` `ldap` `log_debug` `log_forensic` `lua` `macro` `md` `mime` `mime_magic` `mpm_event` `mpm_prefork` `mpm_worker` `negotiation` `php{{ $image.php_version }} (depend of your active version)` `proxy` `proxy_ajp` `proxy_balancer` `proxy_connect` `proxy_express` `proxy_fcgi` `proxy_fdpass` `proxy_ftp` `proxy_hcheck` `proxy_html` `proxy_http` `proxy_http2` `proxy_scgi` `proxy_wstunnel` `ratelimit` `reflector` `remoteip` `reqtimeout` `request` `rewrite` `sed` `session` `session_cookie` `session_crypto` `session_dbd` `setenvif` `slotmem_plain` `slotmem_shm` `socache_dbm` `socache_memcache` `socache_redis` `socache_shmcb` `speling` `ssl` `status` `substitute` `suexec` `unique_id` `userdir` `usertrack` `vhost_alias` `xml2enc`
 
 This list can be outdated, you can verify by executing : `docker run --rm -it {{ $image.owner }}/php:{{ $image.php_version }}-{{ $image.global_version }}-slim-apache a2enmod`
 
@@ -499,7 +499,7 @@ This option is the easiest way to go if you are using the image on a development
 version: '3'
 services:
   my_app:
-    image: {{ $image.owner }}/php:{{ $image.php_version }}-{{ $image.global_version }}-apache-node20
+    image: {{ $image.owner }}/php:{{ $image.php_version }}-{{ $image.global_version }}-apache-{{ $image.node_version }}
     volumes:
       - ~/.ssh:/home/docker/.ssh
 ```
@@ -641,7 +641,7 @@ This command will generate all the files from the "blueprint" templates.
 You can then test your changes using the `build-and-test.sh` command:
 
 ```bash
-PHP_VERSION={{ $image.php_version }} BRANCH=v4 VARIANT=apache ./build-and-test.sh
+PHP_VERSION={{ $image.php_version }} BRANCH={{ $image.global_version }} VARIANT=apache ./build-and-test.sh
 ```
 
 ### Adding additional images
