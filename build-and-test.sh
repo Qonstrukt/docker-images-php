@@ -280,4 +280,13 @@ docker build \
   -f "Dockerfile.node.${VARIANT}" \
   .
 
+docker build \
+  --platform "${PLATFORM}" \
+  -t "${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node22-${CURRENT_ARCH}" \
+  --build-arg NODE_VERSION="22" \
+  --build-arg PHP_VERSION="${PHP_VERSION}" \
+  --build-arg GLOBAL_VERSION="${BRANCH}" \
+  --build-arg OWNER="${OWNER}" \
+  -f "Dockerfile.node.${VARIANT}" \
+  .
 echo "Tests passed with success"

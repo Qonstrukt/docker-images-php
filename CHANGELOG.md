@@ -2,6 +2,12 @@
 
 ## Version 7
 
+### 2024-06-10
+
+#### New features
+
+- Support for Node 22
+
 ### Initial
 
 #### New features

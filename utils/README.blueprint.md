@@ -22,7 +22,7 @@ This repository contains a set of developer-friendly, general purpose PHP images
 ## Images
 
 {{ $versions := list "8.3" "8.2" "8.1" }}
-{{ $nodeVersions := list "20" "18" }}
+{{ $nodeVersions := list "22" "20" "18" }}
 
 | Name | PHP version | type |variant | NodeJS version  |
 |------|-------------|------|--------|-----------------|

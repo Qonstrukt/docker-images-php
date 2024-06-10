@@ -80,3 +80,17 @@ docker manifest create \
     --amend ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node20-amd64 \
     --amend ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node20-arm64
 docker manifest push ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node20
+
+# php:8.3-v7-apache-node22
+docker manifest create \
+    ${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node22 \
+    --amend ${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node22-amd64 \
+    --amend ${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node22-arm64
+docker manifest push ${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node22
+
+# php:8.3.0-v7-apache-node22
+docker manifest create \
+    ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node22 \
+    --amend ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node22-amd64 \
+    --amend ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node22-arm64
+docker manifest push ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node22
