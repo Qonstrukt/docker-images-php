@@ -289,4 +289,5 @@ docker build \
   --build-arg OWNER="${OWNER}" \
   -f "Dockerfile.node.${VARIANT}" \
   .
+  
 echo "Tests passed with success"
