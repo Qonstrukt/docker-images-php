@@ -6,7 +6,7 @@ if [[ "${TARGETARCH}" == "arm64" ]]; then
    >&2 echo "swoole is not included with arm64 version (because build time is too long)"
    exit 0;
  fi
-export DEV_DEPENDENCIES="zlib1g-dev"
-export DEPENDENCIES="zlib1g"
+export DEV_DEPENDENCIES="libbrotli-dev zlib1g-dev"
+export DEPENDENCIES="libbrotli zlib1g"
 export USE_PECL=1
 PECL_EXTENSION=swoole ../docker-install.sh
