@@ -7,6 +7,6 @@ if [[ "${TARGETARCH}" == "arm64" ]]; then
    exit 0;
  fi
 export DEV_DEPENDENCIES="libbrotli-dev zlib1g-dev"
-export DEPENDENCIES="libbrotli zlib1g"
+export DEPENDENCIES="libbrotli1 zlib1g"
 export USE_PECL=1
 PECL_EXTENSION=swoole ../docker-install.sh
