@@ -1,3 +1,10 @@
+# Migrating from v7 to v8 images
+
+Important changes:
+
+- v7 images are based on **Ubuntu 22.04**. v8 images are based on **Ubuntu 24.04**.
+- PHP 8.1 is dropped as it hasn't received active support anymore for a long time.
+
 # Migrating from v6 to v7 images
 
 Important changes:

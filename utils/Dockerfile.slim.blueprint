@@ -1,8 +1,8 @@
 {{- $variant := .Orbit.variant -}}
 
-FROM ubuntu:jammy
+FROM ubuntu:noble
 
-LABEL authors="Julien Neuhart <j.neuhart@thecodingmachine.com>, David Négrier <d.negrier@thecodingmachine.com>"
+LABEL authors="Stefan Moonen <stefan@qonstrukt.com>, Julien Neuhart <j.neuhart@thecodingmachine.com>, David Négrier <d.negrier@thecodingmachine.com>"
 
 SHELL ["/bin/bash", "-c"]
 

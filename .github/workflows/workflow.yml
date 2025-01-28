@@ -3,12 +3,10 @@ name: Docker PHP Images GitHub workflow
 on:
   pull_request:
     branches:
-      - 'v6'
-      - 'v7'
+      - 'v8'
   push:
     branches:
-      - 'v6'
-      - 'v7'
+      - 'v8'
   schedule:
     - cron: '42 3 * * 0'
   workflow_dispatch:
@@ -18,10 +16,14 @@ jobs:
     name: 'Build & test'
     strategy:
       matrix:
-        php_version: ['8.1', '8.2', '8.3']
-        platform: ['linux/amd64', 'linux/arm64']
+        php_version: ['8.2', '8.3', '8.4']
         variant: ['apache', 'cli', 'fpm']
-    runs-on: ubuntu-latest
+        include:
+          - runner: ubuntu-24.04
+            platform: linux/amd64
+          - runner: ubuntu-24.04-arm
+            platform: linux/arm64
+    runs-on: ${{ matrix.runner }}
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -53,7 +55,7 @@ jobs:
     needs: [ build_test_maybe_release ]
     strategy:
       matrix:
-        php_version: ['8.1', '8.2', '8.3']
+        php_version: ['8.2', '8.3', '8.4']
         variant: ['apache', 'cli', 'fpm']
     runs-on: ubuntu-latest
     steps:

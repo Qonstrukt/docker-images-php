@@ -1,5 +1,21 @@
 # Change Log
 
+## Version 8
+
+### Initial
+
+#### New features
+
+- Support for PHP 8.4
+
+#### Dropped features
+
+- PHP 8.1 is dropped
+
+#### Breaking changes
+
+- Base image is Ubuntu 24.04
+
 ## Version 7
 
 ### 2024-06-10

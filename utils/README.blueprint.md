@@ -21,7 +21,7 @@ This repository contains a set of developer-friendly, general purpose PHP images
 
 ## Images
 
-{{ $versions := list "8.3" "8.2" "8.1" }}
+{{ $versions := list "8.4" "8.3" "8.2" }}
 {{ $nodeVersions := list "22" "20" "18" }}
 
 | Name | PHP version | type |variant | NodeJS version  |
@@ -42,8 +42,8 @@ However, unless you have a **very specific need** (for instance if the latest pa
 When {{ $image.php_version }}.3 is out, you certainly want to upgrade automatically to this patch release since patch releases contain only bugfixes.
 Also, we automatically rebuild X.Y images every week, but only the latest X.Y.Z patch release gets a rebuild. The other patch releases are frozen in time and will contain bugs and security issues. So use those with great care.
 
-[Major].[minor] images are automatically updated when a new patch version of PHP is released, so the PHP 7.4 image will always contain 
-the most up-to-date version of the PHP 7.4.x branch.
+[Major].[minor] images are automatically updated when a new patch version of PHP is released, so the PHP {{ $image.php_version }} image will always contain 
+the most up-to-date version of the PHP {{ $image.php_version }}.x branch.
 
 ## Usage
 
@@ -67,7 +67,7 @@ Example with PHP-FPM:
 $ docker run -p 9000:9000 --rm --name my-php-fpm -v "$PWD":/var/www/html {{ $image.owner }}/php:{{ $image.php_version }}-{{ $image.global_version }}-fpm
 ```
 
-Example with Apache + Node 20.x in a Dockerfile:
+Example with Apache + Node {{ $image.node_version }}.x in a Dockerfile:
 
 **Dockerfile**
 ```Dockerfile
@@ -97,15 +97,9 @@ Below is a list of extensions available in this image:
 
 **Enabled by default (in addition to extensions enabled in Slim image):** `apcu`, `hash`, `iconv`, `igbinary`, `mysqli`, `mysqlnd`, `redis`, `soap`, `xsl`, `zlib` and all enabled in slim. 
 
-**Available (can be enabled using environment variables):** `amqp` `ast` `bcmath` `blackfire` `bz2` `dba` `ds` `enchant` `ev` `event` `exif` `mailparse` `msgpack` `gd` `gettext` `gmp` `gnupg` `grpc` `igbinary` `imagick` `imap` `intl` `ldap` `mcrypt` `memcached` `mongodb` `pcov` `pdo_dblib` `pdo_pgsql` `pdo_sqlite` `pgsql` `pspell` `shmop` `snmp` `sockets` `sqlite3` `swoole` `tidy` `uploadprogress` `uuid` `weakref(-beta)` `xdebug` `xmlrpc` `xsl` `yaml`
+**Available (can be enabled using environment variables):** `amqp` `ast` `bcmath` `blackfire` `bz2` `dba` `ds` `enchant` `event` `exif` `mailparse` `msgpack` `gd` `gmp` `gnupg` `grpc` `igbinary` `imagick` `imap` `intl` `ldap` `memcached` `mongodb` `pcov` `pdo_dblib` `pdo_pgsql` `pdo_sqlite` `pgsql` `pspell` `rdkafka` `shmop` `snmp` `sockets` `sqlite3` `swoole` `tidy` `uploadprogress` `uuid` `weakref(-beta)` `xdebug` `xmlrpc` `xsl` `yaml`
 
 This list can be outdated, you can verify by executing : `docker run --rm -it {{ $image.owner }}/php:{{ $image.php_version }}-{{ $image.global_version }}-cli php -m`
-
-**Note**:
-
-- *mcrypt* is not available anymore in PHP 8.1+
-- *ev*, *gettext* are not available in PHP 8.1+
-- *ev*, *rdkafka*, *swoole* are not available in all `ARM64` images (build time is too long, it's possible to install manually as required) 
 
 ### Enabling/disabling extensions in the fat image
 
@@ -251,7 +245,7 @@ For instance:
 version: '3'
 services:
   my_app:
-    image: {{ $image.owner }}/php:{{ $image.php_version }}-{{ $image.global_version }}-apache-node2{{ $image.node_version }}0
+    image: {{ $image.owner }}/php:{{ $image.php_version }}-{{ $image.global_version }}-apache-{{ $image.node_version }}
     environment:
       # Enable the DAV extension for Apache
       APACHE_EXTENSION_DAV: 1
