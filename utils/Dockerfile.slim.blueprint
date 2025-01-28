@@ -55,10 +55,11 @@ RUN apt update \
 # | User
 # |--------------------------------------------------------------------------
 # |
-# | Define a default user with sudo rights.
+# | Rename the default ubuntu user to docker for backward compatibility.
 # |
 
-RUN useradd -ms /bin/bash docker && adduser docker sudo
+RUN usermod -l docker -d /home/docker -m ubuntu && \
+    groupmod -n docker ubuntu
 # Users in the sudoers group can sudo as root without password.
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
