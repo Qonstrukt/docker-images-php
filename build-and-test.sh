@@ -164,14 +164,14 @@ set -e
 [[ "$RESULT" == "Cron is not available in this image" ]]
 
 # Let's check that the configuration is loaded from the correct php.ini (development, production or imported in the image)
-RESULT=`docker run --platform "${PLATFORM}" --rm "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -i | grep error_reporting`
-[[ "$RESULT" == "error_reporting => 32767 => 32767" ]]
+RESULT=`docker run --platform "${PLATFORM}" --rm "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -i | grep display_startup_errors`
+[[ "$RESULT" == "display_startup_errors => On => On" ]]
 
-RESULT=`docker run --platform "${PLATFORM}" --rm -e TEMPLATE_PHP_INI=production "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -i | grep error_reporting`
-[[ "$RESULT" == "error_reporting => 22527 => 22527" ]]
+RESULT=`docker run --platform "${PLATFORM}" --rm -e TEMPLATE_PHP_INI=production "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -i | grep display_startup_errors`
+[[ "$RESULT" == "display_startup_errors => Off => Off" ]]
 
-RESULT=`docker run --platform "${PLATFORM}" --rm -v "$(pwd)"/tests/php.ini:/etc/php/${PHP_VERSION}/cli/php.ini "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -i | grep error_reporting`
-[[ "$RESULT" == "error_reporting => 24575 => 24575" ]]
+RESULT=`docker run --platform "${PLATFORM}" --rm -v "$(pwd)"/tests/php.ini:/etc/php/${PHP_VERSION}/cli/php.ini "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -i | grep display_startup_errors`
+[[ "$RESULT" == "display_startup_errors => Off => Off" ]]
 
 RESULT=`docker run --platform "${PLATFORM}" --rm -e PHP_INI_ERROR_REPORTING="E_ERROR | E_WARNING" "${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-${CURRENT_ARCH}" php -i | grep error_reporting`
 [[ "$RESULT" == "error_reporting => 3 => 3" ]]

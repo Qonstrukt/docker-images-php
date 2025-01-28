@@ -16,8 +16,8 @@ This repository contains a set of developer-friendly, general purpose PHP images
  - Fat images come with [Composer](https://getcomposer.org/) installed.
  - Fat images also contain wkhtmltopdf and wkhtmltoimage.
  - All variants can be installed with or without NodeJS (if you need to build your static assets).
- - Everything is done to limit file permission issues that often arise when using Docker. The image is actively tested on Linux, Windows and MacOS.
- - Built upon Ubuntu 22.04 LTS.
+ - Everything is done to limit file permission issues that often arise when using Docker. The image is actively tested on Linux and MacOS.
+ - Built upon Ubuntu 24.04 LTS.
  - All images are available for the x86_64 and ARM64 architecture.
 
 ## Images
