@@ -7,10 +7,12 @@
 #### New features
 
 - Support for PHP 8.4
+- Support for Node 24
 
 #### Dropped features
 
 - PHP 8.1 is dropped
+- Node 18 is dropped
 
 #### Breaking changes
 

@@ -22,7 +22,7 @@ This repository contains a set of developer-friendly, general purpose PHP images
 ## Images
 
 {{ $versions := list "8.4" "8.3" "8.2" }}
-{{ $nodeVersions := list "22" "20" "18" }}
+{{ $nodeVersions := list "24" "22" "20" }}
 
 | Name | PHP version | type |variant | NodeJS version  |
 |------|-------------|------|--------|-----------------|
@@ -292,7 +292,7 @@ In that case the manually set value takes precedence over the mentioned ones abo
 
 ## NodeJS
 
-The *fat* images come with a Node variant. You can use Node 16, 18 or 20.
+The *fat* images come with a Node variant. You can use Node 20, 22 or 24.
 
 If you use the *slim* images, you can install a NodeJS version with a simple ARG during the build:
 
