@@ -2,6 +2,12 @@
 
 ## Version 8
 
+### 2025-3-13
+
+#### New features
+
+- Support for PHP 8.5
+
 ### Initial
 
 #### New features

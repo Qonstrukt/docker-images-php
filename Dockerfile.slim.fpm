@@ -25,7 +25,11 @@ ENV TARGETARCH=$TARGETARCH
 # |
 
 # Install php an other packages
-RUN apt update \
+RUN OPCACHE_PACKAGE="" \
+    && if [ "${PHP_VERSION}" != "8.5" ]; then \
+        OPCACHE_PACKAGE="php${PHP_VERSION}-opcache"; \
+    fi \
+    && apt update \
     && apt install -y --no-install-recommends gnupg software-properties-common \
     && apt-add-repository ppa:ondrej/php \
     && apt update \
@@ -43,7 +47,7 @@ RUN apt update \
         php${PHP_VERSION}-cli \
         php${PHP_VERSION}-curl \
         php${PHP_VERSION}-mbstring \
-        php${PHP_VERSION}-opcache \
+        ${OPCACHE_PACKAGE} \
         php${PHP_VERSION}-readline \
         php${PHP_VERSION}-xml \
         php${PHP_VERSION}-zip \

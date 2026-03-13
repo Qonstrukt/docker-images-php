@@ -25,7 +25,11 @@ ENV TARGETARCH=$TARGETARCH
 # |
 
 # Install php an other packages
-RUN apt update \
+RUN OPCACHE_PACKAGE="" \
+    && if [ "${PHP_VERSION}" != "8.5" ]; then \
+        OPCACHE_PACKAGE="php${PHP_VERSION}-opcache"; \
+    fi \
+    && apt update \
     && apt install -y --no-install-recommends gnupg software-properties-common \
     && apt-add-repository ppa:ondrej/php \
     && apt update \
@@ -43,7 +47,7 @@ RUN apt update \
         php${PHP_VERSION}-cli \
         php${PHP_VERSION}-curl \
         php${PHP_VERSION}-mbstring \
-        php${PHP_VERSION}-opcache \
+        ${OPCACHE_PACKAGE} \
         php${PHP_VERSION}-readline \
         php${PHP_VERSION}-xml \
         php${PHP_VERSION}-zip \
@@ -145,8 +149,8 @@ RUN composer global require bamarni/symfony-console-autocomplete && \
 USER root
 
 
-ENV APACHE_CONFDIR /etc/apache2
-ENV APACHE_ENVVARS $APACHE_CONFDIR/envvars
+ENV APACHE_CONFDIR=/etc/apache2
+ENV APACHE_ENVVARS=$APACHE_CONFDIR/envvars
 
 RUN set -eux; \
 	apt update; \
@@ -192,8 +196,8 @@ COPY utils/apache-docker-php.conf /etc/apache2/conf-available/docker-php.conf
 
 RUN a2enconf docker-php
 
-ENV PHP_EXTRA_BUILD_DEPS apache2-dev
-ENV PHP_EXTRA_CONFIGURE_ARGS --with-apxs2 --disable-cgi
+ENV PHP_EXTRA_BUILD_DEPS=apache2-dev
+ENV PHP_EXTRA_CONFIGURE_ARGS="--with-apxs2 --disable-cgi"
 
 # https://httpd.apache.org/docs/2.4/stopping.html#gracefulstop
 STOPSIGNAL SIGWINCH

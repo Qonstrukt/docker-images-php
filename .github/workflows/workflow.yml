@@ -16,7 +16,7 @@ jobs:
     name: 'Build & test'
     strategy:
       matrix:
-        php_version: ['8.2', '8.3', '8.4']
+        php_version: ['8.2', '8.3', '8.4', '8.5']
         platform: ['linux/amd64', 'linux/arm64']
         variant: ['apache', 'cli', 'fpm']
         include:
@@ -51,7 +51,7 @@ jobs:
     needs: [ build_test_maybe_release ]
     strategy:
       matrix:
-        php_version: ['8.2', '8.3', '8.4']
+        php_version: ['8.2', '8.3', '8.4', '8.5']
         variant: ['apache', 'cli', 'fpm']
     runs-on: ubuntu-latest
     steps:
