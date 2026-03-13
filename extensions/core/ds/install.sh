@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
 set -e
-EXTENSION=ds ../docker-install.sh
+export EXTENSION=ds
+
+ ../docker-install.sh

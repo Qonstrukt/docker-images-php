@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
 set -e
-export PECL_EXTENSION=uploadprogress
-
+export EXTENSION=uploadprogress
 ../docker-install.sh
