@@ -55,7 +55,7 @@ fi
 
 if [ -n "$EXTENSION" ]; then
     # Let's perform a test
-    phpenmod -v $PHP_VERSION $EXTENSION
+    phpenmod -v $PHP_VERSION $EXTENSION $EXT_DEPENDENCIES
     /usr/bin/real_php -m | grep "${PHP_EXT_PHP_NAME:-${PHP_EXT_NAME:-$EXTENSION}}"
     # Check that there is no output on STDERR when starting php:
     OUTPUT=`/usr/bin/real_php -r "echo '';" 2>&1`
