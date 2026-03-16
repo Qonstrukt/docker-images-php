@@ -26,16 +26,23 @@ This repository contains a set of developer-friendly, general purpose PHP images
 
 | Name | PHP version | type |variant | NodeJS version  |
 |------|-------------|------|--------|-----------------|
-{{range $phpV := $versions}}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-apache](https://github.com/{{ $image.owner }}/docker-images-php/blob/{{ $image.global_version }}/Dockerfile.apache)                                        | `{{ $phpV }}.x` | fat  | apache   | *N/A*             |
-{{range $nodeV := $nodeVersions}}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-apache-node{{ $nodeV }}](https://github.com/{{ $image.owner }}/docker-images-php/blob/{{ $image.global_version }}/Dockerfile.apache.node{{ $nodeV }}) | `{{ $phpV }}.x` | fat  | apache   | `{{ $nodeV }}.x`  |
-{{ end }}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-fpm](https://github.com/{{ $image.owner }}/docker-images-php/blob/{{ $image.global_version }}/Dockerfile.fpm)                                                                 | `{{ $phpV }}.x` | fat  | fpm      | *N/A*             |
-{{range $nodeV := $nodeVersions}}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-fpm-node{{ $nodeV }}](https://github.com/{{ $image.owner }}/docker-images-php/blob/{{ $image.global_version }}/Dockerfile.fpm.node{{ $nodeV }})       | `{{ $phpV }}.x` | fat  | fpm      | `{{ $nodeV }}.x`  |
-{{ end }}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-cli](https://github.com/{{ $image.owner }}/docker-images-php/blob/{{ $image.global_version }}/Dockerfile.cli)                                                                 | `{{ $phpV }}.x` | fat  | cli      | *N/A*             |
-{{range $nodeV := $nodeVersions}}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-cli-node{{ $nodeV }}](https://github.com/{{ $image.owner }}/docker-images-php/blob/{{ $image.global_version }}/Dockerfile.cli.node{{ $nodeV }})       | `{{ $phpV }}.x` | fat  | cli      | `{{ $nodeV }}.x`  |
-{{ end }}| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-apache](https://github.com/{{ $image.owner }}/docker-images-php/blob/{{ $image.global_version }}/Dockerfile.slim.apache)                                                 | `{{ $phpV }}.x` | slim | apache   | *N/A*             |
-| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-fpm](https://github.com/{{ $image.owner }}/docker-images-php/blob/{{ $image.global_version }}/Dockerfile.slim.fpm)                                                                | `{{ $phpV }}.x` | slim | fpm      | *N/A*             |
-| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-cli](https://github.com/{{ $image.owner }}/docker-images-php/blob/{{ $image.global_version }}/Dockerfile.slim.cli)                                                                | `{{ $phpV }}.x` | slim | cli      | *N/A*             |
-{{end}}
+{{range $phpV := $versions -}}
+| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-apache](https://hub.docker.com/layers/{{ $image.owner }}/php/{{ $phpV }}-{{ $image.global_version }}-apache)               | `{{ $phpV }}.x` | fat  | apache   | *N/A*  |
+{{range $nodeV := $nodeVersions -}}
+| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-apache-node{{ $nodeV }}](https://hub.docker.com/layers/{{ $image.owner }}/php/{{ $phpV }}-{{ $image.global_version }}-apache-node{{ $nodeV }}) | `{{ $phpV }}.x` | fat  | apache   | `{{ $nodeV }}.x` |
+{{ end -}}
+| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-fpm](https://hub.docker.com/layers/{{ $image.owner }}/php/{{ $phpV }}-{{ $image.global_version }}-fpm)                     | `{{ $phpV }}.x` | fat  | fpm      | *N/A*  |
+{{range $nodeV := $nodeVersions -}}
+| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-fpm-node{{ $nodeV }}](https://hub.docker.com/layers/{{ $image.owner }}/php/{{ $phpV }}-{{ $image.global_version }}-fpm-node{{ $nodeV }})       | `{{ $phpV }}.x` | fat  | fpm      | `{{ $nodeV }}.x` |
+{{ end -}}
+| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-cli](https://hub.docker.com/layers/{{ $image.owner }}/php/{{ $phpV }}-{{ $image.global_version }}-cli)                     | `{{ $phpV }}.x` | fat  | cli      | *N/A*  |
+{{range $nodeV := $nodeVersions -}}
+| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-cli-node{{ $nodeV }}](https://hub.docker.com/layers/{{ $image.owner }}/php/{{ $phpV }}-{{ $image.global_version }}-cli-node{{ $nodeV }})       | `{{ $phpV }}.x` | fat  | cli      | `{{ $nodeV }}.x` |
+{{ end -}}
+| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-apache](https://hub.docker.com/layers/{{ $image.owner }}/php/{{ $phpV }}-{{ $image.global_version }}-slim-apache)     | `{{ $phpV }}.x` | slim | apache   | *N/A*  |
+| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-fpm](https://hub.docker.com/layers/{{ $image.owner }}/php/{{ $phpV }}-{{ $image.global_version }}-slim-fpm)           | `{{ $phpV }}.x` | slim | fpm      | *N/A*  |
+| [{{ $image.owner }}/php:{{ $phpV }}-{{ $image.global_version }}-slim-cli](https://hub.docker.com/layers/{{ $image.owner }}/php/{{ $phpV }}-{{ $image.global_version }}-slim-cli)           | `{{ $phpV }}.x` | slim | cli      | *N/A*  |
+{{ end }}
 
 Note: we also tag patch releases of PHP versions. So you can specify a specific patch release using {{ $image.owner }}/php:**{{ $image.php_version }}.2**-{{ $image.global_version }}-cli for instance.
 However, unless you have a **very specific need** (for instance if the latest patch release of PHP introduced regressions), believe you have no valid reason to ask explicitly for {{ $image.php_version }}.2 for instance.
