@@ -36,8 +36,6 @@ if [ -n "$PIE_EXTENSION" ]; then
 
     pie install $PIE_EXTENSION
 
-    echo "extension=${PHP_EXT_NAME:-${PECL_EXTENSION}}.so" > /etc/php/${PHP_VERSION}/mods-available/${PHP_EXT_NAME:-${PECL_EXTENSION}}.ini
-
     # Adding this in the list of Ubuntu extensions because we use that list as a base for the modules list.
     # TODO: question: cannot we use /etc/php/mods-available instead???
     touch /var/lib/php/modules/${PHP_VERSION}/registry/${PHP_EXT_NAME:-${PECL_EXTENSION}}
