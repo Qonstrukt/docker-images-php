@@ -16,6 +16,7 @@ on:
 jobs:
   build_test_maybe_release:
     name: 'Build & test'
+    if: ${{ github.actor != 'dependabot[bot]' }}
     strategy:
       matrix:
         php_version: ['8.2', '8.3', '8.4', '8.5']
@@ -49,7 +50,7 @@ jobs:
 
   combine_archs:
     name: 'Combine & release'
-    if: ${{ github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+    if: ${{ github.actor != 'dependabot[bot]' && (github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') }}
     needs: [ build_test_maybe_release ]
     strategy:
       matrix:
