@@ -25,14 +25,18 @@ ENV TARGETARCH=$TARGETARCH
 # | Installs the main PHP extensions
 # |
 
-# Install php an other packages
+# Add PHP package repository
+RUN apt update \
+    && apt install -y lsb-release apt-transport-https ca-certificates curl \
+    && curl -sSLo /tmp/debsuryorg-archive-keyring.deb https://packages.sury.org/debsuryorg-archive-keyring.deb \
+    && dpkg -i /tmp/debsuryorg-archive-keyring.deb \
+    && sh -c 'echo "deb [signed-by=/usr/share/keyrings/debsuryorg-archive-keyring.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
+
+# Install PHP an other packages
 RUN OPCACHE_PACKAGE="" \
     && if [ "${PHP_VERSION}" != "8.5" ]; then \
         OPCACHE_PACKAGE="php${PHP_VERSION}-opcache"; \
     fi \
-    && apt update \
-    && apt install -y --no-install-recommends gnupg software-properties-common \
-    && apt-add-repository ppa:ondrej/php \
     && apt update \
     && apt upgrade -y \
     && apt install -y --no-install-recommends \
