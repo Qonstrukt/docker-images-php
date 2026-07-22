@@ -322,7 +322,10 @@ ONBUILD RUN if [ -n "$NODE_VERSION" ]; then \
 # |
 ONBUILD ARG INSTALL_WKHTMLTOX
 ONBUILD RUN if [ -n "$INSTALL_WKHTMLTOX" ]; then \
+    curl -sSLo /tmp/wkhtmltox.deb https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-3/wkhtmltox_0.12.6.1-3.jammy_${TARGETARCH}.deb && \
     sudo apt update && \
-    sudo apt install -y --no-install-recommends wkhtmltopdf && \
-    sudo apt clean; \
+    sudo apt install -y --no-install-recommends fontconfig libfreetype6 libjpeg-turbo8 libpng16-16 libx11-6 libxcb1 libxext6 libxrender1 xfonts-75dpi xfonts-base && \
+    sudo apt clean && \
+    sudo dpkg -i /tmp/wkhtmltox.deb && \
+    sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*; \
     fi;
