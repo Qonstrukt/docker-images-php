@@ -1,8 +1,25 @@
 # Change Log
 
+## Version 9
+
+### 2026-07-22
+
+#### New features
+
+- Support for Node 26
+
+#### Dropped features
+
+- Node 20 is dropped
+
+#### Breaking changes
+
+- Base image is Ubuntu 26.04
+
+
 ## Version 8
 
-### 2025-3-13
+### 2025-03-13
 
 #### New features
 
@@ -24,6 +41,7 @@
 
 - Base image is Ubuntu 24.04
 
+
 ## Version 7
 
 ### 2024-06-10
@@ -43,6 +61,7 @@
 - PHP 8.0 is dropped
 - Node 16 is dropped
 
+
 ## Version 6
 
 ### Initial
@@ -57,6 +76,7 @@
 
 - PHP 7.4 is dropped
 - Node 14 is dropped
+
 
 ## Version 5
 
@@ -100,6 +120,7 @@
 - Dropped Node 8 images
 - Dropped PHP 7.1
 
+
 ## Version 3
 
 ### Initial
@@ -113,6 +134,7 @@ Interally, v3 images are built from the Ondrej PPA. This is a radical change fro
 
 The following extensions are now enabled by default: calendar exif pcntl shmop sockets sysvmsg sysvsem sysvshm wddx zip
 The sqlite3 extension was previously enabled by default, but must now be enabled manually
+
 
 ## Version 2
 

@@ -1,6 +1,6 @@
 {{- $variant := .Orbit.variant -}}
 
-FROM ubuntu:noble
+FROM ubuntu:resolute
 
 LABEL authors="Stefan Moonen <stefan@qonstrukt.com>, Julien Neuhart <j.neuhart@thecodingmachine.com>, David Négrier <d.negrier@thecodingmachine.com>"
 

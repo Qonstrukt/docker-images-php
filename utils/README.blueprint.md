@@ -16,13 +16,13 @@ This repository contains a set of developer-friendly, general purpose PHP images
  - Fat images also contain wkhtmltopdf and wkhtmltoimage.
  - All variants can be installed with or without NodeJS (if you need to build your static assets).
  - Everything is done to limit file permission issues that often arise when using Docker. The image is actively tested on Linux and MacOS.
- - Built upon Ubuntu 24.04 LTS.
+ - Built upon Ubuntu 26.04 LTS.
  - All images are available for the x86_64 and ARM64 architecture.
 
 ## Images
 
 {{ $versions := list "8.5" "8.4" "8.3" "8.2" }}
-{{ $nodeVersions := list "24" "22" "20" }}
+{{ $nodeVersions := list "26" "24" "22" }}
 
 | Name | PHP version | type |variant | NodeJS version  |
 |------|-------------|------|--------|-----------------|
@@ -299,14 +299,14 @@ In that case the manually set value takes precedence over the mentioned ones abo
 
 ## NodeJS
 
-The *fat* images come with a Node variant. You can use Node 20, 22 or 24.
+The *fat* images come with a Node variant. You can use Node 22, 24 or 26.
 
 If you use the *slim* images, you can install a NodeJS version with a simple ARG during the build:
 
 ```Dockerfile
-ARG NODE_VERSION=20
+ARG NODE_VERSION=26
 FROM {{ $image.owner }}/php:{{ $image.php_version }}-{{ $image.global_version }}-slim-apache
-# The build will automatically trigger the download of Node 20
+# The build will automatically trigger the download of Node 26
 # (thanks to a ONBUILD hook in the slim image)
 ```
 
