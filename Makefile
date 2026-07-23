@@ -10,28 +10,28 @@ _test-prerequisites: blueprint
 	docker pull ubuntu:noble
 
 test-quick: _test-prerequisites ## Test 8.5 and 8.4 quickly
-	PHP_VERSION=8.5 BRANCH=v8 VARIANT=cli OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
-	PHP_VERSION=8.4 BRANCH=v8 VARIANT=cli OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
+	PHP_VERSION=8.5 BRANCH=v9 VARIANT=cli OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
+	PHP_VERSION=8.4 BRANCH=v9 VARIANT=cli OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
 	echo "Tests passed with success"
 
 test-8.5: _test-prerequisites ## Test php8.5 build only
-	PHP_VERSION=8.5 BRANCH=v8 VARIANT=cli OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
-	PHP_VERSION=8.5 BRANCH=v8 VARIANT=apache OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
+	PHP_VERSION=8.5 BRANCH=v9 VARIANT=cli OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
+	PHP_VERSION=8.5 BRANCH=v9 VARIANT=apache OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
 	echo "Tests passed with success"
 
 test-8.4: _test-prerequisites ## Test php8.4 build only
-	PHP_VERSION=8.4 BRANCH=v8 VARIANT=cli OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
-	PHP_VERSION=8.4 BRANCH=v8 VARIANT=apache OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
+	PHP_VERSION=8.4 BRANCH=v9 VARIANT=cli OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
+	PHP_VERSION=8.4 BRANCH=v9 VARIANT=apache OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
 	echo "Tests passed with success"
 
 test-8.3: _test-prerequisites ## Test php8.3 build only
-	PHP_VERSION=8.3 BRANCH=v8 VARIANT=cli OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
-	PHP_VERSION=8.3 BRANCH=v8 VARIANT=apache OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
+	PHP_VERSION=8.3 BRANCH=v9 VARIANT=cli OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
+	PHP_VERSION=8.3 BRANCH=v9 VARIANT=apache OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
 	echo "Tests passed with success"
 
 test-8.2: _test-prerequisites ## Test php8.2 build only
-	PHP_VERSION=8.2 BRANCH=v8 VARIANT=cli OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
-	PHP_VERSION=8.2 BRANCH=v8 VARIANT=apache OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
+	PHP_VERSION=8.2 BRANCH=v9 VARIANT=cli OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
+	PHP_VERSION=8.2 BRANCH=v9 VARIANT=apache OWNER="qonstrukt" PLATFORM="linux/`uname -p`64" ./build-and-test.sh || (echo "Tests failed" && exit 1)
 	echo "Tests passed with success"
 
 clean: ## Clean dangles image after build

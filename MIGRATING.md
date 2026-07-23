@@ -1,9 +1,17 @@
+# Migrating from v8 to v9 images
+
+Important changes:
+
+- v8 images are based on **Ubuntu 24.04**. v9 images are based on **Ubuntu 26.04**.
+- Node 20 has been removed as it has reached EOL.
+
 # Migrating from v7 to v8 images
 
 Important changes:
 
 - v7 images are based on **Ubuntu 22.04**. v8 images are based on **Ubuntu 24.04**.
 - PHP 8.1 is dropped as it hasn't received active support anymore for a long time.
+- Node 18 has been removed as it has reached EOL.
 
 # Migrating from v6 to v7 images
 

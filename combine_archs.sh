@@ -25,70 +25,70 @@ echo "Combining patch release $PHP_PATCH_VERSION"
 
 export DOCKER_BUILDKIT=1 # Force use of BuildKit
 
-# php:8.3-v8-slim-apache
+# php:8.3-v9-slim-apache
 docker manifest create \
     ${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT} \
     --amend ${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-amd64 \
     --amend ${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-arm64
 docker manifest push ${OWNER}/php:${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}
 
-# php:8.3.0-v8-slim-apache
+# php:8.3.0-v9-slim-apache
 docker manifest create \
     ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT} \
     --amend ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-amd64 \
     --amend ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}-arm64
 docker manifest push ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}
 
-# php:8.3-v8-apache
+# php:8.3-v9-apache
 docker manifest create \
     ${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT} \
     --amend ${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-amd64 \
     --amend ${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-arm64
 docker manifest push ${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}
 
-# php:8.3.0-v8-apache
+# php:8.3.0-v9-apache
 docker manifest create \
     ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-${BRANCH_VARIANT} \
     --amend ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-${BRANCH_VARIANT}-amd64 \
     --amend ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-${BRANCH_VARIANT}-arm64
 docker manifest push ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-${BRANCH_VARIANT}
 
-# php:8.3-v8-apache-node22
+# php:8.3-v9-apache-node22
 docker manifest create \
     ${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node22 \
     --amend ${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node22-amd64 \
     --amend ${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node22-arm64
 docker manifest push ${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node22
 
-# php:8.3.0-v8-apache-node22
+# php:8.3.0-v9-apache-node22
 docker manifest create \
     ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node22 \
     --amend ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node22-amd64 \
     --amend ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node22-arm64
 docker manifest push ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node22
 
-# php:8.3-v8-apache-node24
+# php:8.3-v9-apache-node24
 docker manifest create \
     ${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node24 \
     --amend ${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node24-amd64 \
     --amend ${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node24-arm64
 docker manifest push ${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node24
 
-# php:8.3.0-v8-apache-node24
+# php:8.3.0-v9-apache-node24
 docker manifest create \
     ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node24 \
     --amend ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node24-amd64 \
     --amend ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node24-arm64
 docker manifest push ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node24
 
-# php:8.3-v8-apache-node26
+# php:8.3-v9-apache-node26
 docker manifest create \
     ${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node26 \
     --amend ${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node26-amd64 \
     --amend ${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node26-arm64
 docker manifest push ${OWNER}/php:${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node26
 
-# php:8.3.0-v8-apache-node26
+# php:8.3.0-v9-apache-node26
 docker manifest create \
     ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node26 \
     --amend ${OWNER}/php:${PHP_PATCH_VERSION}-${BRANCH}-${BRANCH_VARIANT}-node26-amd64 \
